@@ -1,0 +1,105 @@
+---
+/**
+ * projects/index.astro — Installation Showcase & Architectural Portfolio Page
+ *
+ * Dedicated standalone page displaying all 18 installation configurations
+ * across all 6 product lines with interactive category filtering and full lightbox modal.
+ */
+import PageLayout from "@layouts/PageLayout.astro";
+import GallerySection from "@components/home/GallerySection.astro";
+import { siteConfig, getPhoneUrl, getWhatsAppUrl } from "@data/siteConfig";
+
+const pageTitle = "Installation Showcase & Projects Gallery | MMR Safety";
+const pageDescription =
+  "Explore real architectural installation configurations across Bengaluru: 316-grade stainless steel invisible grills, balcony safety nets, pigeon barriers, and ceiling cloth hangers.";
+const canonicalUrl = "https://mmrsafety.in/projects/";
+
+const phoneUrl = getPhoneUrl();
+const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I am browsing your Projects Showcase and would like to enquire about an on-site inspection for my home.");
+---
+
+<PageLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+>
+  <!-- Hero Banner -->
+  <section class="relative bg-gradient-to-b from-[var(--color-soft-bg)] to-white py-14 lg:py-20 border-b border-[var(--color-border-light)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-[var(--color-muted-text)] mb-6" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-[var(--color-primary-navy)] transition-colors">Home</a>
+        <svg class="h-3 w-3 text-[var(--color-muted-text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        <span class="font-semibold text-[var(--color-primary-navy)]">Installation Showcase</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
+          Verified Portfolio
+        </span>
+        <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
+          Architectural Installation Portfolio
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
+          Detailed visual configurations and technical specifications of our safety solutions across apartments, villas, and commercial properties in Bengaluru.
+        </p>
+
+        <!-- Quick CTAs -->
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href={phoneUrl}
+            class="inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-[var(--color-primary-navy-dark)]"
+          >
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+            </svg>
+            <span>Call {siteConfig.contact.phone}</span>
+          </a>
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-[#1EBE5D]"
+          >
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+            </svg>
+            <span>Instant WhatsApp Enquiry</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Filterable Gallery Section -->
+  <GallerySection isStandalonePage={true} />
+
+  <!-- Bottom Site Inspection Prompt -->
+  <section class="bg-[var(--color-soft-bg)] py-16 border-t border-[var(--color-border-light)]">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[var(--color-primary-navy)]">
+        Want to See Physical Material Samples at Your Home?
+      </h2>
+      <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] max-w-2xl mx-auto leading-relaxed">
+        Our mobile technical team carries physical 316 SS wire cable samples, netting mesh swatches, and mounting track profiles directly to your property for live demonstrations and exact laser measurements.
+      </p>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a
+          href="/contact/"
+          class="inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-6 py-3 text-sm font-bold text-white shadow-xs hover:bg-[var(--color-primary-navy-dark)]"
+        >
+          <span>Schedule Free Site Measurement</span>
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

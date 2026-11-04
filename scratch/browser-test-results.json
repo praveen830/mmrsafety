@@ -1,0 +1,225 @@
+{
+  "timestamp": "2026-11-03T12:39:12.644Z",
+  "homeCards": [
+    {
+      "title": "Invisible Grills",
+      "imgSrc": "/images/services/invisible-grills.webp",
+      "imgLink": "/services/invisible-grills/",
+      "titleLink": "/services/invisible-grills/",
+      "buttonLink": "/services/invisible-grills/",
+      "naturalWidth": 1200,
+      "naturalHeight": 900,
+      "complete": true
+    },
+    {
+      "title": "Safety Nets",
+      "imgSrc": "/images/services/safety-nets.webp",
+      "imgLink": "/services/safety-nets/",
+      "titleLink": "/services/safety-nets/",
+      "buttonLink": "/services/safety-nets/",
+      "naturalWidth": 1200,
+      "naturalHeight": 900,
+      "complete": true
+    },
+    {
+      "title": "Pigeon Safety Nets",
+      "imgSrc": "/images/services/pigeon-safety-nets.webp",
+      "imgLink": "/services/pigeon-safety-nets/",
+      "titleLink": "/services/pigeon-safety-nets/",
+      "buttonLink": "/services/pigeon-safety-nets/",
+      "naturalWidth": 1200,
+      "naturalHeight": 900,
+      "complete": true
+    },
+    {
+      "title": "Sports Nets",
+      "imgSrc": "/images/services/sports-nets.webp",
+      "imgLink": "/services/sports-nets/",
+      "titleLink": "/services/sports-nets/",
+      "buttonLink": "/services/sports-nets/",
+      "naturalWidth": 1200,
+      "naturalHeight": 900,
+      "complete": true
+    },
+    {
+      "title": "Cloth Hangers",
+      "imgSrc": "/images/services/cloth-hangers.webp",
+      "imgLink": "/services/cloth-hangers/",
+      "titleLink": "/services/cloth-hangers/",
+      "buttonLink": "/services/cloth-hangers/",
+      "naturalWidth": 1200,
+      "naturalHeight": 900,
+      "complete": true
+    },
+    {
+      "title": "Bird Spikes",
+      "imgSrc": "/images/services/bird-spikes.webp",
+      "imgLink": "/services/bird-spikes/",
+      "titleLink": "/services/bird-spikes/",
+      "buttonLink": "/services/bird-spikes/",
+      "naturalWidth": 1200,
+      "naturalHeight": 900,
+      "complete": true
+    }
+  ],
+  "servicePages": [
+    {
+      "slug": "invisible-grills",
+      "url": "http://localhost:4330/services/invisible-grills/",
+      "audit": {
+        "title": "Invisible Grills Installation in Bangalore | Modern Balcony Safety | MMR Safety",
+        "h1": "Invisible Grills\nArchitectural Elegance Meets High-Tensile Protection",
+        "heroImgSrc": "/images/services/invisible-grills.webp",
+        "heroImgLoaded": true,
+        "heroImgDims": {
+          "width": 1200,
+          "height": 900
+        },
+        "benefitsCount": 6,
+        "faqsCount": 5,
+        "hasForm": true,
+        "breadcrumbItems": [
+          "Home",
+          "Home",
+          "Services",
+          "Services",
+          "Invisible Grills"
+        ]
+      },
+      "screenshotName": "service-invisible-grills.png",
+      "passed": true
+    },
+    {
+      "slug": "safety-nets",
+      "url": "http://localhost:4330/services/safety-nets/",
+      "audit": {
+        "title": "Balcony Safety Nets Installation in Bangalore | Fall Protection | MMR Safety",
+        "h1": "Safety Nets\nComprehensive Fall Prevention for Balconies & Open Shafts",
+        "heroImgSrc": "/images/services/safety-nets.webp",
+        "heroImgLoaded": true,
+        "heroImgDims": {
+          "width": 1200,
+          "height": 900
+        },
+        "benefitsCount": 6,
+        "faqsCount": 5,
+        "hasForm": true,
+        "breadcrumbItems": [
+          "Home",
+          "Home",
+          "Services",
+          "Services",
+          "Safety Nets"
+        ]
+      },
+      "screenshotName": "service-safety-nets.png",
+      "passed": true
+    },
+    {
+      "slug": "pigeon-safety-nets",
+      "url": "http://localhost:4330/services/pigeon-safety-nets/",
+      "audit": {
+        "title": "Pigeon Safety Nets for Balconies & Windows | Bird Netting | MMR Safety",
+        "h1": "Pigeon Safety Nets\nClean, Bird-Free Living Spaces Without Blocking Airflow",
+        "heroImgSrc": "/images/services/pigeon-safety-nets.webp",
+        "heroImgLoaded": true,
+        "heroImgDims": {
+          "width": 1200,
+          "height": 900
+        },
+        "benefitsCount": 6,
+        "faqsCount": 5,
+        "hasForm": true,
+        "breadcrumbItems": [
+          "Home",
+          "Home",
+          "Services",
+          "Services",
+          "Pigeon Safety Nets"
+        ]
+      },
+      "screenshotName": "service-pigeon-safety-nets.png",
+      "passed": true
+    },
+    {
+      "slug": "sports-nets",
+      "url": "http://localhost:4330/services/sports-nets/",
+      "audit": {
+        "title": "Sports Nets Installation | Cricket, Badminton & Turf Enclosures | MMR Safety",
+        "h1": "Sports Nets\nEngineered Ball Containment for Practice & Play Areas",
+        "heroImgSrc": "/images/services/sports-nets.webp",
+        "heroImgLoaded": true,
+        "heroImgDims": {
+          "width": 1200,
+          "height": 900
+        },
+        "benefitsCount": 6,
+        "faqsCount": 4,
+        "hasForm": true,
+        "breadcrumbItems": [
+          "Home",
+          "Home",
+          "Services",
+          "Services",
+          "Sports Nets"
+        ]
+      },
+      "screenshotName": "service-sports-nets.png",
+      "passed": true
+    },
+    {
+      "slug": "cloth-hangers",
+      "url": "http://localhost:4330/services/cloth-hangers/",
+      "audit": {
+        "title": "Ceiling Cloth Drying Hangers in Bangalore | Balcony Hangers | MMR Safety",
+        "h1": "Cloth Hangers\nEffortless Ceiling Space-Savers for Modern Balconies",
+        "heroImgSrc": "/images/services/cloth-hangers.webp",
+        "heroImgLoaded": true,
+        "heroImgDims": {
+          "width": 1200,
+          "height": 900
+        },
+        "benefitsCount": 6,
+        "faqsCount": 4,
+        "hasForm": true,
+        "breadcrumbItems": [
+          "Home",
+          "Home",
+          "Services",
+          "Services",
+          "Cloth Hangers"
+        ]
+      },
+      "screenshotName": "service-cloth-hangers.png",
+      "passed": true
+    },
+    {
+      "slug": "bird-spikes",
+      "url": "http://localhost:4330/services/bird-spikes/",
+      "audit": {
+        "title": "Stainless Steel Bird Spikes Installation in Bangalore | Anti-Perch Strips | MMR Safety",
+        "h1": "Bird Spikes\nHumane, Permanent Anti-Perch Protection for Ledges",
+        "heroImgSrc": "/images/services/bird-spikes.webp",
+        "heroImgLoaded": true,
+        "heroImgDims": {
+          "width": 1200,
+          "height": 900
+        },
+        "benefitsCount": 6,
+        "faqsCount": 4,
+        "hasForm": true,
+        "breadcrumbItems": [
+          "Home",
+          "Home",
+          "Services",
+          "Services",
+          "Bird Spikes"
+        ]
+      },
+      "screenshotName": "service-bird-spikes.png",
+      "passed": true
+    }
+  ],
+  "consoleErrors": [],
+  "networkErrors": []
+}

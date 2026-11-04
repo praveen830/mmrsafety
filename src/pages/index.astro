@@ -1,0 +1,129 @@
+---
+/**
+ * index.astro — MMR Safety Official Homepage (Premium Visual Redesign)
+ *
+ * Architecture:
+ * 0. CinematicIntro — 5-second 3-scene WebM cinematic video intro
+ * 1. Hero — 3D perspective tilt with photorealistic luxury apartment balcony visual
+ * 2. BrandIntro — Master MMR brand identity reveal and core commitments
+ * 3. ComparisonSection — Interactive split before/after slider (Invisible vs Iron Grills)
+ * 4. ServicesSection — 6 core offerings with 3D interactive tilt cards & real photography
+ * 5. EngineeringDetails — 4 close-up product detail photographs showcasing precision hardware
+ * 6. WhyChooseUs — 6 engineering and aesthetic pillars
+ * 7. ProcessSection — 4-step installation workflow
+ * 8. ProjectShowcase — 6 application gallery items with category filter tabs & lightbox modal
+ * 9. ServiceCoverage — Transparent operational hubs and laser survey capabilities
+ * 10. FaqSection — Accessible FAQ accordion with rich JSON-LD schema
+ * 11. QuoteCtaSection — High-conversion on-site inspection booking form
+ */
+import PageLayout from "@layouts/PageLayout.astro";
+import CinematicIntro from "@components/home/CinematicIntro.astro";
+import Hero from "@components/home/Hero.astro";
+import BrandIntro from "@components/home/BrandIntro.astro";
+import ComparisonSection from "@components/home/ComparisonSection.astro";
+import ServicesSection from "@components/home/ServicesSection.astro";
+import SafetyRequirementsSection from "@components/home/SafetyRequirementsSection.astro";
+import EngineeringDetails from "@components/home/EngineeringDetails.astro";
+import MaterialsShowcaseSection from "@components/home/MaterialsShowcaseSection.astro";
+import WhyChooseUs from "@components/home/WhyChooseUs.astro";
+import ProcessSection from "@components/home/ProcessSection.astro";
+import GallerySection from "@components/home/GallerySection.astro";
+import ServiceAreasSection from "@components/home/ServiceAreasSection.astro";
+import WarrantySection from "@components/home/WarrantySection.astro";
+import FaqSection from "@components/home/FaqSection.astro";
+import QuoteCtaSection from "@components/home/QuoteCtaSection.astro";
+import { siteConfig } from "@data/siteConfig";
+
+const seoTitle = `${siteConfig.name} | ${siteConfig.tagline}`;
+const seoDescription =
+  "High-tensile invisible grills, residential balcony safety nets, pigeon exclusion nets, and ceiling cloth hangers engineered for high-rise living with unobstructed views.";
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  name: "MMR Safety Nets and Invisible Grills",
+  alternateName: "MMR Safety",
+  url: "https://mmrsafety.in",
+  logo: "https://mmrsafety.in/logos/mmr-full.png",
+  image: "https://mmrsafety.in/images/services/invisible-grills-desktop.webp",
+  description: seoDescription,
+  telephone: siteConfig.contact.phoneRaw,
+  email: siteConfig.contact.email,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bengaluru",
+    addressRegion: "Karnataka",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 12.9716,
+    longitude: 77.5946,
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Bengaluru",
+  },
+  priceRange: "₹₹",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "08:00",
+    closes: "20:00",
+  },
+};
+---
+
+<PageLayout
+  title={seoTitle}
+  description={seoDescription}
+  canonicalUrl="https://mmrsafety.in/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </Fragment>
+  <!-- 0. 5-Second Multi-Scene Cinematic Video Intro -->
+  <CinematicIntro />
+
+  <!-- 1. Hero Section with 3D Perspective Balcony Visual -->
+  <Hero />
+
+  <!-- 2. Brand Identity & Commitments -->
+  <BrandIntro />
+
+  <!-- 3. Interactive Before/After Architectural Comparison Slider -->
+  <ComparisonSection />
+
+  <!-- 4. Six Photorealistic Service Cards with 3D Hover Tilt -->
+  <ServicesSection />
+
+  <!-- 4b. Safety Requirements & Architectural Scenarios Grid -->
+  <SafetyRequirementsSection />
+
+  <!-- 5. Installation Precision & Engineering Details (Close-Up Photography) -->
+  <EngineeringDetails />
+
+  <!-- 5b. Verified Materials & Hardware Engineering Showcase -->
+  <MaterialsShowcaseSection />
+
+  <!-- 6. Why Choose MMR Safety -->
+  <WhyChooseUs />
+
+  <!-- 7. 4-Step Standardized Workflow -->
+  <ProcessSection />
+
+  <!-- 8. Architectural Project Showcase Gallery with Lightbox Modal & 7 Filters -->
+  <GallerySection />
+
+  <!-- 9. Confirmed Service Areas & On-Site Availability -->
+  <ServiceAreasSection />
+
+  <!-- 9b. Dedicated Warranty Coverage & Terms -->
+  <WarrantySection />
+
+  <!-- 10. Frequently Answered Questions with Schema -->
+  <FaqSection />
+
+  <!-- 11. Free On-Site Safety Inspection Booking Form -->
+  <QuoteCtaSection />
+</PageLayout>

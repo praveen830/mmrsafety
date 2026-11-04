@@ -1,0 +1,106 @@
+---
+/**
+ * FaqSection.astro — Accessible FAQ Accordion & FAQ Schema
+ *
+ * Provides answers to the 7 key customer questions using native, accessible
+ * HTML5 <details>/<summary> elements (zero hydration overhead) and generates
+ * structured JSON-LD FAQ schema for search engines.
+ */
+import { faqData } from "@data/homeData";
+
+// Generate FAQPage JSON-LD schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqData.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<section
+  id="faq"
+  class="relative bg-white py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16"
+  aria-labelledby="faq-heading"
+>
+  <!-- SEO: FAQ Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+        Frequently Answered Questions
+      </span>
+      <h2 id="faq-heading" class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+        Clear Answers on Safety, Materials &amp; Installation
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
+        Everything you need to know about balcony invisible grills, child safety nets, and bird exclusion before scheduling a survey.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion List -->
+    <div class="mt-12 space-y-4">
+      {
+        faqData.map((item, index) => (
+          <details
+            class="group rounded-2xl border border-[var(--color-border)] bg-white p-5 sm:p-6 shadow-xs transition-all duration-200 hover:border-[var(--color-sky-blue)] open:border-[var(--color-sky-blue)] open:bg-[var(--color-soft-bg)]/40 open:shadow-md"
+            open={index === 0}
+          >
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-[var(--color-primary-navy)] text-base sm:text-lg select-none focus:outline-none">
+              <span class="flex items-center gap-3">
+                <span class="rounded-md bg-[var(--color-soft-bg)] px-2 py-0.5 text-xs font-semibold text-[var(--color-sky-blue-dark)] group-open:bg-white group-open:border group-open:border-[var(--color-border)]">
+                  {item.category}
+                </span>
+                <span>{item.question}</span>
+              </span>
+
+              <!-- Animated Toggle Chevron -->
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)] group-open:rotate-180 group-open:bg-[var(--color-sky-blue)] group-open:text-white transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+
+            <div class="mt-4 border-t border-[var(--color-border-light)] pt-4 text-sm sm:text-base text-[var(--color-muted-text)] leading-relaxed">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+
+    <!-- Have a Specific Question? Support Box -->
+    <div class="mt-12 text-center rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] p-6 sm:p-8">
+      <h3 class="text-base sm:text-lg font-bold text-[var(--color-primary-navy)]">
+        Have a question about your balcony's unique architecture?
+      </h3>
+      <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] max-w-xl mx-auto">
+        Speak directly with an installation specialist. We assess photos and structural dimensions over WhatsApp or phone call.
+      </p>
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="#quote"
+          class="rounded-lg bg-[var(--color-primary-navy)] px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-[var(--color-primary-navy-light)] transition-all"
+        >
+          Request an Assessment
+        </a>
+        <a
+          href="/contact"
+          class="rounded-lg border border-[var(--color-border)] bg-white px-5 py-2.5 text-xs sm:text-sm font-semibold text-[var(--color-primary-navy)] shadow-xs hover:bg-[var(--color-soft-bg)] transition-all"
+        >
+          View Contact Details
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

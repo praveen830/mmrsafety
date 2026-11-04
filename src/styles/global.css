@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+/*
+ * MMR Safety — Design System
+ * Brand: MMR Safety Nets and Invisible Grills
+ * Theme: Premium Light
+ */
+
+/* ------------------------------------------------
+   Brand Colour Palette
+   ------------------------------------------------ */
+@theme {
+  --color-primary-navy: #123B63;
+  --color-metallic-silver: #AEB8C2;
+  --color-sky-blue: #64B5E8;
+  --color-white: #FFFFFF;
+  --color-soft-bg: #F5F8FB;
+  --color-main-text: #172B3A;
+
+  /* Derived semantic colours */
+  --color-primary-navy-light: #1A4F80;
+  --color-primary-navy-dark: #0D2B49;
+  --color-sky-blue-light: #8BC8EF;
+  --color-sky-blue-dark: #4A9DD4;
+  --color-border: #D6DDE4;
+  --color-border-light: #E8ECF0;
+  --color-muted-text: #5A6E7F;
+
+  /* Typography scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+
+  /* Spacing scale */
+  --spacing-section: 5rem;
+  --spacing-section-sm: 3rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-cinematic: 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(18, 59, 99, 0.05);
+  --shadow-md: 0 4px 12px rgba(18, 59, 99, 0.08);
+  --shadow-lg: 0 12px 32px rgba(18, 59, 99, 0.1);
+  --shadow-xl: 0 20px 48px rgba(18, 59, 99, 0.12);
+
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* ------------------------------------------------
+   Base Styles
+   ------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  color: var(--color-main-text);
+  background-color: var(--color-white);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------------------------
+   Accessibility
+   ------------------------------------------------ */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-primary-navy);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  z-index: 9999;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ------------------------------------------------
+   Focus Styles
+   ------------------------------------------------ */
+:focus-visible {
+  outline: 2px solid var(--color-sky-blue);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------
+   Selection
+   ------------------------------------------------ */
+::selection {
+  background-color: var(--color-sky-blue);
+  color: var(--color-white);
+}
+
+/* ------------------------------------------------
+   Typography Utilities
+   ------------------------------------------------ */
+.heading-display {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-primary-navy);
+}
+
+.heading-section {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-primary-navy);
+}
+
+.text-body {
+  line-height: 1.7;
+  color: var(--color-main-text);
+}
+
+.text-muted {
+  color: var(--color-muted-text);
+}
+
+/* ------------------------------------------------
+   Cinematic Keyframes & Utilities
+   ------------------------------------------------ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease both;
+}
+
+.animate-float {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+
+/* ------------------------------------------------
+   3D Logo Refinement & Metallic Glint Utilities
+   ------------------------------------------------ */
+.logo-sheen-container {
+  position: relative;
+  perspective: 800px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo-sheen-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+  filter: drop-shadow(0 2px 5px rgba(18, 59, 99, 0.08));
+}
+
+.logo-sheen-container:hover .logo-sheen-box {
+  transform: perspective(600px) rotateX(3deg) translateY(-1.5px) scale(1.02);
+  filter: drop-shadow(0 8px 16px rgba(18, 59, 99, 0.16));
+}
+
+.logo-metallic-glint {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.logo-sheen-container:hover .logo-metallic-glint {
+  opacity: 1;
+  animation: logoGlintSweep 1s ease-in-out forwards;
+}
+
+@keyframes logoGlintSweep {
+  0% { left: -120%; }
+  100% { left: 220%; }
+}
+
+/* Accessible reduced-motion behavior */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

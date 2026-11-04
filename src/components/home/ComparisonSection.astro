@@ -1,0 +1,224 @@
+---
+/**
+ * ComparisonSection.astro — Interactive Architectural Comparison
+ *
+ * Demonstrates the dramatic visual and safety superiority of modern
+ * invisible grills over traditional bulky iron grilles through an
+ * interactive before/after split slider.
+ */
+---
+
+<section
+  id="comparison"
+  class="relative bg-white py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16 overflow-hidden"
+  aria-labelledby="comparison-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+        Architectural Transformation
+      </span>
+      <h2 id="comparison-heading" class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+        Invisible Grills vs. Traditional Iron Cages
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
+        Drag the interactive slider below to see how modern tensioned stainless steel cables transform your balcony into a safe, open luxury sanctuary.
+      </p>
+    </div>
+
+    <!-- Interactive Comparison Slider -->
+    <div class="relative mx-auto mt-12 max-w-4xl select-none">
+      <div
+        id="comparison-container"
+        class="relative aspect-16/10 w-full overflow-hidden rounded-3xl border border-[var(--color-border)] shadow-2xl bg-neutral-900"
+      >
+        <!-- Before: Traditional Iron Grill (Underneath) -->
+        <img
+          src="/images/comparison/traditional-grill.jpg"
+          alt="Traditional bulky welded iron window and balcony bars casting shadows and blocking the view"
+          width="1000"
+          height="700"
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <!-- Badge for Traditional (Right side) -->
+        <div class="absolute top-4 right-4 z-10 rounded-full bg-black/75 backdrop-blur-md px-3.5 py-1.5 border border-white/20 text-xs font-semibold text-white/90 shadow-md">
+          Traditional Iron Bars
+        </div>
+
+        <!-- After: Invisible Grill (Overlaid & Clipped) -->
+        <div
+          id="comparison-overlay"
+          class="absolute inset-0 h-full overflow-hidden will-change-[width]"
+          style="width: 50%;"
+        >
+          <img
+            src="/images/comparison/invisible-view.jpg"
+            alt="Modern MMR invisible grill installation with crystal clear skyline visibility and high-tensile safety"
+            width="1000"
+            height="700"
+            class="absolute inset-0 h-full max-w-none w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <!-- Badge for Invisible Grill (Left side) -->
+          <div class="absolute top-4 left-4 z-10 rounded-full bg-[var(--color-primary-navy)]/90 backdrop-blur-md px-3.5 py-1.5 border border-white/30 text-xs font-bold text-white shadow-md">
+            MMR Invisible Grills
+          </div>
+        </div>
+
+        <!-- Divider Line & Draggable Handle -->
+        <div
+          id="comparison-slider-handle"
+          class="absolute top-0 bottom-0 z-20 w-1 bg-white shadow-[0_0_12px_rgba(0,0,0,0.5)] cursor-ew-resize will-change-[left]"
+          style="left: 50%; transform: translateX(-50%);"
+        >
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-xl text-[var(--color-primary-navy)] ring-4 ring-black/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-3 3m0 0l3 3m-3-3h14m-3-6l3 3m0 0l-3 3" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Invisible Range Input for Accessibility -->
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          id="comparison-range"
+          class="sr-only"
+          aria-label="Comparison slider between traditional iron bars and modern invisible grills"
+        />
+      </div>
+
+      <!-- Drag Hint Below Slider -->
+      <p class="mt-3 text-center text-xs text-[var(--color-muted-text)]">
+        &larr; Drag slider left or right to compare &rarr;
+      </p>
+    </div>
+
+    <!-- 4 Key Architectural Comparison Pillars -->
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      
+      <div class="rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] p-6 shadow-xs">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[var(--color-primary-navy)] shadow-xs font-bold">
+          01
+        </div>
+        <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Panoramic Visibility</h3>
+        <p class="mt-2 text-xs text-[var(--color-muted-text)] leading-relaxed">
+          Preserves open daylight and skyline views without the heavy dark bars that cast cage-like shadows inside rooms.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] p-6 shadow-xs">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[var(--color-primary-navy)] shadow-xs font-bold">
+          02
+        </div>
+        <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Emergency Safe Egress</h3>
+        <p class="mt-2 text-xs text-[var(--color-muted-text)] leading-relaxed">
+          Cables can be severed with wire cutters during emergency evacuation, unlike rigid welded iron that can trap occupants.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] p-6 shadow-xs">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[var(--color-primary-navy)] shadow-xs font-bold">
+          03
+        </div>
+        <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Zero Rust &amp; Repainting</h3>
+        <p class="mt-2 text-xs text-[var(--color-muted-text)] leading-relaxed">
+          High-grade stainless steel cables resist weathering, eliminating the periodic scraping and repainting required by iron.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] p-6 shadow-xs">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[var(--color-primary-navy)] shadow-xs font-bold">
+          04
+        </div>
+        <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Building Facade Value</h3>
+        <p class="mt-2 text-xs text-[var(--color-muted-text)] leading-relaxed">
+          Blends cleanly into contemporary building facades, widely permitted by modern apartment associations.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initComparisonSlider() {
+    const container = document.getElementById("comparison-container");
+    const overlay = document.getElementById("comparison-overlay");
+    const handle = document.getElementById("comparison-slider-handle");
+    const range = document.getElementById("comparison-range") as HTMLInputElement | null;
+
+    if (!container || !overlay || !handle) return;
+
+    let isDown = false;
+
+    function setPosition(xPos: number) {
+      const rect = container!.getBoundingClientRect();
+      let pos = (xPos - rect.left) / rect.width;
+      if (pos < 0) pos = 0;
+      if (pos > 1) pos = 1;
+
+      const pct = (pos * 100).toFixed(1);
+      overlay!.style.width = `${pct}%`;
+      handle!.style.left = `${pct}%`;
+
+      if (range) {
+        range.value = pct;
+      }
+    }
+
+    container.addEventListener("mousedown", (e) => {
+      isDown = true;
+      setPosition(e.clientX);
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDown = false;
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      setPosition(e.clientX);
+    });
+
+    // Touch support
+    container.addEventListener("touchstart", (e) => {
+      isDown = true;
+      if (e.touches[0]) setPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener("touchend", () => {
+      isDown = false;
+    });
+
+    window.addEventListener("touchmove", (e) => {
+      if (!isDown) return;
+      if (e.touches[0]) setPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    // Keyboard support via range
+    if (range) {
+      range.addEventListener("input", () => {
+        const val = range.value;
+        overlay.style.width = `${val}%`;
+        handle.style.left = `${val}%`;
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initComparisonSlider);
+  } else {
+    initComparisonSlider();
+  }
+</script>

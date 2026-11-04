@@ -1,0 +1,77 @@
+---
+/**
+ * BaseLayout.astro
+ *
+ * Root HTML document shell for every page.
+ * Handles: viewport, charset, SEO meta, OG tags,
+ * canonical URL, favicon, global CSS, accessibility.
+ */
+import "@styles/global.css";
+import { siteConfig } from "@data/siteConfig";
+import { resolveSEO } from "@utils/seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+}
+
+const seo = resolveSEO(Astro.props);
+const canonicalURL = new URL(
+  Astro.props.canonicalUrl ?? Astro.url.pathname,
+  siteConfig.url
+);
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <link rel="canonical" href={canonicalURL.href} />
+    {seo.noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:type" content={seo.ogType} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content={new URL(seo.ogImage, siteConfig.url).href} />
+    <meta property="og:locale" content={siteConfig.seo.locale} />
+    <meta property="og:site_name" content={siteConfig.shortName} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={new URL(seo.ogImage, siteConfig.url).href} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192x192.png" />
+
+    <!-- Theme colour -->
+    <meta name="theme-color" content="#123B63" />
+
+    <!-- Injected Page-Level Schema / Meta -->
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen bg-white text-[var(--color-main-text)] antialiased overflow-x-hidden">
+    <!-- Accessibility: skip to content -->
+    <a href="#main-content" class="skip-to-content">
+      Skip to main content
+    </a>
+
+    <slot />
+  </body>
+</html>

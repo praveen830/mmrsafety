@@ -1,0 +1,460 @@
+---
+/**
+ * ServiceSubServices.astro — Dedicated Sub-Services & Interactive Product Detail View
+ *
+ * Displays specialized architectural variations for the active service with
+ * photographic cards, concise practical descriptions, direct WhatsApp CTA,
+ * and an interactive Sub-Service Detail Drawer / Modal providing complete technical specifications.
+ */
+import { getWhatsAppUrl, getPhoneUrl } from "@data/siteConfig";
+
+export interface SubServiceItem {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  badge?: string;
+  whatsappMessage?: string;
+  suitability?: string[];
+  hardwareSpecs?: { label: string; value: string }[];
+  installationHighlight?: string;
+}
+
+interface Props {
+  serviceName: string;
+  subServices: SubServiceItem[];
+}
+
+const { serviceName, subServices } = Astro.props;
+const phoneUrl = getPhoneUrl();
+---
+
+<section
+  id="sub-services"
+  class="bg-[var(--color-soft-bg)] py-16 lg:py-24 border-b border-[var(--color-border-light)]"
+  aria-labelledby="sub-services-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
+        Specialized Solutions
+      </span>
+      <h2
+        id="sub-services-heading"
+        class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)] tracking-tight"
+      >
+        {serviceName} Variations &amp; Sub-Services
+      </h2>
+      <p class="mt-4 text-base text-[var(--color-muted-text)] leading-relaxed">
+        Engineered for specific structural configurations across apartments, independent houses, gated communities, and commercial facilities in Bengaluru. Click any variation below to explore full hardware specifications.
+      </p>
+    </div>
+
+    <!-- Sub-Services Cards Grid -->
+    <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {
+        subServices.map((sub, index) => {
+          const defaultMsg = `Hello MMR Safety, I want to enquire about ${sub.title} for my home in Bengaluru. Please provide details and pricing.`;
+          const waUrl = getWhatsAppUrl(sub.whatsappMessage || defaultMsg);
+
+          return (
+            <article
+              class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-sky-blue)] hover:shadow-xl"
+              data-subservice-card={sub.id}
+            >
+              
+              <!-- Card Top: Photographic Visual with Click to Open Modal -->
+              <div>
+                <button
+                  type="button"
+                  class="open-subservice-modal-btn block relative aspect-16/10 w-full overflow-hidden bg-[var(--color-soft-bg)] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+                  data-subservice-id={sub.id}
+                  aria-label={`View detailed specifications for ${sub.title}`}
+                >
+                  <img
+                    src={sub.image}
+                    alt={sub.imageAlt}
+                    width="600"
+                    height="375"
+                    class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"></div>
+                  
+                  {sub.badge && (
+                    <span class="absolute top-3 right-3 inline-flex items-center rounded-full bg-white/95 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--color-primary-navy)] border border-white/80 shadow-xs">
+                      {sub.badge}
+                    </span>
+                  )}
+
+                  <span class="absolute bottom-2.5 left-3 text-[11px] font-bold text-white/95 drop-shadow-md flex items-center gap-1.5">
+                    <span class="flex h-1.5 w-1.5 rounded-full bg-[var(--color-sky-blue)]"></span>
+                    Variation 0{index + 1}
+                  </span>
+                </button>
+
+                <!-- Card Body -->
+                <div class="p-5">
+                  <h3 class="text-base sm:text-lg font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
+                    <button
+                      type="button"
+                      class="open-subservice-modal-btn text-left hover:underline cursor-pointer focus:outline-none"
+                      data-subservice-id={sub.id}
+                    >
+                      {sub.title}
+                    </button>
+                  </h3>
+                  
+                  <p class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)]">
+                    {sub.tagline}
+                  </p>
+
+                  <p class="mt-2.5 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed line-clamp-3">
+                    {sub.description}
+                  </p>
+
+                  <!-- Suitability Preview Pills -->
+                  {sub.suitability && sub.suitability.length > 0 && (
+                    <div class="mt-3.5 flex flex-wrap gap-1.5">
+                      {sub.suitability.slice(0, 2).map((item) => (
+                        <span class="inline-flex items-center rounded-md bg-[var(--color-soft-bg)] border border-[var(--color-border-light)] px-2 py-0.5 text-[10px] font-medium text-[var(--color-primary-navy)]/85">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <!-- Card Bottom: Dual Actions (View Specs & WhatsApp) -->
+              <div class="p-5 pt-0 space-y-2">
+                <button
+                  type="button"
+                  class="open-subservice-modal-btn inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-[var(--color-border)] bg-white px-3.5 py-2 text-xs font-bold text-[var(--color-primary-navy)] shadow-xs transition-all hover:bg-[var(--color-soft-bg)] hover:border-[var(--color-sky-blue)] active:scale-98 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+                  data-subservice-id={sub.id}
+                >
+                  <svg class="h-3.5 w-3.5 text-[var(--color-sky-blue-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  <span>View Specifications</span>
+                </button>
+
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3.5 py-2 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1ebe5d] hover:shadow-md active:scale-98 focus:outline-none focus:ring-2 focus:ring-[#25D366]"
+                  aria-label={`Enquire about ${sub.title} on WhatsApp`}
+                >
+                  <svg class="h-3.5 w-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                  </svg>
+                  <span>Quick WhatsApp Enquiry</span>
+                </a>
+              </div>
+
+            </article>
+          );
+        })
+      }
+    </div>
+
+  </div>
+
+  <!-- ================= SUB-SERVICE DETAIL MODAL / DRAWER ================= -->
+  <div
+    id="subservice-detail-modal"
+    class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/65 backdrop-blur-xs p-4 sm:p-6 lg:p-8 flex items-center justify-center transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="subservice-modal-title"
+  >
+    <div
+      id="subservice-modal-container"
+      class="relative w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl border border-[var(--color-border)] my-auto transition-transform duration-300 scale-95"
+    >
+      
+      <!-- Modal Header Bar -->
+      <div class="flex items-center justify-between border-b border-[var(--color-border-light)] bg-[var(--color-soft-bg)] px-6 py-4">
+        <div class="flex items-center gap-2.5">
+          <span id="subservice-modal-badge" class="rounded-full bg-[var(--color-sky-blue)]/20 text-[var(--color-primary-navy)] border border-[var(--color-sky-blue)]/40 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider">
+            Variation Specification
+          </span>
+          <span class="text-xs text-[var(--color-muted-text)] hidden sm:inline">&bull; MMR Engineered Safety</span>
+        </div>
+        <button
+          type="button"
+          id="close-subservice-modal-btn"
+          class="rounded-full p-1.5 text-gray-500 hover:bg-white hover:text-[var(--color-primary-navy)] transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+          aria-label="Close specification modal"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content Body -->
+      <div class="max-h-[75vh] overflow-y-auto p-6 sm:p-8 space-y-6">
+        
+        <!-- Top Visual & Title Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          
+          <!-- Image -->
+          <div class="md:col-span-5 relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-[var(--color-soft-bg)] border border-[var(--color-border)]">
+            <img
+              id="subservice-modal-image"
+              src=""
+              alt=""
+              width="600"
+              height="450"
+              class="h-full w-full object-cover"
+            />
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+          </div>
+
+          <!-- Title & Overview -->
+          <div class="md:col-span-7">
+            <h2 id="subservice-modal-title" class="text-2xl sm:text-3xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
+              <!-- Populated via JS -->
+            </h2>
+            <p id="subservice-modal-tagline" class="mt-1 text-sm font-semibold text-[var(--color-sky-blue-dark)]">
+              <!-- Populated via JS -->
+            </p>
+            <p id="subservice-modal-description" class="mt-3 text-sm text-[var(--color-muted-text)] leading-relaxed">
+              <!-- Populated via JS -->
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Application Suitability Pills -->
+        <div class="border-t border-[var(--color-border-light)] pt-5">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+            Ideal Applications &amp; Suitability
+          </h4>
+          <div id="subservice-modal-suitability" class="mt-2.5 flex flex-wrap gap-2">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Hardware & Engineering Specifications Grid -->
+        <div class="border-t border-[var(--color-border-light)] pt-5">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+            Hardware &amp; Structural Highlights
+          </h4>
+          <div id="subservice-modal-specs" class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Installation Highlight Banner -->
+        <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-4 flex items-start gap-3">
+          <svg class="h-5 w-5 text-[var(--color-sky-blue-dark)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div class="text-xs text-[var(--color-muted-text)] leading-relaxed">
+            <strong class="font-bold text-[var(--color-primary-navy)]">MMR Installation Standard:</strong>
+            <span id="subservice-modal-highlight"><!-- Populated via JS --></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Bottom Conversion CTAs -->
+      <div class="border-t border-[var(--color-border-light)] bg-white px-6 py-4 flex flex-col sm:flex-row items-center gap-3 justify-end">
+        
+        <!-- Call Now Button -->
+        <a
+          id="subservice-modal-call-btn"
+          href={phoneUrl}
+          class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-5 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[var(--color-primary-navy)]/90 active:scale-98"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span>Call Now</span>
+        </a>
+
+        <!-- Request Free Site Visit Button -->
+        <button
+          type="button"
+          id="subservice-modal-site-visit-btn"
+          class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-[var(--color-sky-blue)] bg-[var(--color-soft-bg)] px-5 py-2.5 text-xs font-bold text-[var(--color-primary-navy)] shadow-xs transition-all hover:bg-white active:scale-98 cursor-pointer"
+        >
+          <svg class="h-4 w-4 text-[var(--color-sky-blue-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span>Free Site Visit</span>
+        </button>
+
+        <!-- WhatsApp Button -->
+        <a
+          id="subservice-modal-wa-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1ebe5d] active:scale-98"
+        >
+          <svg class="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+          </svg>
+          <span>WhatsApp Enquiry</span>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Raw JSON Store for Sub-Services -->
+  <script id="subservices-raw-data" type="application/json" set:html={JSON.stringify(subServices)} />
+
+</section>
+
+<script>
+  function initSubServiceModal() {
+    const rawEl = document.getElementById("subservices-raw-data");
+    if (!rawEl) return;
+
+    let subServices: any[] = [];
+    try {
+      subServices = JSON.parse(rawEl.textContent || "[]");
+    } catch (e) {
+      return;
+    }
+
+    const modal = document.getElementById("subservice-detail-modal");
+    const container = document.getElementById("subservice-modal-container");
+    const closeBtn = document.getElementById("close-subservice-modal-btn");
+    const openBtns = document.querySelectorAll(".open-subservice-modal-btn");
+
+    const imgEl = document.getElementById("subservice-modal-image") as HTMLImageElement | null;
+    const titleEl = document.getElementById("subservice-modal-title");
+    const taglineEl = document.getElementById("subservice-modal-tagline");
+    const descEl = document.getElementById("subservice-modal-description");
+    const badgeEl = document.getElementById("subservice-modal-badge");
+    const suitabilityEl = document.getElementById("subservice-modal-suitability");
+    const specsEl = document.getElementById("subservice-modal-specs");
+    const highlightEl = document.getElementById("subservice-modal-highlight");
+    const waBtn = document.getElementById("subservice-modal-wa-btn") as HTMLAnchorElement | null;
+    const siteVisitBtn = document.getElementById("subservice-modal-site-visit-btn");
+
+    function openModal(subId: string) {
+      const item = subServices.find((s: any) => s.id === subId);
+      if (!item || !modal || !container) return;
+
+      if (imgEl) {
+        imgEl.src = item.image;
+        imgEl.alt = item.imageAlt || item.title;
+      }
+      if (titleEl) titleEl.textContent = item.title;
+      if (taglineEl) taglineEl.textContent = item.tagline || "";
+      if (descEl) descEl.textContent = item.description;
+      if (badgeEl) badgeEl.textContent = item.badge || "Verified MMR Solution";
+      if (highlightEl) {
+        highlightEl.textContent = item.installationHighlight || "Professional installation by trained in-house technicians with verified safety protocols.";
+      }
+
+      // Populate Suitability
+      if (suitabilityEl) {
+        suitabilityEl.innerHTML = "";
+        const suits = item.suitability && item.suitability.length > 0
+          ? item.suitability
+          : ["High-Rise Residences", "Gated Communities", "Bengaluru Apartments"];
+        suits.forEach((s: string) => {
+          const pill = document.createElement("span");
+          pill.className = "inline-flex items-center rounded-lg bg-[var(--color-soft-bg)] border border-[var(--color-border-light)] px-3 py-1 text-xs font-semibold text-[var(--color-primary-navy)]";
+          pill.textContent = s;
+          suitabilityEl.appendChild(pill);
+        });
+      }
+
+      // Populate Hardware Specs
+      if (specsEl) {
+        specsEl.innerHTML = "";
+        const specs = item.hardwareSpecs && item.hardwareSpecs.length > 0
+          ? item.hardwareSpecs
+          : [
+              { label: "Core Material", value: "Verified Structural Alloy" },
+              { label: "Anchoring", value: "Stainless Concrete Expansion Anchors" },
+              { label: "Airflow", value: "Over 90% Natural Ventilation" },
+              { label: "Installation", value: "Turnkey Measurement & Fitting" }
+            ];
+        specs.forEach((sp: any) => {
+          const card = document.createElement("div");
+          card.className = "rounded-xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)]/60 p-3";
+          card.innerHTML = `
+            <div class="text-[11px] font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">${sp.label}</div>
+            <div class="mt-0.5 text-xs font-semibold text-[var(--color-primary-navy)]">${sp.value}</div>
+          `;
+          specsEl.appendChild(card);
+        });
+      }
+
+      // Update WhatsApp URL
+      if (waBtn) {
+        const msg = item.whatsappMessage || `Hello MMR Safety, I want to enquire about ${item.title} for my home in Bengaluru. Please provide details and pricing.`;
+        waBtn.href = `https://wa.me/916304433505?text=${encodeURIComponent(msg)}`;
+      }
+
+      // Wire Free Site Visit button
+      if (siteVisitBtn) {
+        siteVisitBtn.onclick = () => {
+          closeModal();
+          // Trigger the global Free Site Visit modal if available
+          const globalSiteVisitTrigger = document.querySelector("[data-open-site-visit-modal]") as HTMLElement | null;
+          if (globalSiteVisitTrigger) {
+            globalSiteVisitTrigger.click();
+          }
+        };
+      }
+
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => {
+        container.classList.remove("scale-95");
+        container.classList.add("scale-100");
+      }, 10);
+    }
+
+    function closeModal() {
+      if (!modal || !container) return;
+      container.classList.remove("scale-100");
+      container.classList.add("scale-95");
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "";
+      }, 150);
+    }
+
+    openBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const sid = btn.getAttribute("data-subservice-id");
+        if (sid) openModal(sid);
+      });
+    });
+
+    closeBtn?.addEventListener("click", closeModal);
+
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+        closeModal();
+      }
+    });
+  }
+
+  // Initialize on load and Astro page transitions
+  initSubServiceModal();
+  document.addEventListener("astro:page-load", initSubServiceModal);
+</script>

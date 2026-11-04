@@ -1,0 +1,150 @@
+---
+/**
+ * [slug].astro — Dynamic Template for All Six Individual Service Pages
+ *
+ * Statically renders all 15 required sections:
+ * 1. Large Realistic Responsive Hero Image with <picture> (ServiceHero.astro)
+ * 2. Service Title & Category Badge
+ * 3. Short Punchy Introduction
+ * 4. Call Now Direct Button
+ * 5. Free Site Visit Button with Honest Interactive Modal Flow
+ * 6. WhatsApp Button with Service-Specific Prefilled Message
+ * 7. Dedicated Sub-Services & Product Variations Grid (ServiceSubServices.astro)
+ * 8. Related Product & Hardware Close-Up (ServiceAnatomy.astro)
+ * 9. Benefits & Applications (ServiceBenefits.astro & ServiceApplications.astro)
+ * 10. Materials & Quality Standards Breakdown (ServiceMaterials.astro)
+ * 11. Standardized 4-Step Installation Workflow (ServiceProcess.astro)
+ * 12. Project Showcase Gallery with Interactive Lightbox (ServiceGallery.astro)
+ * 13. Frequently Asked Questions with FAQPage Schema (ServiceFaq.astro)
+ * 14. Related Services Cross-Links (RelatedServices.astro)
+ * 15. Final Enquiry CTA Banner (ServiceCta.astro)
+ */
+import PageLayout from "@layouts/PageLayout.astro";
+import { servicesDetailData, type ServiceDetail } from "@data/servicesData";
+import ServiceBreadcrumbs from "@components/services/ServiceBreadcrumbs.astro";
+import ServiceHero from "@components/services/ServiceHero.astro";
+import ServiceSubServices from "@components/services/ServiceSubServices.astro";
+import ServiceBenefits from "@components/services/ServiceBenefits.astro";
+import ServiceAnatomy from "@components/services/ServiceAnatomy.astro";
+import ServiceMaterials from "@components/services/ServiceMaterials.astro";
+import ServiceApplications from "@components/services/ServiceApplications.astro";
+import ServiceProcess from "@components/services/ServiceProcess.astro";
+import ServiceGallery from "@components/services/ServiceGallery.astro";
+import ServiceFaq from "@components/services/ServiceFaq.astro";
+import ServiceCta from "@components/services/ServiceCta.astro";
+import RelatedServices from "@components/services/RelatedServices.astro";
+import FreeSiteVisitModal from "@components/services/FreeSiteVisitModal.astro";
+
+export async function getStaticPaths() {
+  return Object.values(servicesDetailData).map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+interface Props {
+  service: ServiceDetail;
+}
+
+const { service } = Astro.props;
+
+// Schema.org Service Structured Data
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: service.name,
+  name: `${service.name} Installation`,
+  provider: {
+    "@type": "LocalBusiness",
+    name: "MMR Safety Nets and Invisible Grills",
+    url: "https://mmrsafety.in",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Bengaluru",
+  },
+  description: service.metaDescription,
+  image: `https://mmrsafety.in${service.heroImage}`,
+};
+
+const canonicalUrl = `https://mmrsafety.in/services/${service.slug}/`;
+---
+
+<PageLayout
+  title={service.metaTitle}
+  description={service.metaDescription}
+  canonicalUrl={canonicalUrl}
+  ogImage={service.heroImage}
+>
+  <!-- Injected Head Metadata & Schema -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <!-- 1. Breadcrumb Navigation -->
+  <ServiceBreadcrumbs currentName={service.name} currentSlug={service.slug} />
+
+  <!-- 2. Hero Section (1. Responsive <picture>, 2. Title, 3. Intro, 4. Call Now, 5. Free Site Visit, 6. WhatsApp) -->
+  <ServiceHero
+    name={service.name}
+    category={service.category}
+    tagline={service.tagline}
+    subtitle={service.subtitle}
+    heroImage={service.heroImage}
+    imageDesktop={service.imageDesktop}
+    imageMobile={service.imageMobile}
+    imageAlt={service.imageAlt}
+    altText={service.altText}
+    specBadges={service.specBadges}
+  />
+
+  <!-- 7. Sub-Services & Product Variations Grid -->
+  <ServiceSubServices
+    serviceName={service.name}
+    subServices={service.subServices}
+  />
+
+  <!-- 9a. Engineered Advantages & Benefits -->
+  <ServiceBenefits
+    name={service.name}
+    overview={service.overview}
+    benefits={service.benefits}
+  />
+
+  <!-- 8. Hardware Anatomy & Component Breakdown -->
+  <ServiceAnatomy anatomy={service.anatomy} />
+
+  <!-- 10. Materials & Physical Specifications -->
+  <ServiceMaterials
+    name={service.name}
+    materials={service.materials}
+  />
+
+  <!-- 9b. Real-World Applications & Scenarios -->
+  <ServiceApplications
+    name={service.name}
+    applications={service.applications}
+  />
+
+  <!-- 11. Standardized 4-Step Installation Workflow -->
+  <ServiceProcess name={service.name} process={service.process} />
+
+  <!-- 12. Project Showcase Gallery with Interactive Lightbox Modal -->
+  <ServiceGallery
+    name={service.name}
+    gallery={service.gallery}
+  />
+
+  <!-- 13. Service-Specific FAQs with Schema -->
+  <ServiceFaq name={service.name} faqs={service.faqs} />
+
+  <!-- 15. Final Lead-Generation Enquiry CTA Banner -->
+  <ServiceCta name={service.name} slug={service.slug} />
+
+  <!-- 14. Related Services Cross-Links -->
+  <RelatedServices relatedSlugs={service.relatedSlugs} />
+
+  <!-- Global Free Site Visit Request Modal -->
+  <FreeSiteVisitModal defaultService={service.name} />
+
+</PageLayout>

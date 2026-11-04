@@ -1,0 +1,433 @@
+---
+/**
+ * contact.astro — Contact MMR Safety & Free Site Visit Request Hub
+ *
+ * Direct one-tap contact cards for phone, WhatsApp, and email,
+ * plus an honest interactive Free Site Visit Request Form and
+ * confirmed Bengaluru service zone coverage.
+ */
+import PageLayout from "@layouts/PageLayout.astro";
+import ServiceAreasSection from "@components/home/ServiceAreasSection.astro";
+import { siteConfig, getPhoneUrl, getWhatsAppUrl } from "@data/siteConfig";
+
+const pageTitle = `Contact Us & Free Site Visit | ${siteConfig.name}`;
+const pageDescription =
+  `Contact MMR Safety Nets and Invisible Grills in Bengaluru. Request a free on-site inspection, examine physical material samples, and receive a transparent quote. Call ${siteConfig.contact.phone}.`;
+const canonicalUrl = "https://mmrsafety.in/contact/";
+
+const phoneUrl = getPhoneUrl();
+const generalWhatsAppUrl = getWhatsAppUrl("Hello MMR Safety, I would like to enquire about your safety nets and invisible grill services.");
+
+// Structured ContactPage Schema
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonicalUrl,
+  mainEntity: {
+    "@type": "HomeAndConstructionBusiness",
+    name: siteConfig.name,
+    alternateName: "MMR Safety",
+    url: siteConfig.url,
+    telephone: siteConfig.contact.phoneRaw,
+    email: siteConfig.contact.email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bengaluru",
+      addressRegion: "Karnataka",
+      addressCountry: "IN",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "08:00",
+      closes: "20:00",
+    },
+  },
+};
+---
+
+<PageLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
+  </Fragment>
+
+  <!-- 1. Header Banner -->
+  <section class="relative bg-gradient-to-b from-[var(--color-soft-bg)] via-white to-white py-14 lg:py-20 border-b border-[var(--color-border-light)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-[var(--color-muted-text)] mb-6" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-[var(--color-primary-navy)] transition-colors">Home</a>
+        <svg class="h-3 w-3 text-[var(--color-muted-text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        <span class="font-semibold text-[var(--color-primary-navy)]">Contact Us</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
+          Direct Customer Service
+        </span>
+        <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
+          Get in Touch with MMR Safety
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
+          Connect directly with our Bengaluru installation engineers for free site measurements, physical material demonstrations, and honest upfront estimates.
+        </p>
+      </div>
+
+      <!-- 3 Direct One-Tap Contact Cards -->
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        
+        <!-- 1. Phone Card -->
+        <div class="flex flex-col justify-between rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-xs transition-all hover:border-[var(--color-sky-blue)] hover:shadow-lg">
+          <div>
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-primary-navy)] text-[var(--color-sky-blue)]">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+              </svg>
+            </span>
+            <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Direct Phone Call</h3>
+            <p class="mt-1 text-xs text-[var(--color-muted-text)]">
+              Speak directly with our technical advisors.
+            </p>
+            <p class="mt-3 text-base sm:text-lg font-extrabold text-[var(--color-primary-navy)]">
+              {siteConfig.contact.phone}
+            </p>
+            <p class="text-[11px] text-[var(--color-muted-text)] mt-0.5">
+              Available 7 Days • 8:00 AM – 8:00 PM
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[var(--color-border-light)]">
+            <a
+              href={phoneUrl}
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[var(--color-primary-navy-dark)] active:scale-98"
+              aria-label="Call MMR Safety directly"
+            >
+              <svg class="h-4 w-4 text-[var(--color-sky-blue)]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+              </svg>
+              <span>Call Now</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. WhatsApp Card -->
+        <div class="flex flex-col justify-between rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-xs transition-all hover:border-[#25D366] hover:shadow-lg">
+          <div>
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#25D366] text-white">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z" />
+              </svg>
+            </span>
+            <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Instant WhatsApp Chat</h3>
+            <p class="mt-1 text-xs text-[var(--color-muted-text)]">
+              Send balcony photos &amp; get instant estimates.
+            </p>
+            <p class="mt-3 text-base sm:text-lg font-extrabold text-[var(--color-primary-navy)]">
+              +91 6304433505
+            </p>
+            <p class="text-[11px] text-[var(--color-muted-text)] mt-0.5">
+              Fastest Response • Usually &lt;15 mins
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[var(--color-border-light)]">
+            <a
+              href={generalWhatsAppUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#1EBE5D] active:scale-98"
+              aria-label="Chat with MMR Safety on WhatsApp"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+              </svg>
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Official Email Card -->
+        <div class="flex flex-col justify-between rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-xs transition-all hover:border-[var(--color-sky-blue)] hover:shadow-lg">
+          <div>
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)] border border-[var(--color-border-light)]">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </span>
+            <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Official Email</h3>
+            <p class="mt-1 text-xs text-[var(--color-muted-text)]">
+              Send floor plans, RFP tenders &amp; bulk queries.
+            </p>
+            <p class="mt-3 text-sm sm:text-base font-bold text-[var(--color-primary-navy)] truncate" title={siteConfig.contact.email}>
+              {siteConfig.contact.email}
+            </p>
+            <p class="text-[11px] text-[var(--color-muted-text)] mt-0.5">
+              Verified Official Channel
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[var(--color-border-light)]">
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[var(--color-border)] bg-white px-4 py-2.5 text-xs font-bold text-[var(--color-primary-navy)] shadow-xs hover:bg-[var(--color-soft-bg)] active:scale-98"
+              aria-label="Send email to MMR Safety"
+            >
+              <svg class="h-4 w-4 text-[var(--color-sky-blue-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>Send Email</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2. Interactive Free Site Visit & Quote Request Form -->
+  <section class="bg-white py-16 lg:py-24 border-b border-[var(--color-border-light)]" id="quote-form-section">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      
+      <div class="rounded-3xl border border-[var(--color-border)] bg-gradient-to-b from-white to-[var(--color-soft-bg)] p-8 sm:p-12 shadow-xl">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+            No-Obligation Measurement
+          </span>
+          <h2 class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+            Request a Free On-Site Inspection &amp; Estimate
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] leading-relaxed">
+            Fill out your property details below. Our system formats your request into an instant WhatsApp enquiry or Email so our dispatch engineer can connect and coordinate a convenient time slot with you.
+          </p>
+        </div>
+
+        <!-- Form Body -->
+        <form id="contact-site-visit-form" class="mt-10 space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Name -->
+            <div>
+              <label for="form-name" class="block text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)]">
+                Your Name <span class="text-rose-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="form-name"
+                name="name"
+                required
+                placeholder="e.g. Ramesh Kumar"
+                class="mt-1.5 block w-full rounded-xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm text-[var(--color-primary-navy)] placeholder:text-slate-400 focus:border-[var(--color-sky-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+              />
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="form-phone" class="block text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)]">
+                Mobile Number <span class="text-rose-500">*</span>
+              </label>
+              <input
+                type="tel"
+                id="form-phone"
+                name="phone"
+                required
+                pattern="[0-9]{10}"
+                placeholder="10-digit mobile number"
+                class="mt-1.5 block w-full rounded-xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm text-[var(--color-primary-navy)] placeholder:text-slate-400 focus:border-[var(--color-sky-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Service Required -->
+            <div>
+              <label for="form-service" class="block text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)]">
+                Service Required <span class="text-rose-500">*</span>
+              </label>
+              <select
+                id="form-service"
+                name="service"
+                required
+                class="mt-1.5 block w-full rounded-xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm text-[var(--color-primary-navy)] focus:border-[var(--color-sky-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+              >
+                <option value="Invisible Grills">Invisible Grills (Balconies &amp; Windows)</option>
+                <option value="Balcony Safety Nets">Balcony Safety Nets (Child &amp; Pet Protection)</option>
+                <option value="Pigeon Safety Nets">Pigeon Safety Nets (Translucent Anti-Bird Mesh)</option>
+                <option value="Sports Nets">Sports Nets (Cricket Turf &amp; Terrace Nets)</option>
+                <option value="Cloth Hangers">Ceiling Cloth Drying Hangers</option>
+                <option value="Bird Spikes">Bird Spikes (Stainless Steel Anti-Perch Strips)</option>
+                <option value="Multiple Safety Solutions">Multiple Solutions / Full Apartment Survey</option>
+              </select>
+            </div>
+
+            <!-- Area / Locality -->
+            <div>
+              <label for="form-area" class="block text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)]">
+                Locality / Apartment Society <span class="text-rose-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="form-area"
+                name="area"
+                required
+                placeholder="e.g. Prestige Lakeside, Whitefield"
+                class="mt-1.5 block w-full rounded-xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm text-[var(--color-primary-navy)] placeholder:text-slate-400 focus:border-[var(--color-sky-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+              />
+            </div>
+          </div>
+
+          <!-- Preferred Schedule & Message -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="form-timing" class="block text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)]">
+                Preferred Survey Timing
+              </label>
+              <select
+                id="form-timing"
+                name="timing"
+                class="mt-1.5 block w-full rounded-xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm text-[var(--color-primary-navy)] focus:border-[var(--color-sky-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+              >
+                <option value="Today / Earliest Available">Today / Earliest Available</option>
+                <option value="Morning (9 AM – 12 PM)">Morning (9 AM – 12 PM)</option>
+                <option value="Afternoon (12 PM – 4 PM)">Afternoon (12 PM – 4 PM)</option>
+                <option value="Evening (4 PM – 7 PM)">Evening (4 PM – 7 PM)</option>
+                <option value="This Weekend (Saturday/Sunday)">This Weekend (Saturday / Sunday)</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="form-notes" class="block text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)]">
+                Balcony Dimensions or Notes (Optional)
+              </label>
+              <input
+                type="text"
+                id="form-notes"
+                name="notes"
+                placeholder="e.g. 2 balconies, 15th floor apartment"
+                class="mt-1.5 block w-full rounded-xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm text-[var(--color-primary-navy)] placeholder:text-slate-400 focus:border-[var(--color-sky-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+              />
+            </div>
+          </div>
+
+          <!-- Strict Honesty Notice -->
+          <div class="rounded-xl border border-[var(--color-border-light)] bg-white p-4 text-xs text-[var(--color-muted-text)] flex items-start gap-2.5">
+            <svg class="h-4 w-4 text-[var(--color-sky-blue-dark)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p>
+              <strong class="text-[var(--color-primary-navy)]">Honest Scheduling Guarantee:</strong> Submitting this request sends your details directly to our dispatch team so we can confirm an available technician slot with you. We never claim a slot is auto-booked before speaking with you.
+            </p>
+          </div>
+
+          <!-- Dual Form Submit Actions -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
+            <button
+              type="button"
+              id="submit-whatsapp-btn"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xs transition-all hover:bg-[#1EBE5D] hover:shadow-md active:scale-98 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#25D366]"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+              </svg>
+              <span>Submit Request via WhatsApp</span>
+            </button>
+
+            <button
+              type="button"
+              id="submit-email-btn"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-5 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xs transition-all hover:bg-[var(--color-primary-navy-dark)] hover:shadow-md active:scale-98 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+            >
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>Submit Request via Email</span>
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. Confirmed Service Areas Section -->
+  <ServiceAreasSection
+    title="Confirmed Service Hubs Across Greater Bengaluru"
+    subtitle="Our mobile technicians operate across these primary residential sectors. Free laser measurements and physical material samples are scheduled promptly."
+    showContactPrompt={false}
+  />
+
+  <!-- 4. Client-side Form WhatsApp / Email Formatter -->
+  <script>
+        const whatsappBtn = document.getElementById("submit-whatsapp-btn");
+    const emailBtn = document.getElementById("submit-email-btn");
+
+    function getFormData() {
+      const name = (document.getElementById("form-name") as HTMLInputElement)?.value.trim();
+      const phone = (document.getElementById("form-phone") as HTMLInputElement)?.value.trim();
+      const service = (document.getElementById("form-service") as HTMLSelectElement)?.value;
+      const area = (document.getElementById("form-area") as HTMLInputElement)?.value.trim();
+      const timing = (document.getElementById("form-timing") as HTMLSelectElement)?.value;
+      const notes = (document.getElementById("form-notes") as HTMLInputElement)?.value.trim();
+
+      if (!name || !phone || !area) {
+        alert("Please enter your Name, Phone Number, and Locality before submitting.");
+        return null;
+      }
+
+      return { name, phone, service, area, timing, notes };
+    }
+
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener("click", () => {
+        const data = getFormData();
+        if (!data) return;
+
+        let msg = `Hello MMR Safety, I would like to request a Free Site Visit & Measurement.\n\n`;
+        msg += `• Name: ${data.name}\n`;
+        msg += `• Phone: ${data.phone}\n`;
+        msg += `• Service: ${data.service}\n`;
+        msg += `• Locality: ${data.area}, Bengaluru\n`;
+        msg += `• Preferred Timing: ${data.timing}\n`;
+        if (data.notes) {
+          msg += `• Notes: ${data.notes}\n`;
+        }
+        msg += `\nPlease let me know your available schedule. Thank you!`;
+
+        const waUrl = `https://wa.me/916304433505?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, "_blank");
+      });
+    }
+
+    if (emailBtn) {
+      emailBtn.addEventListener("click", () => {
+        const data = getFormData();
+        if (!data) return;
+
+        const subject = `Free Site Visit Request: ${data.service} - ${data.area} (${data.name})`;
+        let body = `Hello MMR Safety Team,\n\nI would like to request a free site visit and measurement for my property.\n\n`;
+        body += `Name: ${data.name}\n`;
+        body += `Phone: ${data.phone}\n`;
+        body += `Service: ${data.service}\n`;
+        body += `Locality: ${data.area}, Bengaluru\n`;
+        body += `Preferred Timing: ${data.timing}\n`;
+        if (data.notes) {
+          body += `Notes: ${data.notes}\n`;
+        }
+        body += `\nPlease confirm an available schedule slot.\n\nBest regards,\n${data.name}`;
+
+        const mailtoUrl = `mailto:mmrsafetyntes@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoUrl;
+      });
+    }
+  </script>
+
+</PageLayout>

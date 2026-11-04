@@ -1,0 +1,187 @@
+---
+/**
+ * Footer.astro
+ *
+ * Site footer with brand info, navigation, and copyright.
+ * Fully static — no client-side JS.
+ */
+import { siteConfig, getPhoneUrl, getWhatsAppUrl } from "@data/siteConfig";
+
+const currentYear = new Date().getFullYear();
+const footerPhoneUrl = getPhoneUrl();
+const footerWhatsAppUrl = getWhatsAppUrl("Hello MMR Safety, I would like to enquire about your safety nets and invisible grill services.");
+---
+
+<footer class="border-t border-[var(--color-border-light)] bg-[var(--color-soft-bg)]">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand -->
+      <div>
+        <a
+          href="/"
+          class="logo-sheen-container inline-block transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sky-blue)]"
+          aria-label={`${siteConfig.name} - Home`}
+        >
+          <div class="logo-sheen-box relative">
+            <img
+              src="/logos/mmr-full.png"
+              alt="MMR Safety Nets and Invisible Grills Official Logo"
+              width="820"
+              height="474"
+              class="h-20 lg:h-24 w-auto"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="logo-metallic-glint" aria-hidden="true"></div>
+          </div>
+        </a>
+        <p class="mt-3 max-w-xs text-sm text-[var(--color-muted-text)] font-medium">
+          {siteConfig.tagline}
+        </p>
+        <p class="mt-1 text-xs text-[var(--color-muted-text)]">
+          {siteConfig.contact.address}
+        </p>
+      </div>
+
+      <!-- Core Services Links -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-[var(--color-primary-navy)]">
+          Safety Solutions
+        </h3>
+        <ul class="mt-3 space-y-2 text-sm text-[var(--color-muted-text)]">
+          <li>
+            <a href="/services/invisible-grills/" class="transition-colors hover:text-[var(--color-primary-navy)]">
+              Invisible Grills
+            </a>
+          </li>
+          <li>
+            <a href="/services/safety-nets/" class="transition-colors hover:text-[var(--color-primary-navy)]">
+              Safety Nets
+            </a>
+          </li>
+          <li>
+            <a href="/services/pigeon-safety-nets/" class="transition-colors hover:text-[var(--color-primary-navy)]">
+              Pigeon Safety Nets
+            </a>
+          </li>
+          <li>
+            <a href="/services/sports-nets/" class="transition-colors hover:text-[var(--color-primary-navy)]">
+              Sports Nets
+            </a>
+          </li>
+          <li>
+            <a href="/services/cloth-hangers/" class="transition-colors hover:text-[var(--color-primary-navy)]">
+              Cloth Hangers
+            </a>
+          </li>
+          <li>
+            <a href="/services/bird-spikes/" class="transition-colors hover:text-[var(--color-primary-navy)]">
+              Bird Spikes
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-[var(--color-primary-navy)]">
+          Quick Links
+        </h3>
+        <ul class="mt-3 space-y-2">
+          {
+            siteConfig.navigation.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-[var(--color-muted-text)] transition-colors hover:text-[var(--color-primary-navy)]"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a
+              href="/#safety-requirements"
+              class="text-sm text-[var(--color-muted-text)] transition-colors hover:text-[var(--color-primary-navy)]"
+            >
+              Safety Requirements
+            </a>
+          </li>
+          <li>
+            <a
+              href="/#materials-showcase"
+              class="text-sm text-[var(--color-muted-text)] transition-colors hover:text-[var(--color-primary-navy)]"
+            >
+              Materials &amp; Hardware
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact CTAs: STRICTLY ONLY Call Now and WhatsApp -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-[var(--color-primary-navy)]">
+          Contact Us
+        </h3>
+        <p class="mt-3 text-sm text-[var(--color-muted-text)] leading-relaxed">
+          Connect directly with our team for consultations, site visits, and instant quotes.
+        </p>
+
+        <!-- Direct Contact Info Display -->
+        <div class="mt-3 space-y-1.5 text-xs text-[var(--color-muted-text)]">
+          <p class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-[var(--color-sky-blue-dark)] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+            </svg>
+            <a href={footerPhoneUrl} class="hover:text-[var(--color-primary-navy)] transition-colors font-medium">
+              {siteConfig.contact.phone}
+            </a>
+          </p>
+          <p class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-[var(--color-sky-blue-dark)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <a href={`mailto:${siteConfig.contact.email}`} class="hover:text-[var(--color-primary-navy)] transition-colors">
+              {siteConfig.contact.email}
+            </a>
+          </p>
+        </div>
+        
+        <!-- Strict Action Buttons: STRICTLY ONLY Call Now and WhatsApp -->
+        <div class="mt-4 flex flex-col sm:flex-row lg:flex-col gap-2.5">
+          <!-- 1. Call Now -->
+          <a
+            href={footerPhoneUrl}
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[var(--color-primary-navy-dark)] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)] active:scale-[0.98]"
+            aria-label="Call MMR Safety Now"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-[var(--color-sky-blue)]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+            </svg>
+            <span>Call Now</span>
+          </a>
+
+          <!-- 2. WhatsApp -->
+          <a
+            href={footerWhatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1EBE5D] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#25D366] active:scale-[0.98]"
+            aria-label="Chat with MMR Safety on WhatsApp"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z" />
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-10 border-t border-[var(--color-border)] pt-6 text-center text-sm text-[var(--color-muted-text)]">
+      <p>&copy; {currentYear} {siteConfig.name}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

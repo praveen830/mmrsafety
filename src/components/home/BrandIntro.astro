@@ -1,0 +1,108 @@
+---
+/**
+ * BrandIntro.astro — Refined Animated MMR Brand Introduction
+ *
+ * Lightweight, non-intrusive brand introduction showcasing the approved logo,
+ * tagline, and core brand values with smooth CSS-based entrance.
+ */
+---
+
+<section
+  class="relative border-b border-[var(--color-border-light)] bg-white py-12 lg:py-16 overflow-hidden"
+  aria-label="MMR Safety Brand Introduction"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <div class="rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] p-6 sm:p-10 lg:p-12 shadow-xs">
+      <div class="grid items-center gap-8 lg:grid-cols-12">
+        
+        <!-- Animated Brand Logo Reveal (5 Cols) -->
+        <div class="flex flex-col items-center justify-center text-center lg:col-span-5 lg:border-r lg:border-[var(--color-border)] lg:pr-10">
+          
+          <!-- Subtle Glow Aura behind Logo & 3D Sheen Frame -->
+          <div class="logo-sheen-container relative group">
+            <div
+              class="pointer-events-none absolute -inset-4 rounded-full bg-gradient-to-r from-[var(--color-sky-blue)]/25 via-[var(--color-primary-navy)]/10 to-[var(--color-sky-blue)]/25 blur-xl opacity-70 transition-opacity duration-700 group-hover:opacity-100"
+              aria-hidden="true"
+            ></div>
+
+            <div class="logo-sheen-box relative p-2 rounded-xl">
+              <!-- Approved Master Logo -->
+              <img
+                src="/logos/mmr-full.png"
+                alt="MMR Safety Nets and Invisible Grills Official Logo"
+                width="820"
+                height="474"
+                class="relative h-20 sm:h-24 lg:h-28 w-auto transform transition-transform duration-500 hover:scale-[1.02]"
+                loading="lazy"
+                decoding="async"
+              />
+              <!-- Metallic Sheen Sweep Element on Hover -->
+              <div class="logo-metallic-glint" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- Official Tagline Display -->
+          <p class="mt-4 text-xs sm:text-sm font-semibold tracking-widest uppercase text-[var(--color-sky-blue-dark)]">
+            Safety &bull; Style &bull; Peace of Mind
+          </p>
+        </div>
+
+        <!-- Brand Mission & Core Commitments (7 Cols) -->
+        <div class="lg:col-span-7 lg:pl-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-muted-text)]">
+            The MMR Commitment
+          </span>
+          <h2 class="heading-section mt-1 text-2xl sm:text-3xl font-bold text-[var(--color-primary-navy)]">
+            Redefining Modern Safety Standards
+          </h2>
+          <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] leading-relaxed">
+            MMR Safety Nets and Invisible Grills was established to bridge the gap between absolute living security and modern architectural elegance. We replace bulky, unsightly iron cages with precision-tensioned invisible grills and discreet safety netting—engineered for strength, longevity, and clear panoramic views.
+          </p>
+
+          <!-- 3 Value Pillars -->
+          <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div class="flex items-start gap-3">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--color-sky-blue)]/15 text-[var(--color-primary-navy)]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </span>
+              <div>
+                <h3 class="text-xs font-bold text-[var(--color-primary-navy)]">Tested Safety</h3>
+                <p class="text-[11px] text-[var(--color-muted-text)] mt-0.5">High-tensile barrier against balcony accidents</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--color-sky-blue)]/15 text-[var(--color-primary-navy)]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </span>
+              <div>
+                <h3 class="text-xs font-bold text-[var(--color-primary-navy)]">Facade Harmony</h3>
+                <p class="text-[11px] text-[var(--color-muted-text)] mt-0.5">Preserves building exterior aesthetics</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--color-sky-blue)]/15 text-[var(--color-primary-navy)]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </span>
+              <div>
+                <h3 class="text-xs font-bold text-[var(--color-primary-navy)]">Emergency Safe</h3>
+                <p class="text-[11px] text-[var(--color-muted-text)] mt-0.5">Rapid wire release for emergency egress</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

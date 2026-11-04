@@ -1,0 +1,196 @@
+---
+/**
+ * Header.astro
+ *
+ * Site header with 3D-enhanced MMR logo, desktop navigation,
+ * quick verified phone dialer pill, and accessible mobile menu.
+ */
+import { siteConfig, getPhoneUrl, getWhatsAppUrl } from "@data/siteConfig";
+
+const currentPath = Astro.url.pathname;
+const phoneUrl = getPhoneUrl();
+const whatsappUrl = getWhatsAppUrl();
+---
+
+<header
+  class="sticky top-0 z-50 w-full border-b border-[var(--color-border-light)] bg-white/95 backdrop-blur-sm"
+>
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    
+    <!-- 3D Refined Logo / Brand -->
+    <a
+      href="/"
+      class="logo-sheen-container group flex items-center transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sky-blue)]"
+      aria-label={`${siteConfig.name} - Home`}
+    >
+      <div class="logo-sheen-box relative flex items-center">
+        <!-- Mobile: Compact Emblem for maximum legibility on small screens -->
+        <img
+          src="/logos/mmr-compact.svg"
+          alt="MMR Safety Logo"
+          width="744"
+          height="270"
+          class="h-9 w-auto sm:hidden"
+          loading="eager"
+          decoding="async"
+        />
+        <!-- Tablet / Desktop: Horizontal Brand Lockup -->
+        <img
+          src="/logos/mmr-horizontal.svg"
+          alt="MMR Safety Nets and Invisible Grills Logo"
+          width="1538"
+          height="260"
+          class="hidden sm:block h-10 lg:h-11 w-auto"
+          loading="eager"
+          decoding="async"
+        />
+        
+        <!-- Metallic Sheen Sweep Element on Hover -->
+        <div class="logo-metallic-glint" aria-hidden="true"></div>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation & Verified CTAs -->
+    <div class="hidden md:flex items-center gap-5 lg:gap-6">
+      <nav aria-label="Main navigation">
+        <ul class="flex items-center gap-1">
+          {
+            siteConfig.navigation.map((link) => {
+              const isActive = currentPath === link.href ||
+                (link.href !== "/" && currentPath.startsWith(link.href));
+              return (
+                <li>
+                  <a
+                    href={link.href}
+                    class:list={[
+                      "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                      isActive
+                        ? "bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)]"
+                        : "text-[var(--color-muted-text)] hover:bg-[var(--color-soft-bg)] hover:text-[var(--color-primary-navy)]",
+                    ]}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+
+      <!-- Quick Verified Phone Dialer Pill (Desktop) -->
+      <a
+        href={phoneUrl}
+        class="hidden lg:inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3.5 py-1.5 text-xs font-bold text-[var(--color-primary-navy)] transition-all hover:border-[var(--color-sky-blue)] hover:bg-white hover:text-[var(--color-sky-blue-dark)] shadow-2xs"
+        aria-label={`Call MMR Safety directly at ${siteConfig.contact.phone}`}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-[var(--color-sky-blue-dark)]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+        </svg>
+        <span>{siteConfig.contact.phone}</span>
+      </a>
+
+      <!-- Primary Lead CTA Button -->
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-primary-navy)] px-4 py-2 text-xs font-bold text-white shadow-xs transition-all hover:bg-[var(--color-primary-navy-dark)] hover:shadow-md"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-[var(--color-sky-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span>Get a Free Quote</span>
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle (CSS checkbox hack — zero JS) -->
+    <div class="md:hidden">
+      <label
+        for="mobile-menu-toggle"
+        class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md text-[var(--color-muted-text)] transition-colors hover:bg-[var(--color-soft-bg)] hover:text-[var(--color-primary-navy)]"
+        aria-label="Toggle navigation menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </label>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Dropdown -->
+  <input type="checkbox" id="mobile-menu-toggle" class="peer sr-only" aria-hidden="true" />
+  <nav
+    class="hidden border-t border-[var(--color-border-light)] bg-white peer-checked:block md:!hidden"
+    aria-label="Mobile navigation"
+  >
+    <ul class="space-y-1 px-4 py-3">
+      {
+        siteConfig.navigation.map((link) => {
+          const isActive = currentPath === link.href ||
+            (link.href !== "/" && currentPath.startsWith(link.href));
+          return (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)]"
+                    : "text-[var(--color-muted-text)] hover:bg-[var(--color-soft-bg)] hover:text-[var(--color-primary-navy)]",
+                ]}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    
+    <!-- Verified Direct Contact Actions in Mobile Menu -->
+    <div class="border-t border-[var(--color-border-light)] px-4 py-3 space-y-2">
+      <div class="grid grid-cols-2 gap-2">
+        <a
+          href={phoneUrl}
+          class="flex items-center justify-center gap-1.5 rounded-xl bg-[var(--color-primary-navy)] py-2.5 text-xs font-bold text-white shadow-xs"
+          aria-label={`Call MMR Safety at ${siteConfig.contact.phone}`}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+          </svg>
+          <span>Call Now</span>
+        </a>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-1.5 rounded-xl bg-[#25D366] py-2.5 text-xs font-bold text-white shadow-xs"
+          aria-label="Chat on WhatsApp"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z" />
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+      <a
+        href="/contact"
+        class="block w-full text-center rounded-xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] py-2 text-xs font-semibold text-[var(--color-primary-navy)]"
+      >
+        Free On-Site Quote Request
+      </a>
+    </div>
+  </nav>
+</header>

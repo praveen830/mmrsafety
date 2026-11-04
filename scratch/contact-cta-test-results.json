@@ -1,0 +1,123 @@
+{
+  "servicePages": [
+    {
+      "slug": "invisible-grills",
+      "name": "Invisible Grills",
+      "audit": {
+        "hasCallNow": true,
+        "callNowHref": "tel:",
+        "hasFreeSiteVisit": true,
+        "freeSiteVisitHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20would%20like%20to%20request%20a%20free%20site%20visit%20and%20measurement%20for%20Invisible%20Grills%20in%20Bengaluru.%20Please%20let%20me%20know%20the%20available%20time%20slots.",
+        "freeVisitMentionsService": true,
+        "hasWhatsApp": true,
+        "whatsappHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20have%20an%20enquiry%20regarding%20Invisible%20Grills%20installation.%20Please%20provide%20more%20details%20and%20pricing.",
+        "whatsappMentionsService": true
+      },
+      "screenshotName": "cta-service-invisible-grills.png",
+      "passed": true
+    },
+    {
+      "slug": "safety-nets",
+      "name": "Safety Nets",
+      "audit": {
+        "hasCallNow": true,
+        "callNowHref": "tel:",
+        "hasFreeSiteVisit": true,
+        "freeSiteVisitHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20would%20like%20to%20request%20a%20free%20site%20visit%20and%20measurement%20for%20Safety%20Nets%20in%20Bengaluru.%20Please%20let%20me%20know%20the%20available%20time%20slots.",
+        "freeVisitMentionsService": true,
+        "hasWhatsApp": true,
+        "whatsappHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20have%20an%20enquiry%20regarding%20Safety%20Nets%20installation.%20Please%20provide%20more%20details%20and%20pricing.",
+        "whatsappMentionsService": true
+      },
+      "screenshotName": "cta-service-safety-nets.png",
+      "passed": true
+    },
+    {
+      "slug": "pigeon-safety-nets",
+      "name": "Pigeon Safety Nets",
+      "audit": {
+        "hasCallNow": true,
+        "callNowHref": "tel:",
+        "hasFreeSiteVisit": true,
+        "freeSiteVisitHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20would%20like%20to%20request%20a%20free%20site%20visit%20and%20measurement%20for%20Pigeon%20Safety%20Nets%20in%20Bengaluru.%20Please%20let%20me%20know%20the%20available%20time%20slots.",
+        "freeVisitMentionsService": true,
+        "hasWhatsApp": true,
+        "whatsappHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20have%20an%20enquiry%20regarding%20Pigeon%20Safety%20Nets%20installation.%20Please%20provide%20more%20details%20and%20pricing.",
+        "whatsappMentionsService": true
+      },
+      "screenshotName": "cta-service-pigeon-safety-nets.png",
+      "passed": true
+    },
+    {
+      "slug": "sports-nets",
+      "name": "Sports Nets",
+      "audit": {
+        "hasCallNow": true,
+        "callNowHref": "tel:",
+        "hasFreeSiteVisit": true,
+        "freeSiteVisitHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20would%20like%20to%20request%20a%20free%20site%20visit%20and%20measurement%20for%20Sports%20Nets%20in%20Bengaluru.%20Please%20let%20me%20know%20the%20available%20time%20slots.",
+        "freeVisitMentionsService": true,
+        "hasWhatsApp": true,
+        "whatsappHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20have%20an%20enquiry%20regarding%20Sports%20Nets%20installation.%20Please%20provide%20more%20details%20and%20pricing.",
+        "whatsappMentionsService": true
+      },
+      "screenshotName": "cta-service-sports-nets.png",
+      "passed": true
+    },
+    {
+      "slug": "cloth-hangers",
+      "name": "Cloth Hangers",
+      "audit": {
+        "hasCallNow": true,
+        "callNowHref": "tel:",
+        "hasFreeSiteVisit": true,
+        "freeSiteVisitHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20would%20like%20to%20request%20a%20free%20site%20visit%20and%20measurement%20for%20Cloth%20Hangers%20in%20Bengaluru.%20Please%20let%20me%20know%20the%20available%20time%20slots.",
+        "freeVisitMentionsService": true,
+        "hasWhatsApp": true,
+        "whatsappHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20have%20an%20enquiry%20regarding%20Cloth%20Hangers%20installation.%20Please%20provide%20more%20details%20and%20pricing.",
+        "whatsappMentionsService": true
+      },
+      "screenshotName": "cta-service-cloth-hangers.png",
+      "passed": true
+    },
+    {
+      "slug": "bird-spikes",
+      "name": "Bird Spikes",
+      "audit": {
+        "hasCallNow": true,
+        "callNowHref": "tel:",
+        "hasFreeSiteVisit": true,
+        "freeSiteVisitHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20would%20like%20to%20request%20a%20free%20site%20visit%20and%20measurement%20for%20Bird%20Spikes%20in%20Bengaluru.%20Please%20let%20me%20know%20the%20available%20time%20slots.",
+        "freeVisitMentionsService": true,
+        "hasWhatsApp": true,
+        "whatsappHref": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20have%20an%20enquiry%20regarding%20Bird%20Spikes%20installation.%20Please%20provide%20more%20details%20and%20pricing.",
+        "whatsappMentionsService": true
+      },
+      "screenshotName": "cta-service-bird-spikes.png",
+      "passed": true
+    }
+  ],
+  "footer": {
+    "totalButtonsInContactCol": 2,
+    "buttons": [
+      {
+        "text": "Call Now",
+        "href": "tel:",
+        "ariaLabel": "Call MMR Safety Now"
+      },
+      {
+        "text": "WhatsApp",
+        "href": "https://wa.me/?text=Hello%20MMR%20Safety%2C%20I%20would%20like%20to%20enquire%20about%20your%20safety%20nets%20and%20invisible%20grill%20services.",
+        "ariaLabel": "Chat with MMR Safety on WhatsApp"
+      }
+    ],
+    "hasCallNow": true,
+    "hasWhatsApp": true,
+    "hasEmail": false,
+    "hasFreeVisit": false,
+    "hasEnquiry": false,
+    "strictlyTwoButtons": true
+  },
+  "consoleErrors": [],
+  "networkErrors": []
+}

@@ -1,0 +1,305 @@
+---
+/**
+ * ProjectShowcase.astro — Architectural Application Gallery with Interactive Lightbox
+ *
+ * Showcases typical residential and commercial safety installations using
+ * photorealistic imagery with category filter tabs, clear concept transparency tags,
+ * and an interactive image enlargement modal.
+ */
+import { showcaseData } from "@data/homeData";
+---
+
+<section
+  id="showcase"
+  class="relative bg-white py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16"
+  aria-labelledby="showcase-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+        Application Portfolio
+      </span>
+      <h2 id="showcase-heading" class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+        Engineered for Modern Architecture &amp; High-Rise Living
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
+        See how invisible grills, safety nets, cloth hangers, and bird spikes safeguard balconies, windows, utility shafts, and sports grounds without compromising visual style.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-2">
+      <button
+        type="button"
+        class="gallery-filter-btn rounded-xl bg-[var(--color-primary-navy)] text-white px-4 py-2 text-xs font-bold shadow-xs transition-all"
+        data-filter="all"
+      >
+        All Installations (6)
+      </button>
+      <button
+        type="button"
+        class="gallery-filter-btn rounded-xl bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)] border border-[var(--color-border-light)] px-4 py-2 text-xs font-bold hover:bg-white transition-all"
+        data-filter="Balconies"
+      >
+        Balconies
+      </button>
+      <button
+        type="button"
+        class="gallery-filter-btn rounded-xl bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)] border border-[var(--color-border-light)] px-4 py-2 text-xs font-bold hover:bg-white transition-all"
+        data-filter="Windows"
+      >
+        Windows &amp; Ledges
+      </button>
+      <button
+        type="button"
+        class="gallery-filter-btn rounded-xl bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)] border border-[var(--color-border-light)] px-4 py-2 text-xs font-bold hover:bg-white transition-all"
+        data-filter="Utility"
+      >
+        Utility &amp; Ducts
+      </button>
+      <button
+        type="button"
+        class="gallery-filter-btn rounded-xl bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)] border border-[var(--color-border-light)] px-4 py-2 text-xs font-bold hover:bg-white transition-all"
+        data-filter="Sports"
+      >
+        Sports Grounds
+      </button>
+    </div>
+
+    <!-- Transparency Notice Banner -->
+    <div class="mt-8 mx-auto max-w-2xl rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] px-5 py-3 text-center text-xs text-[var(--color-muted-text)]">
+      <span class="font-bold text-[var(--color-primary-navy)]">Concept Reference:</span> Visual installation layouts showcasing MMR safety systems. Actual on-site surveys and bespoke alignments are performed for each residential property.
+    </div>
+
+    <!-- Gallery Grid (All 6 Services) -->
+    <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" id="gallery-grid">
+      {
+        showcaseData.map((project) => (
+          <article
+            class="gallery-card group flex flex-col overflow-hidden rounded-3xl border border-[var(--color-border)] bg-white shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--color-sky-blue)] hover:shadow-2xl"
+            data-category={project.category}
+            aria-labelledby={`project-title-${project.id}`}
+          >
+            <!-- Visual Graphic Container with Real Photo -->
+            <div class="relative aspect-4/3 w-full overflow-hidden bg-[var(--color-soft-bg)]">
+              <img
+                src={project.image}
+                alt={`${project.title} - ${project.type}`}
+                width="1200"
+                height="900"
+                class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-108 cursor-pointer project-gallery-img"
+                data-img-src={project.image}
+                data-img-title={project.title}
+                data-img-type={project.type}
+                data-img-desc={project.description}
+                loading="lazy"
+                decoding="async"
+              />
+
+              <!-- Ambient Gradient Vignette -->
+              <div
+                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+                aria-hidden="true"
+              ></div>
+
+              <!-- Top Left: Category Badge -->
+              <span class="absolute top-3.5 left-3.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--color-primary-navy)] border border-[var(--color-border)] shadow-xs">
+                {project.category}
+              </span>
+
+              <!-- Top Right: Concept Reference Tag -->
+              <span class="absolute top-3.5 right-3.5 rounded-full bg-[var(--color-primary-navy)]/90 backdrop-blur-md px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+                {project.tag}
+              </span>
+
+              <!-- Enlarge Hint Overlay -->
+              <div class="absolute bottom-3.5 right-3.5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="inline-flex items-center gap-1.5 rounded-lg bg-black/70 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-md shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                  </svg>
+                  <span>Click to Enlarge</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex flex-1 flex-col justify-between p-6">
+              <div>
+                <span class="text-xs font-bold text-[var(--color-sky-blue-dark)] uppercase tracking-wider">
+                  {project.type}
+                </span>
+                <h3 id={`project-title-${project.id}`} class="mt-1 text-lg font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
+                  {project.title}
+                </h3>
+                <p class="mt-2 text-xs text-[var(--color-muted-text)] leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+
+              <!-- Location / Building Type Placeholder -->
+              <div class="mt-5 flex items-center justify-between border-t border-[var(--color-border-light)] pt-4 text-xs text-[var(--color-muted-text)]">
+                <span class="inline-flex items-center gap-1.5 font-medium">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[var(--color-sky-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                  {project.locationPlaceholder}
+                </span>
+                <a
+                  href="#quote"
+                  class="font-bold text-[var(--color-primary-navy)] hover:text-[var(--color-sky-blue-dark)] transition-colors"
+                >
+                  Book Survey &rarr;
+                </a>
+              </div>
+            </div>
+
+          </article>
+        ))
+      }
+    </div>
+
+  </div>
+
+  <!-- Interactive Lightbox Modal -->
+  <div
+    id="gallery-lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 p-4 sm:p-8 backdrop-blur-md transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-title"
+  >
+    <div class="relative max-w-4xl w-full overflow-hidden rounded-3xl bg-white shadow-2xl">
+      <!-- Close Button -->
+      <button
+        id="lightbox-close"
+        type="button"
+        class="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/90 focus:outline-none transition-colors"
+        aria-label="Close modal"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Modal Image -->
+      <div class="relative aspect-16/10 w-full overflow-hidden bg-neutral-950 flex items-center justify-center">
+        <img
+          id="lightbox-img"
+          src=""
+          alt=""
+          class="max-h-[65vh] w-full object-contain"
+        />
+      </div>
+
+      <!-- Modal Info Bar -->
+      <div class="p-6 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-[var(--color-border-light)]">
+        <div>
+          <span id="lightbox-type" class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]"></span>
+          <h4 id="lightbox-title" class="text-xl font-bold text-[var(--color-primary-navy)] mt-0.5"></h4>
+          <p id="lightbox-desc" class="text-xs text-[var(--color-muted-text)] mt-1 max-w-xl"></p>
+        </div>
+        <a
+          href="#quote"
+          id="lightbox-cta"
+          class="shrink-0 rounded-xl bg-[var(--color-primary-navy)] px-6 py-3 text-xs font-bold text-white hover:bg-[var(--color-primary-navy-light)] transition-all shadow-md"
+        >
+          Request Free Quote
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initGallerySystem() {
+    const lightbox = document.getElementById("gallery-lightbox");
+    const closeBtn = document.getElementById("lightbox-close");
+    const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement | null;
+    const lightboxTitle = document.getElementById("lightbox-title");
+    const lightboxType = document.getElementById("lightbox-type");
+    const lightboxDesc = document.getElementById("lightbox-desc");
+    const lightboxCta = document.getElementById("lightbox-cta");
+
+    // 1. Lightbox Open / Close
+    function openModal(src: string, title: string, type: string, desc: string) {
+      if (!lightbox || !lightboxImg) return;
+      lightboxImg.src = src;
+      lightboxImg.alt = title;
+      if (lightboxTitle) lightboxTitle.textContent = title;
+      if (lightboxType) lightboxType.textContent = type;
+      if (lightboxDesc) lightboxDesc.textContent = desc;
+
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      if (!lightbox) return;
+      lightbox.classList.remove("flex");
+      lightbox.classList.add("hidden");
+      document.body.style.overflow = "";
+      if (lightboxImg) lightboxImg.src = "";
+    }
+
+    document.querySelectorAll(".project-gallery-img").forEach((el) => {
+      el.addEventListener("click", () => {
+        const src = el.getAttribute("data-img-src") || "";
+        const title = el.getAttribute("data-img-title") || "";
+        const type = el.getAttribute("data-img-type") || "";
+        const desc = el.getAttribute("data-img-desc") || "";
+        openModal(src, title, type, desc);
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (lightboxCta) lightboxCta.addEventListener("click", closeModal);
+
+    if (lightbox) {
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeModal();
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox && !lightbox.classList.contains("hidden")) {
+        closeModal();
+      }
+    });
+
+    // 2. Category Filtering
+    const filterBtns = document.querySelectorAll(".gallery-filter-btn");
+    const cards = document.querySelectorAll(".gallery-card");
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter") || "all";
+
+        filterBtns.forEach((b) => {
+          b.classList.remove("bg-[var(--color-primary-navy)]", "text-white");
+          b.classList.add("bg-[var(--color-soft-bg)]", "text-[var(--color-primary-navy)]");
+        });
+        btn.classList.remove("bg-[var(--color-soft-bg)]", "text-[var(--color-primary-navy)]");
+        btn.classList.add("bg-[var(--color-primary-navy)]", "text-white");
+
+        cards.forEach((card) => {
+          const category = card.getAttribute("data-category") || "";
+          if (filter === "all" || category === filter) {
+            (card as HTMLElement).style.display = "flex";
+          } else {
+            (card as HTMLElement).style.display = "none";
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGallerySystem);
+  } else {
+    initGallerySystem();
+  }
+</script>

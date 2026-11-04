@@ -1,0 +1,52 @@
+---
+/**
+ * ServiceApplications.astro
+ *
+ * Real-world structural applications and installation scenarios.
+ */
+interface Props {
+  name: string;
+  applications: {
+    title: string;
+    description: string;
+  }[];
+}
+
+const { name, applications } = Astro.props;
+---
+
+<section class="bg-white py-16 lg:py-24 border-b border-[var(--color-border-light)]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+        Versatile Coverage
+      </span>
+      <h2 class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+        Common Applications for {name}
+      </h2>
+      <p class="mt-3 text-base text-[var(--color-muted-text)] leading-relaxed">
+        Engineered for seamless architectural integration across residential, commercial, and recreational environments in Bengaluru.
+      </p>
+    </div>
+
+    <!-- Application Scenarios (4-grid) -->
+    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {applications.map((app, idx) => (
+        <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-6 transition-all hover:bg-white hover:shadow-md">
+          <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--color-primary-navy)] text-white mb-4 shadow-xs">
+            <span class="text-xs font-bold text-[var(--color-sky-blue)]">0{idx + 1}</span>
+          </div>
+          <h3 class="text-base font-bold text-[var(--color-primary-navy)]">
+            {app.title}
+          </h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            {app.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

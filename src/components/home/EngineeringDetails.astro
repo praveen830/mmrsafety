@@ -1,0 +1,118 @@
+---
+/**
+ * EngineeringDetails.astro — Product Details & Engineering Close-Ups
+ *
+ * Showcases authentic close-up photography of installation hardware,
+ * cable tensioners, perimeter anchors, pulleys, and bird spike bases.
+ */
+const detailItems = [
+  {
+    id: "tensioner",
+    title: "Cable Tensioning Channel",
+    category: "Invisible Grills",
+    description:
+      "Precision-machined structural mounting tracks with individual stainless steel tension pins holding each cable at calibrated firmness.",
+    image: "/images/details/detail-cable-tensioner.jpg",
+    specs: ["Calibrated wire tension", "Recessed anchor fasteners", "Flush aesthetic profile"],
+  },
+  {
+    id: "net-anchor",
+    title: "Reinforced Perimeter Net Anchors",
+    category: "Safety & Pigeon Nets",
+    description:
+      "Heavy-duty perimeter border rope anchored into structural concrete with corrosion-resistant fasteners for uniform load distribution.",
+    image: "/images/details/detail-net-anchor.jpg",
+    specs: ["Even tension spacing", "UV-treated border rope", "Zero sagging along edges"],
+  },
+  {
+    id: "pulley-hanger",
+    title: "Smooth Ceiling Pulley Mechanism",
+    category: "Cloth Hangers",
+    description:
+      "Durable ceiling-mounted pulley wheels and stainless steel pipes allowing individual rods to be smoothly raised and lowered effortlessly.",
+    image: "/images/details/detail-hanger-pulley.jpg",
+    specs: ["Independent rod control", "Heavy-duty nylon cord", "Rust-resistant steel pipes"],
+  },
+  {
+    id: "spikes-base",
+    title: "Flexible Polycarbonate Spike Base",
+    category: "Bird Spikes",
+    description:
+      "Transparent UV-resistant polycarbonate base strip that flexes to curve along curved parapets and AC outdoor unit brackets.",
+    image: "/images/details/detail-spikes-base.jpg",
+    specs: ["Blunt-tip bird safe", "Weatherproof polymer base", "High-adhesion silicone mounting"],
+  },
+];
+---
+
+<section
+  id="engineering-details"
+  class="relative bg-[var(--color-soft-bg)] py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16"
+  aria-labelledby="engineering-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
+        Craftsmanship &bull; Hardware
+      </span>
+      <h2 id="engineering-heading" class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+        Installation Precision &amp; Engineering Details
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
+        Examine the calibrated hardware, tensioning channels, and durable materials that guarantee lasting performance and safety.
+      </p>
+    </div>
+
+    <!-- 4 Detail Cards Grid -->
+    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        detailItems.map((item) => (
+          <div class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-sky-blue)] hover:shadow-lg">
+            
+            <div>
+              <!-- Visual Image with Zoom on Hover -->
+              <div class="relative aspect-4/3 w-full overflow-hidden rounded-xl bg-[var(--color-soft-bg)] border border-[var(--color-border-light)]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  width="800"
+                  height="600"
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-108"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="absolute top-2.5 left-2.5 rounded-full bg-white/95 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--color-primary-navy)] shadow-xs border border-[var(--color-border-light)]">
+                  {item.category}
+                </span>
+              </div>
+
+              <!-- Content -->
+              <div class="mt-4">
+                <h3 class="text-base font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
+                  {item.title}
+                </h3>
+                <p class="mt-2 text-xs text-[var(--color-muted-text)] leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+
+            <!-- Bullet Specs -->
+            <ul class="mt-4 space-y-1.5 border-t border-[var(--color-border-light)] pt-3 text-[11px] text-[var(--color-primary-navy)]/80">
+              {item.specs.map((spec) => (
+                <li class="flex items-center gap-1.5">
+                  <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-sky-blue)]"></span>
+                  <span>{spec}</span>
+                </li>
+              ))}
+            </ul>
+
+          </div>
+        ))
+      }
+    </div>
+
+  </div>
+</section>

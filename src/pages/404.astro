@@ -1,0 +1,26 @@
+---
+/**
+ * 404.astro — Custom Not Found Page
+ *
+ * Displayed when a visitor navigates to a non-existent route.
+ */
+import PageLayout from "@layouts/PageLayout.astro";
+---
+
+<PageLayout title="Page Not Found" description="The page you're looking for doesn't exist." noindex>
+  <section class="mx-auto flex min-h-[60vh] max-w-4xl flex-col items-center justify-center px-4 py-20 text-center sm:px-6">
+    <p class="text-7xl font-bold text-[var(--color-metallic-silver)]">404</p>
+    <h1 class="mt-4 text-2xl font-bold text-[var(--color-primary-navy)] sm:text-3xl">
+      Page Not Found
+    </h1>
+    <p class="mt-4 text-[var(--color-muted-text)]">
+      Sorry, we couldn't find the page you're looking for.
+    </p>
+    <a
+      href="/"
+      class="mt-8 inline-flex items-center justify-center rounded-lg bg-[var(--color-primary-navy)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[var(--color-primary-navy-light)]"
+    >
+      Back to Home
+    </a>
+  </section>
+</PageLayout>

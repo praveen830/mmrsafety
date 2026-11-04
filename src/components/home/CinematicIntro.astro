@@ -1,0 +1,192 @@
+---
+/**
+ * CinematicIntro.astro — 5-7 Second Cinematic Video Intro
+ *
+ * Requirements:
+ * - Approximately 5-7 seconds full-screen cinematic opening
+ * - Realistic balcony and invisible grill installation visuals
+ * - MMR 3D logo reveal and exact tagline: "Safety. Style. Peace of Mind."
+ * - High-contrast Skip Intro button (#123B63 navy & #FFFFFF glass pill)
+ * - Muted inline autoplay with poster image fallback (preload="metadata")
+ * - Non-blocking if autoplay is unavailable or blocked
+ * - Session storage guard: plays only once per visitor session
+ * - Respects prefers-reduced-motion: reduce
+ */
+---
+
+<div
+  id="cinematic-intro-overlay"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-[#0a192f] transition-opacity duration-700 ease-out"
+  aria-label="MMR Safety Cinematic Introduction"
+  role="dialog"
+  aria-modal="true"
+>
+  <!-- Background HTML5 Video with Poster Fallback -->
+  <video
+    id="cinematic-intro-video"
+    src="/videos/mmr-cinematic-intro.webm"
+    poster="/images/hero/cinematic-poster.jpg"
+    autoplay
+    muted
+    playsinline
+    preload="metadata"
+    class="h-full w-full object-cover"
+  >
+    <img
+      src="/images/hero/cinematic-poster.jpg"
+      alt="MMR Safety Balcony Invisible Grill Architecture"
+      class="h-full w-full object-cover"
+    />
+  </video>
+
+  <!-- Centered 3D Metallic Brand Card Reveal -->
+  <div
+    id="intro-brand-card"
+    class="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center p-4 transition-all duration-1000 ease-out"
+  >
+    <div class="logo-sheen-container flex flex-col items-center text-center rounded-3xl border border-white/20 bg-black/40 px-8 py-6 backdrop-blur-md shadow-2xl animate-fade-in">
+      <div class="logo-sheen-box relative">
+        <img
+          src="/logos/mmr-full.png"
+          alt="MMR Safety Nets and Invisible Grills"
+          width="820"
+          height="474"
+          class="h-20 sm:h-28 w-auto filter drop-shadow-xl"
+          loading="eager"
+          decoding="async"
+        />
+        <div class="logo-metallic-glint" aria-hidden="true"></div>
+      </div>
+      <p class="mt-3 text-xs sm:text-sm font-semibold tracking-widest uppercase text-[var(--color-sky-blue)]">
+        Safety. Style. Peace of Mind.
+      </p>
+    </div>
+  </div>
+
+  <!-- Top Controls: High-Contrast Skip Intro Button (#123B63 navy & #FFFFFF glass pill) -->
+  <div class="absolute top-6 right-6 z-20">
+    <button
+      id="skip-intro-btn"
+      type="button"
+      class="group inline-flex items-center gap-2 rounded-full border border-white/30 bg-[#123B63]/90 px-4 py-2 text-xs font-bold tracking-wider text-white shadow-xl backdrop-blur-md transition-all hover:bg-[#123B63] hover:border-white focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+      aria-label="Skip cinematic introduction"
+    >
+      <span>Skip Intro</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Bottom Visual Progress Line -->
+  <div class="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-1 bg-white/10">
+    <div
+      id="intro-progress-bar"
+      class="h-full w-0 bg-gradient-to-r from-[var(--color-sky-blue)] via-white to-[var(--color-sky-blue)] transition-all ease-linear"
+    ></div>
+  </div>
+</div>
+
+<script>
+  function initCinematicIntro() {
+    const overlay = document.getElementById("cinematic-intro-overlay");
+    const video = document.getElementById("cinematic-intro-video") as HTMLVideoElement | null;
+    const skipBtn = document.getElementById("skip-intro-btn");
+    const progressBar = document.getElementById("intro-progress-bar");
+
+    if (!overlay) return;
+
+    // 1. Accessibility: Check prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // 2. Performance: Check if intro was already seen in this session
+    const hasSeenIntro = sessionStorage.getItem("mmr_cinematic_intro_seen") === "true";
+
+    if (prefersReducedMotion || hasSeenIntro) {
+      overlay.style.display = "none";
+      return;
+    }
+
+    // Lock scrolling during intro playback
+    document.body.style.overflow = "hidden";
+
+    let dismissed = false;
+
+    function dismissIntro() {
+      if (dismissed || !overlay) return;
+      dismissed = true;
+
+      // Mark session so internal navigations never replay intro
+      try {
+        sessionStorage.setItem("mmr_cinematic_intro_seen", "true");
+      } catch (e) {
+        // Safe fallback for restricted storage environments
+      }
+
+      // Restore scrolling
+      document.body.style.overflow = "";
+
+      // Smooth fade transition
+      overlay.classList.add("opacity-0", "pointer-events-none");
+
+      setTimeout(() => {
+        overlay.style.display = "none";
+        if (video) {
+          video.pause();
+          video.removeAttribute("src");
+          video.load();
+        }
+      }, 750);
+    }
+
+    // Skip Button Handler
+    if (skipBtn) {
+      skipBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        dismissIntro();
+      });
+    }
+
+    // Video Events
+    if (video) {
+      // Animate progress bar as time updates
+      video.addEventListener("timeupdate", () => {
+        if (progressBar && video.duration > 0) {
+          const pct = (video.currentTime / video.duration) * 100;
+          progressBar.style.width = `${pct}%`;
+        }
+      });
+
+      // Dismiss automatically when video playback concludes (approx 5-7s)
+      video.addEventListener("ended", dismissIntro);
+
+      // Autoplay attempt with fallback timeout
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If browser restricts autoplay, fallback gracefully without blocking visitor
+          setTimeout(dismissIntro, 2000);
+        });
+      }
+
+      // Hard safety timer: ensure overlay is dismissed after 6.5s maximum
+      setTimeout(dismissIntro, 6500);
+    } else {
+      dismissIntro();
+    }
+  }
+
+  // Run on initial load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCinematicIntro);
+  } else {
+    initCinematicIntro();
+  }
+</script>

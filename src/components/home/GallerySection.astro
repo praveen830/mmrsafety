@@ -1,0 +1,527 @@
+---
+/**
+ * GallerySection.astro — Interactive Filterable Installation & Projects Showcase
+ *
+ * Showcases typical residential and commercial safety installations across
+ * all 6 MMR product systems with interactive filter tabs, honest configuration tags,
+ * and a full-featured Image Lightbox Modal with Next/Prev navigation.
+ */
+import { showcaseData } from "@data/homeData";
+import { siteConfig, getPhoneUrl } from "@data/siteConfig";
+
+interface Props {
+  initialFilter?: string;
+  isStandalonePage?: boolean;
+}
+
+const { initialFilter = "all" } = Astro.props;
+
+const categories = [
+  { id: "all", label: "All Configurations", count: showcaseData.length },
+  { id: "Invisible Grills", label: "Invisible Grills", count: showcaseData.filter(p => p.category === "Invisible Grills").length },
+  { id: "Safety Nets", label: "Safety Nets", count: showcaseData.filter(p => p.category === "Safety Nets").length },
+  { id: "Pigeon Safety Nets", label: "Pigeon Safety Nets", count: showcaseData.filter(p => p.category === "Pigeon Safety Nets").length },
+  { id: "Sports Nets", label: "Sports Nets", count: showcaseData.filter(p => p.category === "Sports Nets").length },
+  { id: "Cloth Hangers", label: "Cloth Hangers", count: showcaseData.filter(p => p.category === "Cloth Hangers").length },
+  { id: "Bird Spikes", label: "Bird Spikes", count: showcaseData.filter(p => p.category === "Bird Spikes").length },
+];
+
+const phoneUrl = getPhoneUrl();
+---
+
+<section
+  id="projects"
+  class="relative bg-white py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16"
+  aria-labelledby="projects-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+        Architectural Installation Showcase
+      </span>
+      <h2 id="projects-heading" class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+        Engineered for High-Rise Apartments &amp; Modern Homes
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
+        Explore verified installation layouts across all six MMR safety systems — precision stainless steel invisible grills, certified balcony safety nets, translucent bird barriers, sports turf enclosures, ceiling cloth hangers, and humane bird spikes.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-2" role="tablist" aria-label="Showcase categories">
+      {categories.map((cat) => (
+        <button
+          type="button"
+          class:list={[
+            "gallery-filter-btn rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]",
+            cat.id === initialFilter
+              ? "bg-[var(--color-primary-navy)] text-white shadow-xs"
+              : "bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)] border border-[var(--color-border-light)] hover:bg-white hover:border-[var(--color-sky-blue)]"
+          ]}
+          data-filter={cat.id}
+          role="tab"
+          aria-selected={cat.id === initialFilter ? "true" : "false"}
+        >
+          <span>{cat.label}</span>
+          <span class="ml-1.5 rounded-full bg-white/20 px-1.5 py-0.5 text-[10px] opacity-80">
+            {cat.count}
+          </span>
+        </button>
+      ))}
+    </div>
+
+    <!-- Honesty Transparency Notice -->
+    <div class="mt-8 mx-auto max-w-3xl rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] p-4 text-center text-xs text-[var(--color-muted-text)] flex items-center justify-center gap-2.5">
+      <svg class="h-4 w-4 text-[var(--color-sky-blue-dark)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p>
+        <strong class="text-[var(--color-primary-navy)]">Architectural Installation Showcase &amp; Product Configurations:</strong> Visual configuration gallery illustrating MMR safety systems across balconies, windows, utility areas, and sports grounds. On-site laser surveys and bespoke alignments are conducted for every individual property.
+      </p>
+    </div>
+
+    <!-- Gallery Grid (All 18 Configurations) -->
+    <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" id="gallery-grid">
+      {showcaseData.map((project, index) => {
+        const prefilledWhatsappMsg = `Hello MMR Safety, I am interested in the ${project.title} (${project.type}) configuration for my home in Bengaluru. Please provide details and estimate.`;
+        const whatsappHref = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(prefilledWhatsappMsg)}`;
+
+        return (
+          <article
+            class="gallery-card group flex flex-col overflow-hidden rounded-3xl border border-[var(--color-border)] bg-white shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--color-sky-blue)] hover:shadow-xl"
+            data-category={project.category}
+            data-index={index}
+            id={`gallery-item-${project.id}`}
+          >
+            <!-- Visual Container with Real Photo -->
+            <div class="relative aspect-4/3 w-full overflow-hidden bg-[var(--color-soft-bg)]">
+              <img
+                src={project.image}
+                alt={`${project.title} - ${project.type}`}
+                width="1200"
+                height="900"
+                class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106 cursor-pointer gallery-trigger-img"
+                data-index={index}
+                loading="lazy"
+                decoding="async"
+              />
+              
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+              <!-- Category Badge -->
+              <span class="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-[var(--color-primary-navy)] shadow-md border border-white/60">
+                <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-sky-blue)]"></span>
+                {project.type}
+              </span>
+
+              <!-- Configuration Tag -->
+              <span class="absolute bottom-3 left-3.5 text-xs font-medium text-white/90 drop-shadow-md">
+                {project.configuration}
+              </span>
+
+              <!-- Enlarge Button Overlay -->
+              <button
+                type="button"
+                class="gallery-enlarge-btn absolute top-3.5 right-3.5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-[var(--color-primary-navy)] shadow-md transition-all hover:bg-white hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+                data-index={index}
+                aria-label={`Enlarge image for ${project.title}`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Content Body -->
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-base sm:text-lg font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
+                {project.title}
+              </h3>
+
+              <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed flex-1">
+                {project.description}
+              </p>
+
+              <!-- Spec Pills -->
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                {project.specs.map((spec) => (
+                  <span class="inline-flex items-center rounded-md bg-[var(--color-soft-bg)] border border-[var(--color-border-light)] px-2 py-0.5 text-[10px] font-semibold text-[var(--color-primary-navy)]/80">
+                    {spec}
+                  </span>
+                ))}
+              </div>
+
+              <!-- Dual Actions -->
+              <div class="mt-5 grid grid-cols-2 gap-2 pt-4 border-t border-[var(--color-border-light)]">
+                <button
+                  type="button"
+                  class="gallery-enlarge-btn inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--color-border)] bg-white px-3 py-2 text-xs font-bold text-[var(--color-primary-navy)] transition-all hover:bg-[var(--color-soft-bg)] hover:border-[var(--color-sky-blue)] cursor-pointer"
+                  data-index={index}
+                >
+                  <svg class="h-3.5 w-3.5 text-[var(--color-sky-blue-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  <span>Enlarge</span>
+                </button>
+
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#25D366] px-3 py-2 text-xs font-bold text-white transition-all hover:bg-[#1EBE5D] shadow-xs active:scale-98"
+                  aria-label={`Enquire about ${project.title} on WhatsApp`}
+                >
+                  <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                  </svg>
+                  <span>Enquire</span>
+                </a>
+              </div>
+            </div>
+
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Empty Filter Fallback (hidden by default) -->
+    <div id="gallery-empty-state" class="mt-12 hidden rounded-3xl border border-dashed border-[var(--color-border)] p-12 text-center">
+      <p class="text-sm font-semibold text-[var(--color-primary-navy)]">No showcase items match this filter.</p>
+      <button
+        type="button"
+        id="gallery-reset-filter-btn"
+        class="mt-4 inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-4 py-2 text-xs font-bold text-white shadow-xs"
+      >
+        Show All Installations
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Interactive Image Lightbox Modal with Next / Prev Controls -->
+  <div
+    id="gallery-lightbox-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 lg:p-10"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-title"
+  >
+    <!-- Dark Backdrop -->
+    <div
+      id="lightbox-backdrop"
+      class="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity duration-300"
+    ></div>
+
+    <!-- Modal Content Box -->
+    <div
+      class="relative z-10 flex flex-col lg:flex-row max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl transition-all duration-300"
+    >
+      <!-- Close Button -->
+      <button
+        type="button"
+        id="lightbox-close-btn"
+        class="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all hover:bg-black hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
+        aria-label="Close Lightbox Modal"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Left / Top: Photographic Visual Display -->
+      <div class="relative lg:w-3/5 bg-slate-950 flex items-center justify-center overflow-hidden min-h-[280px] sm:min-h-[380px] lg:min-h-[500px]">
+        <img
+          id="lightbox-img"
+          src=""
+          alt=""
+          class="max-h-[70vh] lg:max-h-[85vh] w-full object-contain"
+        />
+
+        <!-- Next / Prev Controls -->
+        <button
+          type="button"
+          id="lightbox-prev-btn"
+          class="absolute left-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all hover:bg-black hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
+          aria-label="Previous showcase item"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          id="lightbox-next-btn"
+          class="absolute right-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all hover:bg-black hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
+          aria-label="Next showcase item"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <!-- Position Counter Indicator -->
+        <span
+          id="lightbox-counter"
+          class="absolute bottom-3 left-4 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white/90 backdrop-blur-sm"
+        >
+          1 / 18
+        </span>
+      </div>
+
+      <!-- Right / Bottom: Technical Details & Actions -->
+      <div class="lg:w-2/5 flex flex-col justify-between p-6 sm:p-8 bg-white overflow-y-auto">
+        <div>
+          <!-- Category & Tag -->
+          <div class="flex items-center gap-2">
+            <span
+              id="lightbox-badge"
+              class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-soft-bg)] border border-[var(--color-border-light)] px-3 py-1 text-xs font-bold text-[var(--color-primary-navy)]"
+            >
+              Invisible Grills
+            </span>
+            <span class="text-xs text-[var(--color-muted-text)] font-medium">Showcase Configuration</span>
+          </div>
+
+          <!-- Title -->
+          <h3 id="lightbox-title" class="mt-3 text-xl sm:text-2xl font-extrabold text-[var(--color-primary-navy)]">
+            Title Placeholder
+          </h3>
+
+          <!-- Configuration Tag -->
+          <p id="lightbox-config" class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)]">
+            Configuration Details
+          </p>
+
+          <!-- Description -->
+          <p id="lightbox-desc" class="mt-3 text-sm text-[var(--color-muted-text)] leading-relaxed">
+            Description goes here.
+          </p>
+
+          <!-- Specs List -->
+          <div class="mt-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)]">
+              Hardware &amp; Execution Standards
+            </h4>
+            <div id="lightbox-specs" class="mt-2.5 flex flex-wrap gap-1.5">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-8 pt-5 border-t border-[var(--color-border-light)] space-y-2.5">
+          <a
+            id="lightbox-whatsapp-btn"
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1EBE5D] hover:shadow-md"
+          >
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+            </svg>
+            <span>Request Quote for This Configuration</span>
+          </a>
+
+          <a
+            href={phoneUrl}
+            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[var(--color-primary-navy-dark)]"
+          >
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+            </svg>
+            <span>Speak to Engineer ({siteConfig.contact.phone})</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Raw Showcase Data for Client-Side Lightbox Navigation -->
+  <script id="showcase-raw-data" type="application/json" set:html={JSON.stringify(showcaseData)} />
+
+</section>
+
+<script>
+  let rawData: any[] = [];
+  const scriptTag = document.getElementById("showcase-raw-data");
+  if (scriptTag) {
+    try {
+      rawData = JSON.parse(scriptTag.textContent || "[]");
+    } catch (e) {
+      console.error("Failed to parse showcase data:", e);
+    }
+  }
+
+  // Filter Elements
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>(".gallery-filter-btn");
+  const galleryCards = document.querySelectorAll<HTMLElement>(".gallery-card");
+  const emptyState = document.getElementById("gallery-empty-state");
+  const resetBtn = document.getElementById("gallery-reset-filter-btn");
+
+    let visibleIndices: number[] = rawData.map((_, i) => i);
+
+  function applyFilter(filter: string) {
+    
+    filterButtons.forEach((btn) => {
+      const match = btn.getAttribute("data-filter") === filter;
+      btn.setAttribute("aria-selected", match ? "true" : "false");
+      if (match) {
+        btn.classList.remove("bg-[var(--color-soft-bg)]", "text-[var(--color-primary-navy)]", "border", "border-[var(--color-border-light)]");
+        btn.classList.add("bg-[var(--color-primary-navy)]", "text-white");
+      } else {
+        btn.classList.remove("bg-[var(--color-primary-navy)]", "text-white");
+        btn.classList.add("bg-[var(--color-soft-bg)]", "text-[var(--color-primary-navy)]", "border", "border-[var(--color-border-light)]");
+      }
+    });
+
+    visibleIndices = [];
+    let count = 0;
+
+    galleryCards.forEach((card, idx) => {
+      const cat = card.getAttribute("data-category");
+      const isVisible = filter === "all" || cat === filter;
+      if (isVisible) {
+        card.style.display = "";
+        visibleIndices.push(idx);
+        count++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    if (emptyState) {
+      emptyState.classList.toggle("hidden", count > 0);
+    }
+  }
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter") || "all";
+      applyFilter(filter);
+    });
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => applyFilter("all"));
+  }
+
+  // Lightbox Modal Logic
+  const modal = document.getElementById("gallery-lightbox-modal");
+  const backdrop = document.getElementById("lightbox-backdrop");
+  const closeBtn = document.getElementById("lightbox-close-btn");
+  const prevBtn = document.getElementById("lightbox-prev-btn");
+  const nextBtn = document.getElementById("lightbox-next-btn");
+
+  const modalImg = document.getElementById("lightbox-img") as HTMLImageElement;
+  const modalTitle = document.getElementById("lightbox-title");
+  const modalConfig = document.getElementById("lightbox-config");
+  const modalDesc = document.getElementById("lightbox-desc");
+  const modalBadge = document.getElementById("lightbox-badge");
+  const modalCounter = document.getElementById("lightbox-counter");
+  const modalSpecs = document.getElementById("lightbox-specs");
+  const modalWhatsapp = document.getElementById("lightbox-whatsapp-btn") as HTMLAnchorElement;
+
+  let currentVisiblePointer = 0;
+
+  function renderModal(pointer: number) {
+    if (!visibleIndices.length) return;
+    if (pointer < 0) pointer = visibleIndices.length - 1;
+    if (pointer >= visibleIndices.length) pointer = 0;
+
+    currentVisiblePointer = pointer;
+    const realIdx = visibleIndices[currentVisiblePointer];
+    const item = rawData[realIdx];
+    if (!item) return;
+
+    if (modalImg) {
+      modalImg.src = item.image;
+      modalImg.alt = `${item.title} - ${item.type}`;
+    }
+    if (modalTitle) modalTitle.textContent = item.title;
+    if (modalConfig) modalConfig.textContent = item.configuration;
+    if (modalDesc) modalDesc.textContent = item.description;
+    if (modalBadge) modalBadge.textContent = item.type;
+    if (modalCounter) {
+      modalCounter.textContent = `${currentVisiblePointer + 1} / ${visibleIndices.length}`;
+    }
+
+    if (modalSpecs) {
+      modalSpecs.innerHTML = "";
+      if (Array.isArray(item.specs)) {
+        item.specs.forEach((sp: string) => {
+          const pill = document.createElement("span");
+          pill.className = "inline-flex items-center rounded-md bg-[var(--color-soft-bg)] border border-[var(--color-border-light)] px-2.5 py-1 text-xs font-semibold text-[var(--color-primary-navy)]";
+          pill.textContent = sp;
+          modalSpecs.appendChild(pill);
+        });
+      }
+    }
+
+    if (modalWhatsapp) {
+      const msg = `Hello MMR Safety, I am interested in the ${item.title} (${item.type}) configuration for my home in Bengaluru. Please provide details and estimate.`;
+      modalWhatsapp.href = `https://wa.me/916304433505?text=${encodeURIComponent(msg)}`;
+    }
+  }
+
+  function openModal(rawIndex: number) {
+    const foundPointer = visibleIndices.indexOf(rawIndex);
+    const pointer = foundPointer !== -1 ? foundPointer : 0;
+    renderModal(pointer);
+
+    if (modal) {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = "";
+    }
+  }
+
+  // Trigger clicks from cards
+  document.querySelectorAll<HTMLElement>(".gallery-trigger-img, .gallery-enlarge-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const rawIdxStr = btn.getAttribute("data-index");
+      if (rawIdxStr !== null) {
+        openModal(parseInt(rawIdxStr, 10));
+      }
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  if (backdrop) backdrop.addEventListener("click", closeModal);
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      renderModal(currentVisiblePointer - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      renderModal(currentVisiblePointer + 1);
+    });
+  }
+
+  // Keyboard navigation (Escape, ArrowLeft, ArrowRight)
+  window.addEventListener("keydown", (e) => {
+    if (!modal || modal.classList.contains("hidden")) return;
+    if (e.key === "Escape") {
+      closeModal();
+    } else if (e.key === "ArrowLeft") {
+      renderModal(currentVisiblePointer - 1);
+    } else if (e.key === "ArrowRight") {
+      renderModal(currentVisiblePointer + 1);
+    }
+  });
+</script>

@@ -1,0 +1,372 @@
+---
+/**
+ * about.astro — About MMR Safety Nets and Invisible Grills
+ *
+ * Full premium Light-Theme page detailing the brand story, architectural safety
+ * philosophy, material & hardware quality standards, warranty commitment, and
+ * direct engineering team contact CTAs.
+ */
+import PageLayout from "@layouts/PageLayout.astro";
+import { siteConfig, getPhoneUrl, getWhatsAppUrl } from "@data/siteConfig";
+
+const pageTitle = `About Us | ${siteConfig.name}`;
+const pageDescription =
+  "Learn about MMR Safety Nets and Invisible Grills — our architectural safety vision, 316-grade marine stainless steel standards, UV-stabilized polymer netting, and professional installation across Bengaluru.";
+const canonicalUrl = "https://mmrsafety.in/about/";
+
+const phoneUrl = getPhoneUrl();
+const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I read your About page and would like to learn more about your safety solutions.");
+
+// Structured schema
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonicalUrl,
+  mainEntity: {
+    "@type": "HomeAndConstructionBusiness",
+    name: siteConfig.name,
+    alternateName: "MMR Safety",
+    url: siteConfig.url,
+    logo: "https://mmrsafety.in/logos/mmr-full.png",
+    telephone: siteConfig.contact.phoneRaw,
+    email: siteConfig.contact.email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bengaluru",
+      addressRegion: "Karnataka",
+      addressCountry: "IN",
+    },
+  },
+};
+---
+
+<PageLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+  </Fragment>
+
+  <!-- 1. Hero Section -->
+  <section class="relative bg-gradient-to-b from-[var(--color-soft-bg)] via-white to-white py-14 lg:py-22 border-b border-[var(--color-border-light)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs text-[var(--color-muted-text)] mb-6" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-[var(--color-primary-navy)] transition-colors">Home</a>
+        <svg class="h-3 w-3 text-[var(--color-muted-text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        <span class="font-semibold text-[var(--color-primary-navy)]">About Us</span>
+      </nav>
+
+      <div class="grid items-center gap-12 lg:grid-cols-12">
+        <!-- Text Column -->
+        <div class="lg:col-span-7">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
+            Brand Story &amp; Vision
+          </span>
+          <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--color-primary-navy)] tracking-tight leading-tight">
+            Safety Engineered for Modern Architecture
+            <span class="block text-xl sm:text-2xl font-bold text-[var(--color-sky-blue-dark)] mt-2">
+              {siteConfig.tagline}
+            </span>
+          </h1>
+          <p class="mt-6 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
+            At <strong>{siteConfig.name}</strong>, we believe safety should never feel like confinement. Modern urban apartments are designed with expansive balconies and floor-to-ceiling windows to welcome natural light, breezes, and panoramic skyline vistas.
+          </p>
+          <p class="mt-3 text-base text-[var(--color-muted-text)] leading-relaxed">
+            Traditional heavy iron grilles block daylight, accumulate rust, feel cage-like, and are strictly prohibited by contemporary gated society bylaws. We bridge this gap by delivering calibrated, high-tensile stainless steel invisible grills and UV-stabilized polymer safety netting that provide certified accidental fall protection while keeping your view 100% open.
+          </p>
+
+          <!-- Core Credential Badges -->
+          <div class="mt-8 flex flex-wrap gap-2.5">
+            <span class="inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] px-3 py-1.5 text-xs font-semibold text-[var(--color-primary-navy)]">
+              <svg class="h-3.5 w-3.5 text-[var(--color-sky-blue)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span>Marine 316 Stainless Steel Wire</span>
+            </span>
+
+            <span class="inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] px-3 py-1.5 text-xs font-semibold text-[var(--color-primary-navy)]">
+              <svg class="h-3.5 w-3.5 text-[var(--color-sky-blue)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span>Virgin High-Tenacity Polymer Mesh</span>
+            </span>
+
+            <span class="inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] px-3 py-1.5 text-xs font-semibold text-[var(--color-primary-navy)]">
+              <svg class="h-3.5 w-3.5 text-[var(--color-sky-blue)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              <span>Apartment Bylaw Compliant</span>
+            </span>
+          </div>
+
+          <!-- Direct CTAs -->
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href={phoneUrl}
+              class="inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-[var(--color-primary-navy-dark)]"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+              </svg>
+              <span>Call Us: {siteConfig.contact.phone}</span>
+            </a>
+
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-[#1EBE5D]"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+              </svg>
+              <span>Instant WhatsApp Enquiry</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual Column -->
+        <div class="lg:col-span-5">
+          <div class="relative overflow-hidden rounded-3xl border border-[var(--color-border)] bg-white p-2.5 shadow-xl">
+            <div class="relative aspect-4/3 overflow-hidden rounded-2xl bg-[var(--color-soft-bg)]">
+              <img
+                src="/images/services/invisible-grills-desktop.webp"
+                alt="Balcony fitted with MMR high-tensile invisible grill cables"
+                width="1200"
+                height="900"
+                class="h-full w-full object-cover"
+                loading="eager"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 text-xs font-semibold text-white drop-shadow-md">
+                MMR Precision Balcony Installation Standard
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2. Four Engineering Pillars -->
+  <section class="bg-white py-16 lg:py-24 border-b border-[var(--color-border-light)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+          Our Foundation
+        </span>
+        <h2 class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+          Four Pillars of Every MMR Installation
+        </h2>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-6 transition-all hover:bg-white hover:border-[var(--color-sky-blue)] hover:shadow-lg">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-primary-navy)] text-[var(--color-sky-blue)] font-bold text-sm">
+            01
+          </span>
+          <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">High-Tensile Wire Core</h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            Multi-strand marine-grade 316 stainless steel wire cores encased in clear UV-stabilized nylon to prevent burrs, corrosion, and tropical weather breakdown.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-6 transition-all hover:bg-white hover:border-[var(--color-sky-blue)] hover:shadow-lg">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-primary-navy)] text-[var(--color-sky-blue)] font-bold text-sm">
+            02
+          </span>
+          <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Calibrated Tensioning</h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            Technicians use mechanical tensioning gear to eliminate cable sag and ensure rigid 2-inch pitch gaps that stop toddlers and pets from slipping through.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-6 transition-all hover:bg-white hover:border-[var(--color-sky-blue)] hover:shadow-lg">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-primary-navy)] text-[var(--color-sky-blue)] font-bold text-sm">
+            03
+          </span>
+          <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Clean Masonry Anchoring</h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            Concrete expansion sleeve bolts drilled into structural lintels and parapets at calibrated intervals, preserving building waterproof membranes.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-6 transition-all hover:bg-white hover:border-[var(--color-sky-blue)] hover:shadow-lg">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-primary-navy)] text-[var(--color-sky-blue)] font-bold text-sm">
+            04
+          </span>
+          <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Honest Warranty &amp; Service</h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            Clear, transparent warranty commitments documented in our service terms. Prompt after-sales inspection and repair support across Bengaluru.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Our 4-Step Standard Workflow -->
+  <section class="bg-[var(--color-soft-bg)] py-16 lg:py-24 border-b border-[var(--color-border-light)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+          Standardized Workflow
+        </span>
+        <h2 class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+          How We Work: From Survey to Handover
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)]">
+          A disciplined, 4-step installation protocol executed by experienced in-house technicians.
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-xs">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-soft-bg)] px-3 py-1 text-xs font-bold text-[var(--color-sky-blue-dark)]">
+            Step 01
+          </span>
+          <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Free On-Site Survey</h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            Our technician visits your home with physical samples, inspects railing substrates, and measures linear dimensions with precision laser meters.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-xs">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-soft-bg)] px-3 py-1 text-xs font-bold text-[var(--color-sky-blue-dark)]">
+            Step 02
+          </span>
+          <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Transparent Quote</h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            You receive an upfront, itemized per-square-foot estimate covering materials, tensioning hardware, anchoring tracks, and installation labour.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-xs">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-soft-bg)] px-3 py-1 text-xs font-bold text-[var(--color-sky-blue-dark)]">
+            Step 03
+          </span>
+          <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Dust-Controlled Fitting</h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            Tracks and expansion anchors are drilled neatly, cables are threaded and machine-tensioned to strict tolerances without damaging tiles or paint.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-xs">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-soft-bg)] px-3 py-1 text-xs font-bold text-[var(--color-sky-blue-dark)]">
+            Step 04
+          </span>
+          <h3 class="mt-4 text-base font-bold text-[var(--color-primary-navy)]">Load Check &amp; Handover</h3>
+          <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed">
+            Every cable and net anchor is individually tension-tested in your presence. The site is cleaned and maintenance guidance is provided before sign-off.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Quality & Material Assurance -->
+  <section class="bg-white py-16 lg:py-24 border-b border-[var(--color-border-light)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+            Material Sourcing
+          </span>
+          <h2 class="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+            Engineered Sourcing for Outdoor Longevity
+          </h2>
+          <p class="mt-4 text-sm sm:text-base text-[var(--color-muted-text)] leading-relaxed">
+            Bengaluru’s climate features intense solar UV exposure during summer months followed by heavy monsoon downpours. Substandard hardware quickly corrodes, frays, or loses tension.
+          </p>
+          <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] leading-relaxed">
+            We exclusively procure authentic high-density polyethylene polymer nets treated with carbon-black UV stabilizers and marine-grade AISI 316 stainless steel wires. Our mounting tracks use architectural-grade aluminum alloy profiles finished with electrostatic powder coating to ensure seamless integration with luxury building facades.
+          </p>
+
+          <div class="mt-6">
+            <a
+              href="/#warranty"
+              class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[var(--color-primary-navy)] hover:text-[var(--color-sky-blue-dark)] transition-colors"
+            >
+              <span>Review Our Product Warranty Terms</span>
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-5 text-center">
+              <span class="text-2xl sm:text-3xl font-extrabold text-[var(--color-primary-navy)]">316</span>
+              <p class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)]">Marine Stainless Steel</p>
+              <p class="mt-1 text-[11px] text-[var(--color-muted-text)]">Superior salt, moisture &amp; rust resistance</p>
+            </div>
+
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-5 text-center">
+              <span class="text-2xl sm:text-3xl font-extrabold text-[var(--color-primary-navy)]">UV+</span>
+              <p class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)]">Polymer Stabilization</p>
+              <p class="mt-1 text-[11px] text-[var(--color-muted-text)]">Protects nets against tropical sun embrittlement</p>
+            </div>
+
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-5 text-center">
+              <span class="text-2xl sm:text-3xl font-extrabold text-[var(--color-primary-navy)]">&lt;2.5mm</span>
+              <p class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)]">Ultra-Slim Profile</p>
+              <p class="mt-1 text-[11px] text-[var(--color-muted-text)]">Preserves over 98% open skyline visibility</p>
+            </div>
+
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-soft-bg)] p-5 text-center">
+              <span class="text-2xl sm:text-3xl font-extrabold text-[var(--color-primary-navy)]">100%</span>
+              <p class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)]">Humane Deterrence</p>
+              <p class="mt-1 text-[11px] text-[var(--color-muted-text)]">Prevents bird roosting without harm or injury</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Final CTA Banner -->
+  <section class="bg-[var(--color-soft-bg)] py-16 lg:py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+        Ready to Safeguard Your Balcony or Windows?
+      </h2>
+      <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] max-w-2xl mx-auto leading-relaxed">
+        Speak directly with an MMR installation engineer, or request a free on-site measurement visit anywhere in Bengaluru with zero obligation.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href={phoneUrl}
+          class="inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-[var(--color-primary-navy-dark)]"
+        >
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
+          </svg>
+          <span>Call Now: {siteConfig.contact.phone}</span>
+        </a>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xs hover:bg-[#1EBE5D]"
+        >
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+          </svg>
+          <span>Request Free Site Visit on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

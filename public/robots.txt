@@ -1,0 +1,7 @@
+# https://mmrsafety.in
+# Robots.txt - MMR Safety Nets and Invisible Grills
+
+User-agent: *
+Allow: /
+
+Sitemap: https://mmrsafety.in/sitemap-index.xml

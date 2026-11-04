@@ -1,0 +1,100 @@
+---
+/**
+ * ServiceMaterials.astro — Material Engineering & Quality Standards
+ *
+ * Provides a clean architectural breakdown of the physical materials, alloy grades,
+ * tensile profiles, and corrosion-resistant coatings used for the specific service.
+ */
+export interface MaterialSpecItem {
+  label: string;
+  value: string;
+}
+
+export interface MaterialOverview {
+  title: string;
+  description: string;
+  specs: MaterialSpecItem[];
+}
+
+interface Props {
+  name: string;
+  materials: MaterialOverview;
+}
+
+const { name, materials } = Astro.props;
+---
+
+<section
+  id="materials-overview"
+  class="bg-white py-16 lg:py-24 border-b border-[var(--color-border-light)]"
+  aria-labelledby="materials-heading"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+        Hardware Integrity
+      </span>
+      <h2
+        id="materials-heading"
+        class="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)] tracking-tight"
+      >
+        {name} Materials &amp; Quality Specifications
+      </h2>
+      <p class="mt-4 text-base text-[var(--color-muted-text)] leading-relaxed">
+        We prioritize high-tensile, weather-treated components manufactured to withstand tropical heat, UV exposure, and monsoon rains in South India.
+      </p>
+    </div>
+
+    <!-- Materials Card -->
+    <div class="mt-12 overflow-hidden rounded-3xl border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-soft-bg)] to-white p-6 sm:p-10 shadow-sm">
+      <div class="grid items-center gap-8 lg:grid-cols-12">
+        
+        <!-- Left: Summary & Guarantee (5 cols) -->
+        <div class="lg:col-span-5">
+          <div class="inline-flex items-center gap-2 rounded-lg bg-[var(--color-primary-navy)] px-3 py-1 text-xs font-bold text-white shadow-xs">
+            <span>Material Grade Standard</span>
+          </div>
+          <h3 class="mt-4 text-xl sm:text-2xl font-bold text-[var(--color-primary-navy)]">
+            {materials.title}
+          </h3>
+          <p class="mt-3 text-sm text-[var(--color-muted-text)] leading-relaxed">
+            {materials.description}
+          </p>
+
+          <div class="mt-6 flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-white p-4 shadow-xs">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </span>
+            <div class="text-xs">
+              <span class="block font-bold text-[var(--color-primary-navy)]">Verified Hardware Integrity</span>
+              <span class="text-[var(--color-muted-text)]">Zero compromised alloys or substandard imitations.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Technical Spec Grid (7 cols) -->
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+            {
+              materials.specs.map((spec) => (
+                <div class="rounded-2xl border border-[var(--color-border)] bg-white p-4 shadow-xs transition-shadow hover:shadow-md">
+                  <span class="block text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+                    {spec.label}
+                  </span>
+                  <span class="mt-1 block text-sm font-semibold text-[var(--color-primary-navy)]">
+                    {spec.value}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
