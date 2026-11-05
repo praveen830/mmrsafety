@@ -2,109 +2,329 @@
 /**
  * SafetyRequirementsSection.astro — Architectural & Functional Safety Requirements
  *
- * 8-Card Photographic Grid presenting verified safety applications:
- * 1. Children Safety
- * 2. Pet Safety (Cats & Dogs)
- * 3. High-Rise Balcony Protection
- * 4. Open Window Protection
- * 5. Pigeon & Bird Hygiene Protection
- * 6. Sports & Turf Facility Enclosures
- * 7. Residential Apartment Complexes
- * 8. Commercial & Industrial Buildings
+ * Horizontal Auto-Sliding Carousel:
+ * - Automatically advances horizontally card-by-card with a 1-second pause on every image.
+ * - Minimal text presentation to keep high-resolution photography front and center.
+ * - Seamless infinite loop, pause on hover/touch, and responsive card sizing.
  */
 import { safetyRequirementsData } from "@data/siteConfig";
+
+// Duplicate items to ensure smooth infinite carousel looping
+const extendedData = [...safetyRequirementsData, ...safetyRequirementsData];
 ---
 
 <section
   id="safety-requirements"
-  class="bg-white py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16"
+  class="relative bg-white py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16 overflow-hidden"
   aria-labelledby="safety-req-heading"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     
-    <!-- Section Header -->
-    <div class="mx-auto max-w-3xl text-center">
-      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
-        Application Scenarios
-      </span>
-      <h2
-        id="safety-req-heading"
-        class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]"
-      >
-        Safety Requirements &amp; Architectural Applications
-      </h2>
-      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
-        Engineered protective barriers configured for specific structural requirements across homes, luxury communities, sports grounds, and commercial spaces.
-      </p>
+    <!-- Section Header with Slider Navigation Controls -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-soft-bg)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+          Application Scenarios
+        </span>
+        <h2
+          id="safety-req-heading"
+          class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]"
+        >
+          Safety Requirements &amp; Architectural Applications
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] leading-relaxed">
+          Engineered protective barriers configured for specific structural requirements across modern living spaces.
+        </p>
+      </div>
+
+      <!-- Arrow Controls -->
+      <div class="flex items-center gap-3 shrink-0">
+        <button
+          id="safety-prev-btn"
+          type="button"
+          aria-label="Previous Scenario"
+          class="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-border)] bg-white text-[var(--color-primary-navy)] shadow-xs transition-all hover:bg-[var(--color-primary-navy)] hover:text-white hover:shadow-md active:scale-95"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          id="safety-next-btn"
+          type="button"
+          aria-label="Next Scenario"
+          class="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-border)] bg-white text-[var(--color-primary-navy)] shadow-xs transition-all hover:bg-[var(--color-primary-navy)] hover:text-white hover:shadow-md active:scale-95"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <!-- 8 Photographic Requirements Grid -->
-    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {
-        safetyRequirementsData.map((req, index) => (
-          <article class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-sky-blue)] hover:shadow-xl">
-            
-            <div>
-              <!-- Photographic Visual -->
-              <div class="relative aspect-16/10 w-full overflow-hidden bg-[var(--color-soft-bg)]">
-                <img
-                  src={req.image}
-                  alt={req.title}
-                  width="600"
-                  height="375"
-                  class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"></div>
-                
-                <span class="absolute bottom-2.5 left-3 text-[11px] font-bold text-white/95 drop-shadow-md flex items-center gap-1.5">
-                  <span class="flex h-1.5 w-1.5 rounded-full bg-[var(--color-sky-blue)]"></span>
-                  Scenario 0{index + 1}
-                </span>
-              </div>
-
-              <!-- Content Body -->
-              <div class="p-5">
-                <h3 class="text-base font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
-                  {req.title}
-                </h3>
-                
-                <p class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)]">
-                  {req.tagline}
-                </p>
-
-                <p class="mt-2.5 text-xs text-[var(--color-muted-text)] leading-relaxed line-clamp-3">
-                  {req.description}
-                </p>
-
-                <!-- Suitability Tag -->
-                <div class="mt-4 border-t border-[var(--color-border-light)] pt-3 text-[11px] text-[var(--color-primary-navy)]/80">
-                  <strong class="font-bold block text-[var(--color-primary-navy)] text-[10px] uppercase tracking-wider mb-0.5">
-                    Structure Suitability:
-                  </strong>
-                  <span>{req.suitability}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card Bottom: Link to Recommended Solution -->
-            <div class="p-5 pt-0">
-              <a
-                href={`/services/${req.recommendedSlug}/`}
-                class="inline-flex w-full items-center justify-between rounded-xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] px-3 py-2 text-xs font-bold text-[var(--color-primary-navy)] transition-colors hover:bg-[var(--color-primary-navy)] hover:text-white"
+    <!-- Horizontal Auto-Sliding Viewport -->
+    <div
+      class="relative mt-12 select-none overflow-hidden rounded-3xl"
+      id="safety-slider-viewport"
+      aria-roledescription="carousel"
+      aria-label="Safety Application Scenarios"
+    >
+      <div
+        id="safety-slider-track"
+        class="flex gap-6 will-change-transform"
+        style="transform: translateX(0px);"
+      >
+        {
+          extendedData.map((req, index) => {
+            const scenarioNum = (index % safetyRequirementsData.length) + 1;
+            return (
+              <article
+                class="safety-card group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-xs transition-all duration-300 hover:border-[var(--color-sky-blue)] hover:shadow-lg shrink-0 w-[270px] sm:w-[310px] lg:w-[330px]"
               >
-                <span>{req.recommendedService}</span>
-                <svg class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
+                <div>
+                  <!-- Large Photographic Visual (Dominant Image) -->
+                  <div class="relative aspect-4/3 w-full overflow-hidden bg-[var(--color-soft-bg)]">
+                    <img
+                      src={req.image}
+                      alt={req.title}
+                      width="600"
+                      height="450"
+                      class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    
+                    <span class="absolute bottom-3 left-3 text-xs font-bold text-white drop-shadow-md flex items-center gap-1.5">
+                      <span class="flex h-2 w-2 rounded-full bg-[var(--color-sky-blue)]"></span>
+                      Scenario 0{scenarioNum}
+                    </span>
+                  </div>
 
-          </article>
+                  <!-- Minimal Text Content (Clean & Short) -->
+                  <div class="p-4 sm:p-5">
+                    <h3 class="text-base font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors line-clamp-1">
+                      {req.title}
+                    </h3>
+                    
+                    <p class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)] line-clamp-1">
+                      {req.tagline}
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Minimal Link Button -->
+                <div class="p-4 sm:p-5 pt-0">
+                  <a
+                    href={`/services/${req.recommendedSlug}/`}
+                    class="inline-flex w-full items-center justify-between rounded-xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] px-3.5 py-2.5 text-xs font-bold text-[var(--color-primary-navy)] transition-colors hover:bg-[var(--color-primary-navy)] hover:text-white"
+                  >
+                    <span class="truncate">{req.recommendedService}</span>
+                    <svg class="h-3.5 w-3.5 shrink-0 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Navigation Dots Indicator -->
+    <div class="mt-8 flex items-center justify-center gap-2" id="safety-slider-dots">
+      {
+        safetyRequirementsData.map((_, i) => (
+          <button
+            type="button"
+            class="safety-dot h-2 rounded-full transition-all duration-300"
+            data-index={i}
+            aria-label={`Go to scenario ${i + 1}`}
+          />
         ))
       }
     </div>
 
   </div>
 </section>
+
+<script>
+  function initSafetyCarousel() {
+    const viewport = document.getElementById("safety-slider-viewport");
+    const track = document.getElementById("safety-slider-track");
+    const prevBtn = document.getElementById("safety-prev-btn");
+    const nextBtn = document.getElementById("safety-next-btn");
+    const dots = document.querySelectorAll(".safety-dot");
+
+    if (!viewport || !track) return;
+
+    const cards = track.querySelectorAll(".safety-card");
+    const totalOriginalCards = 8;
+    if (cards.length === 0) return;
+
+    let currentIndex = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+    let isPaused = false;
+    let isTransitioning = false;
+
+    function getCardStep(): number {
+      if (cards.length > 1) {
+        const first = cards[0] as HTMLElement;
+        const second = cards[1] as HTMLElement;
+        return second.offsetLeft - first.offsetLeft;
+      }
+      return (cards[0] as HTMLElement).offsetWidth + 24;
+    }
+
+    function updateDots() {
+      const activeIndex = currentIndex % totalOriginalCards;
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.className = "safety-dot h-2 w-7 rounded-full bg-[var(--color-primary-navy)] transition-all duration-300";
+        } else {
+          dot.className = "safety-dot h-2 w-2 rounded-full bg-[var(--color-border)] hover:bg-[var(--color-muted-text)] transition-all duration-300";
+        }
+      });
+    }
+
+    function goToIndex(index: number, animate = true) {
+      currentIndex = index;
+      const step = getCardStep();
+      if (animate) {
+        track!.style.transition = "transform 500ms cubic-bezier(0.25, 1, 0.5, 1)";
+      } else {
+        track!.style.transition = "none";
+      }
+      track!.style.transform = `translateX(-${currentIndex * step}px)`;
+      updateDots();
+    }
+
+    function nextSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex++;
+      goToIndex(currentIndex, true);
+
+      setTimeout(() => {
+        // When we pass the first set of cards, seamlessly jump back to index 0
+        if (currentIndex >= totalOriginalCards) {
+          currentIndex = 0;
+          goToIndex(0, false);
+        }
+        isTransitioning = false;
+      }, 520);
+    }
+
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      if (currentIndex <= 0) {
+        currentIndex = totalOriginalCards;
+        goToIndex(totalOriginalCards, false);
+        // Force reflow
+        void track!.offsetHeight;
+      }
+      currentIndex--;
+      goToIndex(currentIndex, true);
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 520);
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      // 1-second pause on each slide + 500ms transition = 1500ms cycle
+      timer = setInterval(() => {
+        if (!isPaused) {
+          nextSlide();
+        }
+      }, 1500);
+    }
+
+    function stopAutoplay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    // Pause on hover
+    viewport.addEventListener("mouseenter", () => {
+      isPaused = true;
+    });
+    viewport.addEventListener("mouseleave", () => {
+      isPaused = false;
+    });
+
+    // Arrow navigation
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        nextSlide();
+        startAutoplay();
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        prevSlide();
+        startAutoplay();
+      });
+    }
+
+    // Dot navigation
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const idx = parseInt(dot.getAttribute("data-index") || "0", 10);
+        goToIndex(idx, true);
+        startAutoplay();
+      });
+    });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    viewport.addEventListener(
+      "touchstart",
+      (e) => {
+        isPaused = true;
+        touchStartX = (e as TouchEvent).touches[0].clientX;
+      },
+      { passive: true }
+    );
+
+    viewport.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = (e as TouchEvent).changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        isPaused = false;
+        startAutoplay();
+      },
+      { passive: true }
+    );
+
+    // Recalculate on window resize
+    window.addEventListener("resize", () => {
+      goToIndex(currentIndex, false);
+    });
+
+    // Initial state
+    goToIndex(0, false);
+    startAutoplay();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSafetyCarousel);
+  } else {
+    initSafetyCarousel();
+  }
+</script>

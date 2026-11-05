@@ -72,15 +72,7 @@ const phoneUrl = getPhoneUrl();
       ))}
     </div>
 
-    <!-- Honesty Transparency Notice -->
-    <div class="mt-8 mx-auto max-w-3xl rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] p-4 text-center text-xs text-[var(--color-muted-text)] flex items-center justify-center gap-2.5">
-      <svg class="h-4 w-4 text-[var(--color-sky-blue-dark)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      <p>
-        <strong class="text-[var(--color-primary-navy)]">Architectural Installation Showcase &amp; Product Configurations:</strong> Visual configuration gallery illustrating MMR safety systems across balconies, windows, utility areas, and sports grounds. On-site laser surveys and bespoke alignments are conducted for every individual property.
-      </p>
-    </div>
+
 
     <!-- Gallery Grid (All 18 Configurations) -->
     <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" id="gallery-grid">
@@ -134,27 +126,16 @@ const phoneUrl = getPhoneUrl();
               </button>
             </div>
 
-            <!-- Content Body -->
-            <div class="flex flex-1 flex-col p-6">
-              <h3 class="text-base sm:text-lg font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
-                {project.title}
-              </h3>
-
-              <p class="mt-2 text-xs sm:text-sm text-[var(--color-muted-text)] leading-relaxed flex-1">
-                {project.description}
-              </p>
-
-              <!-- Spec Pills -->
-              <div class="mt-4 flex flex-wrap gap-1.5">
-                {project.specs.map((spec) => (
-                  <span class="inline-flex items-center rounded-md bg-[var(--color-soft-bg)] border border-[var(--color-border-light)] px-2 py-0.5 text-[10px] font-semibold text-[var(--color-primary-navy)]/80">
-                    {spec}
-                  </span>
-                ))}
+            <!-- Content Body (Minimal Text - Highlighting Image) -->
+            <div class="flex flex-1 flex-col justify-between p-4 sm:p-5">
+              <div>
+                <h3 class="text-base sm:text-lg font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors line-clamp-1">
+                  {project.title}
+                </h3>
               </div>
 
               <!-- Dual Actions -->
-              <div class="mt-5 grid grid-cols-2 gap-2 pt-4 border-t border-[var(--color-border-light)]">
+              <div class="mt-4 grid grid-cols-2 gap-2 pt-3 border-t border-[var(--color-border-light)]">
                 <button
                   type="button"
                   class="gallery-enlarge-btn inline-flex items-center justify-center gap-1.5 rounded-xl border border-[var(--color-border)] bg-white px-3 py-2 text-xs font-bold text-[var(--color-primary-navy)] transition-all hover:bg-[var(--color-soft-bg)] hover:border-[var(--color-sky-blue)] cursor-pointer"

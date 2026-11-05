@@ -1,0 +1,465 @@
+---
+/**
+ * DesktopGallery3D.astro — Premium 3D Rotating Image Gallery (Desktop Only: >= 768px)
+ *
+ * Strictly matches the user's SECOND reference video (GutSlider 03 Galleries & Artists):
+ * - Premium dark room / gallery background with soft ambient floor reflection glow
+ * - Large prominent center image with elegant squircle rounded corners and deep elevation shadow
+ * - Angled side images visible on both sides with realistic 3D perspective rotation (rotateY, translateZ)
+ * - Continuous smooth 3D rotation (2.0s viewing interval, 800ms transition duration)
+ * - Mouse drag horizontally to explore (mousedown/mousemove/mouseup)
+ * - Click side cards to rotate into center; click center card to view service page
+ * - Tactile discrete circular pagination indicators with active glow
+ * - Seamless infinite circular looping without blank frames or jumps
+ * - Strictly responsive for 1366px, 1440px, 1600px, and 1920px viewports
+ */
+import { heroSlidesData } from "@data/homeData";
+
+// Deduplicate by desktop image to ensure 6 distinct flagship services
+const desktopSlides = heroSlidesData.filter(
+  (slide, idx, arr) => arr.findIndex((s) => s.imageDesktop === slide.imageDesktop) === idx
+);
+---
+
+<div
+  id="desktop-gallery-3d"
+  class="relative w-full overflow-hidden py-10 lg:py-14 select-none bg-gradient-to-b from-[#05111d] via-[#071727] to-[#05111d]"
+  aria-roledescription="3D rotating gallery"
+  aria-label="MMR Safety Featured Services 3D Architectural Gallery"
+>
+  <!-- Ambient Gallery Stage Glow Underneath -->
+  <div class="pointer-events-none absolute bottom-16 left-1/2 -translate-x-1/2 w-[720px] max-w-[85vw] h-[150px] bg-gradient-to-t from-[var(--color-sky-blue)]/15 via-[#123B63]/20 to-transparent blur-3xl rounded-full"></div>
+
+  <!-- 3D Perspective Stage -->
+  <div
+    id="desktop-gallery-stage"
+    class="perspective-stage relative mx-auto h-[440px] lg:h-[500px] xl:h-[540px] w-full max-w-[1780px] flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
+  >
+    <!-- 3D Card Stack Container -->
+    <div
+      id="desktop-card-stack"
+      class="relative h-[410px] lg:h-[470px] xl:h-[510px] w-full"
+      style="transform-style: preserve-3d;"
+    >
+      {
+        desktopSlides.map((slide, index) => {
+          // Pre-calculate server-side initial positioning for zero layout shift (CLS = 0)
+          let initialTransform = "translate3d(-50%, 0, -400px) scale(0.4)";
+          let initialZIndex = 0;
+          let initialOpacity = "0";
+          let initialFilter = "brightness(0.35)";
+          let initialPointerEvents = "none";
+          let initialScrimOpacity = "0.6";
+
+          if (index === 0) {
+            // Active center card
+            initialTransform = "translate3d(-50%, 0, 0px) rotateY(0deg) scale(1)";
+            initialZIndex = 30;
+            initialOpacity = "1";
+            initialFilter = "brightness(1)";
+            initialPointerEvents = "auto";
+            initialScrimOpacity = "0";
+          } else if (index === 1) {
+            // Right angled card
+            initialTransform = "translate3d(calc(-50% + 460px), 0, -100px) rotateY(-28deg) scale(0.86)";
+            initialZIndex = 20;
+            initialOpacity = "0.78";
+            initialFilter = "brightness(0.75)";
+            initialPointerEvents = "auto";
+            initialScrimOpacity = "0.35";
+          } else if (index === 2) {
+            // Far right pre-stage
+            initialTransform = "translate3d(calc(-50% + 840px), 0, -220px) rotateY(-38deg) scale(0.72)";
+            initialZIndex = 10;
+            initialOpacity = "0.35";
+            initialFilter = "brightness(0.5)";
+            initialPointerEvents = "none";
+            initialScrimOpacity = "0.5";
+          } else if (index === desktopSlides.length - 2) {
+            // Far left pre-stage
+            initialTransform = "translate3d(calc(-50% - 840px), 0, -220px) rotateY(38deg) scale(0.72)";
+            initialZIndex = 10;
+            initialOpacity = "0.35";
+            initialFilter = "brightness(0.5)";
+            initialPointerEvents = "none";
+            initialScrimOpacity = "0.5";
+          } else if (index === desktopSlides.length - 1) {
+            // Left angled card
+            initialTransform = "translate3d(calc(-50% - 460px), 0, -100px) rotateY(28deg) scale(0.86)";
+            initialZIndex = 20;
+            initialOpacity = "0.78";
+            initialFilter = "brightness(0.75)";
+            initialPointerEvents = "auto";
+            initialScrimOpacity = "0.35";
+          }
+
+          return (
+            <div
+              class="desktop-3d-card absolute top-0 left-1/2 w-[560px] lg:w-[660px] xl:w-[720px] h-[350px] lg:h-[410px] xl:h-[450px] rounded-2xl lg:rounded-3xl overflow-hidden will-change-transform"
+              data-index={index}
+              data-link={slide.primaryCtaLink}
+              style={`transform: ${initialTransform}; z-index: ${initialZIndex}; opacity: ${initialOpacity}; filter: ${initialFilter}; pointer-events: ${initialPointerEvents};`}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Slide ${index + 1} of ${desktopSlides.length}: ${slide.title}`}
+              aria-hidden={index === 0 ? "false" : "true"}
+            >
+              <!-- Card Image (High-Resolution 16:9 Landscape WebP) -->
+              <img
+                src={slide.imageDesktop}
+                alt={slide.imageAlt || slide.title}
+                width="1376"
+                height="774"
+                class="h-full w-full object-cover select-none pointer-events-none"
+                loading="eager"
+                decoding="async"
+              />
+
+              <!-- Subtle Glass Border Glint -->
+              <div class="pointer-events-none absolute inset-0 rounded-2xl lg:rounded-3xl ring-1 ring-inset ring-white/20"></div>
+
+              <!-- Depth Scrim for Non-Active Cards -->
+              <div
+                class="card-depth-scrim pointer-events-none absolute inset-0 bg-black/40 transition-opacity duration-700"
+                style={`opacity: ${initialScrimOpacity};`}
+              ></div>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <!-- Tactile Previous / Next Arrow Controls -->
+    <button
+      id="desktop-gallery-prev-btn"
+      type="button"
+      class="absolute left-6 xl:left-12 top-1/2 -translate-y-1/2 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md border border-white/20 transition-all duration-200 hover:bg-[#123B63] hover:border-white hover:scale-110 active:scale-95 shadow-2xl focus:outline-none"
+      aria-label="Previous gallery image"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <button
+      id="desktop-gallery-next-btn"
+      type="button"
+      class="absolute right-6 xl:right-12 top-1/2 -translate-y-1/2 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md border border-white/20 transition-all duration-200 hover:bg-[#123B63] hover:border-white hover:scale-110 active:scale-95 shadow-2xl focus:outline-none"
+      aria-label="Next gallery image"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Discrete Pagination Indicators (Matching Reference Video) -->
+  <div class="mt-4 flex items-center justify-center gap-2.5 z-40" role="tablist" aria-label="3D desktop gallery pagination">
+    {
+      desktopSlides.map((_, dotIdx) => (
+        <button
+          type="button"
+          class={`desktop-gallery-dot h-2.5 rounded-full transition-all duration-500 ${
+            dotIdx === 0
+              ? "w-8 bg-[var(--color-sky-blue)] shadow-md shadow-[var(--color-sky-blue)]/50"
+              : "w-2.5 bg-white/35 hover:bg-white/70"
+          }`}
+          data-dot-index={dotIdx}
+          role="tab"
+          aria-selected={dotIdx === 0 ? "true" : "false"}
+          aria-label={`Go to slide ${dotIdx + 1}`}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .perspective-stage {
+    perspective: 1400px;
+    -webkit-perspective: 1400px;
+  }
+
+  .desktop-3d-card {
+    transition: transform 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                box-shadow 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                filter 800ms cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 10px 25px -5px rgba(0, 0, 0, 0.45);
+    transform-origin: center center;
+  }
+</style>
+
+<script>
+  function initDesktopGallery3D() {
+    const root = document.getElementById("desktop-gallery-3d");
+    if (!root) return;
+
+    // Desktop view guard (only run on >= 768px)
+    if (window.innerWidth < 768) return;
+
+    const stage = document.getElementById("desktop-gallery-stage");
+    const cards = Array.from(root.querySelectorAll(".desktop-3d-card")) as HTMLElement[];
+    const dots = Array.from(root.querySelectorAll(".desktop-gallery-dot")) as HTMLElement[];
+    const prevBtn = document.getElementById("desktop-gallery-prev-btn");
+    const nextBtn = document.getElementById("desktop-gallery-next-btn");
+
+    if (cards.length === 0 || !stage) return;
+
+    const total = cards.length;
+    let currentIndex = 0;
+    let autoplayTimer: number | null = null;
+    let isTransitioning = false;
+    const viewIntervalMs = 2000; // Exact 2.0s visibility per user spec
+    const transitionMs = 800;    // Exact 800ms transition duration per user spec
+
+    function getResponsiveShift() {
+      const width = window.innerWidth;
+      if (width >= 1600) return 480;
+      if (width >= 1280) return 440;
+      if (width >= 1024) return 380;
+      return 330;
+    }
+
+    function update3DPositions() {
+      const shiftX = getResponsiveShift();
+      const farShiftX = shiftX * 1.85;
+
+      cards.forEach((card, idx) => {
+        // Calculate signed circular offset (-total/2 to +total/2)
+        let diff = (idx - currentIndex) % total;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        const scrim = card.querySelector(".card-depth-scrim") as HTMLElement | null;
+
+        if (diff === 0) {
+          // ACTIVE CENTER CARD: Front-facing, prominent, full brightness & opacity
+          card.style.transform = "translate3d(-50%, 0, 0px) rotateY(0deg) scale(1)";
+          card.style.zIndex = "30";
+          card.style.opacity = "1";
+          card.style.filter = "brightness(1)";
+          card.style.pointerEvents = "auto";
+          card.setAttribute("aria-hidden", "false");
+          if (scrim) scrim.style.opacity = "0";
+        } else if (diff === 1) {
+          // RIGHT ANGLED CARD: Shifted right, angled in 3D perspective towards center
+          card.style.transform = `translate3d(calc(-50% + ${shiftX}px), 0, -100px) rotateY(-28deg) scale(0.86)`;
+          card.style.zIndex = "20";
+          card.style.opacity = "0.78";
+          card.style.filter = "brightness(0.75)";
+          card.style.pointerEvents = "auto";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.35";
+        } else if (diff === -1) {
+          // LEFT ANGLED CARD: Shifted left, angled in 3D perspective towards center
+          card.style.transform = `translate3d(calc(-50% - ${shiftX}px), 0, -100px) rotateY(28deg) scale(0.86)`;
+          card.style.zIndex = "20";
+          card.style.opacity = "0.78";
+          card.style.filter = "brightness(0.75)";
+          card.style.pointerEvents = "auto";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.35";
+        } else if (diff === 2) {
+          // FAR RIGHT: Extended curved wall appearance
+          card.style.transform = `translate3d(calc(-50% + ${farShiftX}px), 0, -220px) rotateY(-38deg) scale(0.72)`;
+          card.style.zIndex = "10";
+          card.style.opacity = "0.35";
+          card.style.filter = "brightness(0.5)";
+          card.style.pointerEvents = "none";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.5";
+        } else if (diff === -2) {
+          // FAR LEFT: Extended curved wall appearance
+          card.style.transform = `translate3d(calc(-50% - ${farShiftX}px), 0, -220px) rotateY(38deg) scale(0.72)`;
+          card.style.zIndex = "10";
+          card.style.opacity = "0.35";
+          card.style.filter = "brightness(0.5)";
+          card.style.pointerEvents = "none";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.5";
+        } else {
+          // ALL OTHER HIDDEN CARDS
+          card.style.transform = "translate3d(-50%, 0, -400px) scale(0.4)";
+          card.style.zIndex = "0";
+          card.style.opacity = "0";
+          card.style.filter = "brightness(0.35)";
+          card.style.pointerEvents = "none";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.6";
+        }
+      });
+
+      // Update Pagination Indicators
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.remove("w-2.5", "bg-white/35");
+          dot.classList.add("w-8", "bg-[var(--color-sky-blue)]", "shadow-md", "shadow-[var(--color-sky-blue)]/50");
+          dot.setAttribute("aria-selected", "true");
+        } else {
+          dot.classList.remove("w-8", "bg-[var(--color-sky-blue)]", "shadow-md", "shadow-[var(--color-sky-blue)]/50");
+          dot.classList.add("w-2.5", "bg-white/35");
+          dot.setAttribute("aria-selected", "false");
+        }
+      });
+    }
+
+    function goToSlide(newIndex: number) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex = (newIndex + total) % total;
+      update3DPositions();
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, transitionMs);
+    }
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentIndex - 1);
+    }
+
+    // Autoplay Timer Management
+    function startAutoplay() {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (window.innerWidth < 768) return; // Desktop only
+      stopAutoplay();
+      autoplayTimer = window.setInterval(nextSlide, viewIntervalMs + transitionMs);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer !== null) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function restartAutoplayAfterInteraction() {
+      stopAutoplay();
+      // Resume autoplay 2 seconds after user finishes interacting
+      setTimeout(startAutoplay, viewIntervalMs);
+    }
+
+    // Previous & Next Button Listeners
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        stopAutoplay();
+        nextSlide();
+        restartAutoplayAfterInteraction();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        stopAutoplay();
+        prevSlide();
+        restartAutoplayAfterInteraction();
+      });
+    }
+
+    // Dot Click Listeners
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        stopAutoplay();
+        goToSlide(idx);
+        restartAutoplayAfterInteraction();
+      });
+    });
+
+    // Card Click & Drag Implementation
+    let isDragging = false;
+    let startX = 0;
+    let dragDistance = 0;
+    const minDragDistance = 40;
+
+    stage.addEventListener("mousedown", (e: MouseEvent) => {
+      if (e.button !== 0) return; // Only primary mouse button
+      isDragging = true;
+      startX = e.clientX;
+      dragDistance = 0;
+      stopAutoplay();
+    });
+
+    window.addEventListener("mousemove", (e: MouseEvent) => {
+      if (!isDragging) return;
+      dragDistance = e.clientX - startX;
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      if (Math.abs(dragDistance) >= minDragDistance) {
+        if (dragDistance < 0) {
+          nextSlide(); // Dragged left -> Next slide
+        } else {
+          prevSlide(); // Dragged right -> Previous slide
+        }
+      }
+      restartAutoplayAfterInteraction();
+    });
+
+    // Card Click handler (handles clicks vs drags)
+    cards.forEach((card, idx) => {
+      card.addEventListener("click", () => {
+        // If a drag just happened, ignore click
+        if (Math.abs(dragDistance) >= minDragDistance) return;
+
+        let diff = (idx - currentIndex) % total;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        if (diff === 1) {
+          stopAutoplay();
+          nextSlide();
+          restartAutoplayAfterInteraction();
+        } else if (diff === -1) {
+          stopAutoplay();
+          prevSlide();
+          restartAutoplayAfterInteraction();
+        } else if (diff === 0) {
+          const link = card.getAttribute("data-link");
+          if (link) window.location.href = link;
+        }
+      });
+    });
+
+    // Keyboard Arrow Listeners
+    window.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (window.innerWidth < 768) return;
+      if (e.key === "ArrowLeft") {
+        stopAutoplay();
+        prevSlide();
+        restartAutoplayAfterInteraction();
+      } else if (e.key === "ArrowRight") {
+        stopAutoplay();
+        nextSlide();
+        restartAutoplayAfterInteraction();
+      }
+    });
+
+    // Window Resize Handler (Recalculate 3D perspective offsets & manage autoplay)
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        update3DPositions();
+        if (!autoplayTimer) startAutoplay();
+      } else {
+        stopAutoplay();
+      }
+    });
+
+    // Initial setup on desktop
+    update3DPositions();
+    startAutoplay();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDesktopGallery3D);
+  } else {
+    initDesktopGallery3D();
+  }
+</script>

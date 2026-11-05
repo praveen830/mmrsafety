@@ -53,8 +53,8 @@ export const heroSlidesData: HeroSlideItem[] = [
     primaryCtaLink: "/services/invisible-grills/",
     secondaryCtaText: "Get a Free Quote",
     secondaryCtaLink: "#quote",
-    imageDesktop: "/images/services/invisible-grills-desktop.webp",
-    imageMobile: "/images/services/invisible-grills-mobile.webp",
+    imageDesktop: "/images/desktop/invisible-grills.webp",
+    imageMobile: "/images/mobile/invisible-grills.webp",
     imageAlt:
       "Luxury high-rise apartment balcony fitted with vertical stainless steel invisible grill safety cables overlooking city skyline",
     specBadges: ["316 Stainless Steel Core", "98% Open Skyline View", "Child & Pet Security"],
@@ -72,8 +72,8 @@ export const heroSlidesData: HeroSlideItem[] = [
     secondaryCtaText: "WhatsApp Enquiry",
     secondaryCtaLink:
       "https://wa.me/916304433505?text=Hi%20MMR%20Safety%2C%20I%20am%20interested%20in%20Invisible%20Grills%20installation.",
-    imageDesktop: "/images/services/invisible-grills-desktop.webp",
-    imageMobile: "/images/services/invisible-grills-mobile.webp",
+    imageDesktop: "/images/desktop/invisible-grills.webp",
+    imageMobile: "/images/mobile/invisible-grills.webp",
     imageAlt:
       "Modern luxury apartment balcony with vertical invisible grill cables overlooking skyline",
     specBadges: ["Corrosion-Proof Coating", "Emergency Fire Egress", "Zero Maintenance"],
@@ -91,8 +91,8 @@ export const heroSlidesData: HeroSlideItem[] = [
     secondaryCtaText: "WhatsApp Enquiry",
     secondaryCtaLink:
       "https://wa.me/916304433505?text=Hi%20MMR%20Safety%2C%20I%20am%20interested%20in%20Safety%20Nets%20installation.",
-    imageDesktop: "/images/services/safety-nets-desktop.webp",
-    imageMobile: "/images/services/safety-nets-mobile.webp",
+    imageDesktop: "/images/desktop/safety-nets.webp",
+    imageMobile: "/images/mobile/safety-nets.webp",
     imageAlt:
       "Residential balcony fall protection safety net installation overlooking green city view",
     specBadges: ["High-Tensile Polymer Mesh", "UV-Treated Endurance", "Clean Non-Invasive Anchors"],
@@ -110,8 +110,8 @@ export const heroSlidesData: HeroSlideItem[] = [
     secondaryCtaText: "WhatsApp Enquiry",
     secondaryCtaLink:
       "https://wa.me/916304433505?text=Hi%20MMR%20Safety%2C%20I%20am%20interested%20in%20Pigeon%20Safety%20Nets%20installation.",
-    imageDesktop: "/images/services/pigeon-safety-nets-desktop.webp",
-    imageMobile: "/images/services/pigeon-safety-nets-mobile.webp",
+    imageDesktop: "/images/desktop/pigeon-safety-nets.webp",
+    imageMobile: "/images/mobile/pigeon-safety-nets.webp",
     imageAlt:
       "Apartment balcony protected by translucent pigeon safety net with birds deterred on exterior ledge",
     specBadges: ["Translucent Monofilament", "Eliminates Mites & Odor", "100% Daylight & Airflow"],
@@ -129,8 +129,8 @@ export const heroSlidesData: HeroSlideItem[] = [
     secondaryCtaText: "WhatsApp Enquiry",
     secondaryCtaLink:
       "https://wa.me/916304433505?text=Hi%20MMR%20Safety%2C%20I%20am%20interested%20in%20Sports%20Nets%20installation.",
-    imageDesktop: "/images/services/sports-nets-desktop.webp",
-    imageMobile: "/images/services/sports-nets-mobile.webp",
+    imageDesktop: "/images/desktop/sports-nets.webp",
+    imageMobile: "/images/mobile/sports-nets.webp",
     imageAlt:
       "Professional outdoor cricket practice turf enclosure with heavy-duty safety sports netting",
     specBadges: ["High-Velocity Impact Cords", "Reinforced Border Ropes", "All-Weather UV Treatment"],
@@ -148,8 +148,8 @@ export const heroSlidesData: HeroSlideItem[] = [
     secondaryCtaText: "WhatsApp Enquiry",
     secondaryCtaLink:
       "https://wa.me/916304433505?text=Hi%20MMR%20Safety%2C%20I%20am%20interested%20in%20Cloth%20Hangers%20installation.",
-    imageDesktop: "/images/services/cloth-hangers-desktop.webp",
-    imageMobile: "/images/services/cloth-hangers-mobile.webp",
+    imageDesktop: "/images/desktop/cloth-hangers.webp",
+    imageMobile: "/images/mobile/cloth-hangers.webp",
     imageAlt:
       "Ceiling-mounted stainless steel pulley cloth drying hanger installed in a modern apartment balcony",
     specBadges: ["Independent Pulley Operation", "Rustproof SS Tubes", "Frees Up Floor Space"],
@@ -167,8 +167,8 @@ export const heroSlidesData: HeroSlideItem[] = [
     secondaryCtaText: "WhatsApp Enquiry",
     secondaryCtaLink:
       "https://wa.me/916304433505?text=Hi%20MMR%20Safety%2C%20I%20am%20interested%20in%20Bird%20Spikes%20installation.",
-    imageDesktop: "/images/services/bird-spikes-desktop.webp",
-    imageMobile: "/images/services/bird-spikes-mobile.webp",
+    imageDesktop: "/images/desktop/bird-spikes.webp",
+    imageMobile: "/images/mobile/bird-spikes.webp",
     imageAlt:
       "Close-up of stainless steel anti-perch bird spikes installed on building parapet wall ledge",
     specBadges: ["Humane Deterrence", "Flexible Polycarbonate Base", "Zero Maintenance"],
@@ -213,18 +213,17 @@ export const servicesData: ServiceItem[] = [
   {
     id: "invisible-grills",
     name: "Invisible Grills",
-    tagline: "Unobstructed Skyline Views with High-Tensile Protection",
-    description:
-      "Modern high-tensile stainless steel cable systems engineered for balconies and windows, providing robust accidental fall protection while preserving open panoramic views.",
+    tagline: "Clear Views & Fall Protection",
+    description: "High-tensile stainless steel cables for safe, unobstructed views.",
     features: [
       "High-tensile stainless steel vertical cables",
       "Maintains natural daylight and open ventilation",
       "Seamless integration with contemporary architecture",
     ],
     icon: "grill",
-    image: "/images/services/invisible-grills-desktop.webp",
-    imageDesktop: "/images/services/invisible-grills-desktop.webp",
-    imageMobile: "/images/services/invisible-grills-mobile.webp",
+    image: "/images/desktop/invisible-grills.webp",
+    imageDesktop: "/images/desktop/invisible-grills.webp",
+    imageMobile: "/images/mobile/invisible-grills.webp",
     imageAlt: "Modern luxury high-rise apartment balcony fitted with vertical stainless steel invisible grill safety cables overlooking city skyline",
     altText: "Modern luxury high-rise apartment balcony fitted with vertical stainless steel invisible grill safety cables overlooking city skyline",
     badge: "Popular Choice",
@@ -233,18 +232,17 @@ export const servicesData: ServiceItem[] = [
   {
     id: "safety-nets",
     name: "Safety Nets",
-    tagline: "Comprehensive Fall Protection for Balconies & Open Shafts",
-    description:
-      "Durable, UV-stabilized safety netting tailored for residential balconies, stairwells, and open building ducts to safeguard children, pets, and residents from falls.",
+    tagline: "Child & Pet Fall Safety",
+    description: "Durable UV-stabilized mesh for balconies, windows, and stairwells.",
     features: [
       "Weather-resistant UV-stabilized polymer mesh",
       "Custom-fitted to unique architectural openings",
       "High impact resistance with secure perimeter anchoring",
     ],
     icon: "shield-net",
-    image: "/images/services/safety-nets-desktop.webp",
-    imageDesktop: "/images/services/safety-nets-desktop.webp",
-    imageMobile: "/images/services/safety-nets-mobile.webp",
+    image: "/images/desktop/safety-nets.webp",
+    imageDesktop: "/images/desktop/safety-nets.webp",
+    imageMobile: "/images/mobile/safety-nets.webp",
     imageAlt: "Residential balcony fall protection safety net installation overlooking green city view",
     altText: "Residential balcony fall protection safety net installation overlooking green city view",
     href: "/services/safety-nets/",
@@ -252,18 +250,17 @@ export const servicesData: ServiceItem[] = [
   {
     id: "pigeon-safety-nets",
     name: "Pigeon Safety Nets",
-    tagline: "Clean, Bird-Free Living Spaces Without Blocking Airflow",
-    description:
-      "Discreet translucent netting designed to prevent pigeons and other birds from roosting in balconies and utility ducts, eliminating health hazards while maintaining complete ventilation.",
+    tagline: "Bird-Free Clean Balconies",
+    description: "Translucent netting keeping balconies bird-free with full airflow.",
     features: [
       "Translucent finish that blends into the background",
       "Humane bird deterrence without injury",
       "Zero hindrance to fresh air and outdoor views",
     ],
     icon: "bird-barrier",
-    image: "/images/services/pigeon-safety-nets-desktop.webp",
-    imageDesktop: "/images/services/pigeon-safety-nets-desktop.webp",
-    imageMobile: "/images/services/pigeon-safety-nets-mobile.webp",
+    image: "/images/desktop/pigeon-safety-nets.webp",
+    imageDesktop: "/images/desktop/pigeon-safety-nets.webp",
+    imageMobile: "/images/mobile/pigeon-safety-nets.webp",
     imageAlt: "Apartment balcony protected by translucent pigeon safety net with birds deterred on exterior ledge",
     altText: "Apartment balcony protected by translucent pigeon safety net with birds deterred on exterior ledge",
     badge: "High Demand",
@@ -272,18 +269,17 @@ export const servicesData: ServiceItem[] = [
   {
     id: "sports-nets",
     name: "Sports Nets",
-    tagline: "Engineered Ball Containment for Practice & Play Areas",
-    description:
-      "Specialized high-durability netting solutions designed for cricket practice pitches, badminton courts, terrace play areas, and sports complexes with reinforced borders.",
+    tagline: "Ball Containment Enclosures",
+    description: "High-impact netting for cricket pitches, courts, and play areas.",
     features: [
       "High-impact cord strength for high-velocity balls",
       "Custom height, width, and cage enclosures",
       "Weather-treated for outdoor and terrace installations",
     ],
     icon: "sports",
-    image: "/images/services/sports-nets-desktop.webp",
-    imageDesktop: "/images/services/sports-nets-desktop.webp",
-    imageMobile: "/images/services/sports-nets-mobile.webp",
+    image: "/images/desktop/sports-nets.webp",
+    imageDesktop: "/images/desktop/sports-nets.webp",
+    imageMobile: "/images/mobile/sports-nets.webp",
     imageAlt: "Professional outdoor cricket practice turf enclosure with heavy-duty safety sports netting",
     altText: "Professional outdoor cricket practice turf enclosure with heavy-duty safety sports netting",
     href: "/services/sports-nets/",
@@ -291,18 +287,17 @@ export const servicesData: ServiceItem[] = [
   {
     id: "cloth-hangers",
     name: "Cloth Hangers",
-    tagline: "Ceiling-Mounted Space Savers for Compact Balconies",
-    description:
-      "Ergonomic ceiling-mounted pull-and-dry systems and wall-mounted foldable drying racks crafted from stainless steel pipes for effortless indoor and balcony laundry management.",
+    tagline: "Ceiling Space Savers",
+    description: "Rust-free ceiling pulley racks for effortless laundry drying.",
     features: [
       "Individual pipe pulley lowering mechanism",
       "Rust-resistant stainless steel construction",
       "Frees up valuable balcony floor space",
     ],
     icon: "hanger",
-    image: "/images/services/cloth-hangers-desktop.webp",
-    imageDesktop: "/images/services/cloth-hangers-desktop.webp",
-    imageMobile: "/images/services/cloth-hangers-mobile.webp",
+    image: "/images/desktop/cloth-hangers.webp",
+    imageDesktop: "/images/desktop/cloth-hangers.webp",
+    imageMobile: "/images/mobile/cloth-hangers.webp",
     imageAlt: "Ceiling-mounted stainless steel pulley cloth drying hanger installed in a modern apartment balcony",
     altText: "Ceiling-mounted stainless steel pulley cloth drying hanger installed in a modern apartment balcony",
     href: "/services/cloth-hangers/",
@@ -310,18 +305,17 @@ export const servicesData: ServiceItem[] = [
   {
     id: "bird-spikes",
     name: "Bird Spikes",
-    tagline: "Durable Anti-Perch Strips for Ledges & Window Sills",
-    description:
-      "Corrosion-resistant stainless steel spike strips mounted on flexible polycarbonate bases to deter birds from landing on parapets, AC outdoor units, and narrow window ledges.",
+    tagline: "Anti-Perch Ledge Protection",
+    description: "Stainless steel spikes for window sills, ledges, and AC units.",
     features: [
       "Humane, non-harmful bird perching deterrent",
       "Weatherproof polycarbonate base with flexible curvature",
       "Long-lasting protection for ledges and AC brackets",
     ],
     icon: "spikes",
-    image: "/images/services/bird-spikes-desktop.webp",
-    imageDesktop: "/images/services/bird-spikes-desktop.webp",
-    imageMobile: "/images/services/bird-spikes-mobile.webp",
+    image: "/images/desktop/bird-spikes.webp",
+    imageDesktop: "/images/desktop/bird-spikes.webp",
+    imageMobile: "/images/mobile/bird-spikes.webp",
     imageAlt: "Close-up of stainless steel anti-perch bird spikes installed on building parapet wall ledge",
     altText: "Close-up of stainless steel anti-perch bird spikes installed on building parapet wall ledge",
     href: "/services/bird-spikes/",
@@ -459,7 +453,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Full-Height Vertical Tensioned Cables",
     description: "Vertical marine-grade 316 stainless steel cable system anchored under calibrated tension along balcony balustrades, maintaining 98% open panoramic views.",
     type: "Invisible Grills",
-    image: "/images/services/invisible-grills-desktop.webp",
+    image: "/images/desktop/invisible-grills.webp",
     tag: "Showcase Configuration",
     specs: ["316 Stainless Steel Core", "2-Inch Safety Spacing", "Emergency Fire Egress"]
   },
@@ -497,7 +491,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Perimeter Balustrade Fall Barrier",
     description: "Tightly anchored UV-stabilized virgin polymer safety net mesh safeguarding infants, toddlers, and household pets along exterior balcony railings.",
     type: "Safety Nets",
-    image: "/images/services/safety-nets-desktop.webp",
+    image: "/images/desktop/safety-nets.webp",
     tag: "Showcase Configuration",
     specs: ["High-Tenacity HDPE Mesh", "Heat-Set Square Knots", "Stainless Anchor Hooks"]
   },
@@ -535,7 +529,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Translucent Balcony Façade Enclosure",
     description: "Virtually invisible polymer netting preventing pigeons and birds from roosting in balconies, eliminating droppings and respiratory health hazards.",
     type: "Pigeon Safety Nets",
-    image: "/images/services/pigeon-safety-nets-desktop.webp",
+    image: "/images/desktop/pigeon-safety-nets.webp",
     tag: "Showcase Configuration",
     specs: ["Translucent Blending Mesh", "100% Humane Deterrent", "Zero Airflow Hindrance"]
   },
@@ -573,7 +567,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Full Box Practice Pitch Cage",
     description: "Heavy-duty impact-absorbing cricket practice netting installed on structural steel poles with overhead net ceiling for high-velocity ball containment.",
     type: "Sports Nets",
-    image: "/images/services/sports-nets-desktop.webp",
+    image: "/images/desktop/sports-nets.webp",
     tag: "Showcase Configuration",
     specs: ["High-Impact Ball Containment", "UV Outdoor Endurance", "Reinforced Border Cord"]
   },
@@ -611,7 +605,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "6-Pipe Individual Lowering Pulley Rack",
     description: "High-grade stainless steel pipes individually lowered via smooth nylon dual-wheel ceiling pulleys, reclaiming 100% of valuable balcony floor space.",
     type: "Cloth Hangers",
-    image: "/images/services/cloth-hangers-desktop.webp",
+    image: "/images/desktop/cloth-hangers.webp",
     tag: "Showcase Configuration",
     specs: ["Grade 304/202 SS Pipes", "Dual-Wheel Nylon Pulleys", "High Load Capacity"]
   },
@@ -649,7 +643,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "High-Density Anti-Perch Ledge Strips",
     description: "Blunted marine stainless steel wire prongs bonded to flexible polycarbonate bases, denying pigeons landing footing along building ledges.",
     type: "Bird Spikes",
-    image: "/images/services/bird-spikes-desktop.webp",
+    image: "/images/desktop/bird-spikes.webp",
     tag: "Showcase Configuration",
     specs: ["100% Humane Deterrent", "Marine-Grade SS Pins", "UV-Stabilized Base"]
   },

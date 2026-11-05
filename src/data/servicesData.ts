@@ -95,9 +95,9 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     tagline: "Architectural Elegance Meets High-Tensile Protection",
     subtitle:
       "Slim high-tensile stainless steel cable systems engineered for contemporary balconies and windows, providing certified accidental fall protection without blocking natural airflow or city vistas.",
-    heroImage: "/images/services/invisible-grills-desktop.webp",
-    imageDesktop: "/images/services/invisible-grills-desktop.webp",
-    imageMobile: "/images/services/invisible-grills-mobile.webp",
+    heroImage: "/images/desktop/invisible-grills.webp",
+    imageDesktop: "/images/desktop/invisible-grills.webp",
+    imageMobile: "/images/mobile/invisible-grills.webp",
     imageAlt:
       "Modern luxury high-rise apartment balcony fitted with vertical stainless steel invisible grill safety cables overlooking city skyline",
     altText:
@@ -210,12 +210,12 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/services/invisible-grills-desktop.webp",
+        image: "/images/desktop/invisible-grills.webp",
         alt: "Original AI architectural high-rise balcony with stainless steel invisible safety grill cables catching sunlight",
         caption: "Luxury High-Rise Balcony — High-Tensile Stainless Steel Cable Safety Installation",
       },
       {
-        image: "/images/services/invisible-grills-mobile.webp",
+        image: "/images/mobile/invisible-grills.webp",
         alt: "High-rise apartment balcony vertical invisible grill safety installation with panoramic city background",
         caption: "High-Rise Balcony — Full-Height Vertical Marine SS Invisible Grill Installation",
       },
@@ -281,7 +281,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         tagline: "Panoramic Balcony Fall Protection",
         description:
           "Full-height or railing-to-ceiling high-tensile stainless steel vertical cables engineered for apartment balconies, ensuring 100% open views and fresh airflow.",
-        image: "/images/services/invisible-grills-desktop.webp",
+        image: "/images/desktop/invisible-grills.webp",
         imageAlt: "Balcony invisible grill installation overlooking Bangalore city view",
         suitability: [
           "High-Rise Balconies",
@@ -385,9 +385,9 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     tagline: "Comprehensive Fall Prevention for Balconies & Open Shafts",
     subtitle:
       "Durable, UV-stabilized polymer safety netting tailored for residential balconies, stairwells, and open building ducts to safeguard children, pets, and residents from falls.",
-    heroImage: "/images/services/safety-nets-desktop.webp",
-    imageDesktop: "/images/services/safety-nets-desktop.webp",
-    imageMobile: "/images/services/safety-nets-mobile.webp",
+    heroImage: "/images/desktop/safety-nets.webp",
+    imageDesktop: "/images/desktop/safety-nets.webp",
+    imageMobile: "/images/mobile/safety-nets.webp",
     imageAlt:
       "Residential balcony fall protection safety net installation overlooking green city view",
     altText:
@@ -500,12 +500,12 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/services/safety-nets-desktop.webp",
+        image: "/images/desktop/safety-nets.webp",
         alt: "High-rise apartment balcony with transparent safety net enclosing the railing in crisp daylight",
         caption: "Apartment Balcony Fall Safety Netting — Full Height Protection",
       },
       {
-        image: "/images/services/safety-nets-mobile.webp",
+        image: "/images/mobile/safety-nets.webp",
         alt: "Tensioned safety net protecting luxury balcony perimeter with potted plants and city view",
         caption: "Tightly Anchored Mesh with Clear Outdoor Visibility & Natural Light",
       },
@@ -571,7 +571,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         tagline: "Comprehensive Balcony Fall Protection",
         description:
           "High-tenacity perimeter netting designed to enclose open apartment balconies, preventing children, toddlers, and pets from falling through balustrade gaps.",
-        image: "/images/services/safety-nets-mobile.webp",
+        image: "/images/mobile/safety-nets.webp",
         imageAlt: "Balcony fall protection safety net installation in high-rise building",
         suitability: [
           "High-Rise Balconies",
@@ -696,9 +696,9 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     tagline: "Clean, Bird-Free Living Spaces Without Blocking Airflow",
     subtitle:
       "Discreet translucent netting designed to prevent pigeons and other birds from roosting in balconies and utility ducts, eliminating health hazards while maintaining complete ventilation.",
-    heroImage: "/images/services/pigeon-safety-nets-desktop.webp",
-    imageDesktop: "/images/services/pigeon-safety-nets-desktop.webp",
-    imageMobile: "/images/services/pigeon-safety-nets-mobile.webp",
+    heroImage: "/images/desktop/pigeon-safety-nets.webp",
+    imageDesktop: "/images/desktop/pigeon-safety-nets.webp",
+    imageMobile: "/images/mobile/pigeon-safety-nets.webp",
     imageAlt:
       "Apartment balcony protected by translucent pigeon safety net with birds deterred on exterior ledge",
     altText:
@@ -811,12 +811,12 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/services/pigeon-safety-nets-desktop.webp",
+        image: "/images/desktop/pigeon-safety-nets.webp",
         alt: "Apartment balcony protected by translucent pigeon safety net with birds deterred on exterior ledge",
         caption: "Apartment Balcony Pigeon Protection — Full Daytime Airflow & Clarity",
       },
       {
-        image: "/images/services/pigeon-safety-nets-mobile.webp",
+        image: "/images/mobile/pigeon-safety-nets.webp",
         alt: "Balcony pigeon exclusion netting keeping outdoor furniture and tiles spotless",
         caption: "Clean, Bird-Free Living Space — Spotless Outdoor Balcony Area",
       },
@@ -882,7 +882,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         tagline: "Humane Balcony Bird Deterrence",
         description:
           "Discreet translucent netting enclosing open apartment balconies, permanently ending bird infestation while keeping your panoramic views and fresh air.",
-        image: "/images/services/pigeon-safety-nets-desktop.webp",
+        image: "/images/desktop/pigeon-safety-nets.webp",
         imageAlt: "Balcony pigeon safety net installation in high-rise building",
         suitability: [
           "Apartment Balconies",
@@ -985,9 +985,9 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     tagline: "Engineered Ball Containment for Practice & Play Areas",
     subtitle:
       "Specialized high-durability netting solutions designed for cricket practice pitches, badminton courts, terrace play areas, and sports complexes with reinforced borders.",
-    heroImage: "/images/services/sports-nets-desktop.webp",
-    imageDesktop: "/images/services/sports-nets-desktop.webp",
-    imageMobile: "/images/services/sports-nets-mobile.webp",
+    heroImage: "/images/desktop/sports-nets.webp",
+    imageDesktop: "/images/desktop/sports-nets.webp",
+    imageMobile: "/images/mobile/sports-nets.webp",
     imageAlt:
       "Professional outdoor cricket practice turf enclosure with heavy-duty safety sports netting",
     altText:
@@ -1100,12 +1100,12 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/services/sports-nets-desktop.webp",
+        image: "/images/desktop/sports-nets.webp",
         alt: "Professional outdoor cricket practice turf enclosure with heavy-duty safety sports netting",
         caption: "Cricket Practice Pitch — Heavy-Impact Ball Containment Enclosure",
       },
       {
-        image: "/images/services/sports-nets-mobile.webp",
+        image: "/images/mobile/sports-nets.webp",
         alt: "Outdoor cricket pitch turf with green sports netting and guide cables",
         caption: "High-Tensile Ball Containment for Sports Enthusiasts & Academies",
       },
@@ -1166,7 +1166,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         tagline: "High-Impact Cricket Bowling Pitch Enclosures",
         description:
           "Heavy-duty containment cages and batting pitch nets engineered to absorb high-velocity leather and tennis cricket ball impacts safely.",
-        image: "/images/services/sports-nets-mobile.webp",
+        image: "/images/mobile/sports-nets.webp",
         imageAlt: "Professional cricket practice net pitch enclosure",
         suitability: [
           "Apartment Rooftop Turfs",
@@ -1291,9 +1291,9 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     tagline: "Effortless Ceiling Space-Savers for Modern Balconies",
     subtitle:
       "Individual pulley-operated cloth drying systems crafted from stainless steel pipes, freeing up clean floor space while utilizing warm ceiling airflow.",
-    heroImage: "/images/services/cloth-hangers-desktop.webp",
-    imageDesktop: "/images/services/cloth-hangers-desktop.webp",
-    imageMobile: "/images/services/cloth-hangers-mobile.webp",
+    heroImage: "/images/desktop/cloth-hangers.webp",
+    imageDesktop: "/images/desktop/cloth-hangers.webp",
+    imageMobile: "/images/mobile/cloth-hangers.webp",
     imageAlt:
       "Ceiling-mounted stainless steel pulley cloth drying hanger installed in a modern apartment balcony",
     altText:
@@ -1401,12 +1401,12 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/services/cloth-hangers-desktop.webp",
+        image: "/images/desktop/cloth-hangers.webp",
         alt: "Ceiling-mounted stainless steel pulley cloth drying hanger installed in a modern apartment balcony",
         caption: "Ceiling Pulley Cloth Hanger — Effortless Independent Rod Lowering System",
       },
       {
-        image: "/images/services/cloth-hangers-mobile.webp",
+        image: "/images/mobile/cloth-hangers.webp",
         alt: "Apartment balcony with stainless steel drying rods and clean floor space",
         caption: "Frees 100% Balcony Floor Space — Quick Warm-Air Ceiling Drying",
       },
@@ -1467,7 +1467,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         tagline: "Individual Pulley Pull-and-Dry System",
         description:
           "Independent 6-rod pulley system lowering each stainless steel pipe to chest height for effortless laundry hanging and raising to the ceiling for quick warm-air drying.",
-        image: "/images/services/cloth-hangers-mobile.webp",
+        image: "/images/mobile/cloth-hangers.webp",
         imageAlt: "Ceiling cloth drying hanger pulley system in apartment balcony",
         suitability: [
           "Apartment Balconies",
@@ -1549,9 +1549,9 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     tagline: "Humane, Permanent Anti-Perch Protection for Ledges",
     subtitle:
       "High-tensile stainless steel wire spikes mounted on flexible polycarbonate bases to stop birds from perching on narrow ledges, pipes, and outdoor AC units.",
-    heroImage: "/images/services/bird-spikes-desktop.webp",
-    imageDesktop: "/images/services/bird-spikes-desktop.webp",
-    imageMobile: "/images/services/bird-spikes-mobile.webp",
+    heroImage: "/images/desktop/bird-spikes.webp",
+    imageDesktop: "/images/desktop/bird-spikes.webp",
+    imageMobile: "/images/mobile/bird-spikes.webp",
     imageAlt:
       "Close-up of stainless steel anti-perch bird spikes installed on building parapet wall ledge",
     altText:
@@ -1664,12 +1664,12 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/services/bird-spikes-desktop.webp",
+        image: "/images/desktop/bird-spikes.webp",
         alt: "Stainless steel anti-bird spikes installed on building parapet wall ledge",
         caption: "Parapet Ledge Installation — Clean Architectural Appearance",
       },
       {
-        image: "/images/services/bird-spikes-mobile.webp",
+        image: "/images/mobile/bird-spikes.webp",
         alt: "Close-up of stainless steel bird spikes on building ledge with flexible base",
         caption: "Blunted Marine SS Prongs for 100% Humane Bird Deterrence",
       },
@@ -1730,7 +1730,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         tagline: "Marine SS Wire Anti-Perch Strips",
         description:
           "High-grade stainless steel spike pins set on clear polycarbonate bases, providing permanent humane bird deterrence for narrow parapets and ledges.",
-        image: "/images/services/bird-spikes-mobile.webp",
+        image: "/images/mobile/bird-spikes.webp",
         imageAlt: "Stainless steel bird spikes on building parapet",
         suitability: [
           "Building Parapet Walls",

@@ -2,9 +2,11 @@
 /**
  * ServiceAreasSection.astro — Confirmed Operational Service Zones
  *
- * Driven directly from siteConfig.ts (serviceAreasData).
- * Displays confirmed residential zones across Bengaluru with prompt
- * site-visit dispatch commitments and direct area-specific WhatsApp enquiry triggers.
+ * Horizontal Auto-Sliding Carousel:
+ * - Slides horizontally with a 1-second pause on each location card.
+ * - Image-led representation of what MMR Safety provides in each area.
+ * - Minimal text focused on location, service representation, and quick WhatsApp dispatch.
+ * - Seamless infinite loop, pause on hover/touch, and responsive cards.
  */
 import {
   serviceAreasData,
@@ -27,26 +29,91 @@ const {
 } = Astro.props;
 
 const phoneUrl = getPhoneUrl();
+
+// Visual representation of what MMR Safety provides in each specific area
+const areaImageCards: Record<string, { image: string; whatWeProvide: string }> = {
+  "whitefield-marathahalli": {
+    image: "/images/services/benefits/invisible-grills/ig-skyline-view.jpg",
+    whatWeProvide: "High-Rise Balcony Invisible Grills & Safety Nets",
+  },
+  "electronic-city-sarjapur": {
+    image: "/images/services/benefits/safety-nets/sn-child-pet-security.jpg",
+    whatWeProvide: "Balcony Child Safety Nets & Ceiling Cloth Hangers",
+  },
+  "bellandur-outer-ring-road": {
+    image: "/images/services/benefits/pigeon-safety-nets/pn-balcony-cleanliness.jpg",
+    whatWeProvide: "Discreet Pigeon Safety Nets & Anti-Perch Spikes",
+  },
+  "hsr-layout-koramangala": {
+    image: "/images/services/benefits/cloth-hangers/ch-ceiling-integration.jpg",
+    whatWeProvide: "Ceiling Pulley Cloth Hangers & Balcony Nets",
+  },
+  "hebbal-thanisandra": {
+    image: "/images/services/benefits/sports-nets/sp-cricket-turf.jpg",
+    whatWeProvide: "Rooftop Turf Sports Nets & Fall Protection",
+  },
+  "jp-nagar-kanakapura": {
+    image: "/images/services/benefits/safety-nets/sn-discreet-footprint.jpg",
+    whatWeProvide: "Balcony Invisible Grills & Stairwell Safety Nets",
+  },
+  "indiranagar-central": {
+    image: "/images/services/benefits/bird-spikes/bs-architectural-invisible.jpg",
+    whatWeProvide: "Architectural Invisible Grills & Humane Bird Spikes",
+  },
+  "yeshwanthpur-malleshwaram": {
+    image: "/images/projects/project-invisible-grills.jpg",
+    whatWeProvide: "Gated Community Balcony Safety Nets & Grills",
+  },
+};
+
+// Duplicate items for infinite seamless looping
+const extendedAreasData = [...serviceAreasData, ...serviceAreasData];
 ---
 
 <section
   id="service-areas"
-  class="relative bg-[var(--color-soft-bg)] py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16"
+  class="relative bg-[var(--color-soft-bg)] py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16 overflow-hidden"
   aria-labelledby="areas-heading"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     
-    <!-- Section Header -->
-    <div class="mx-auto max-w-3xl text-center">
-      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
-        Operational Coverage
-      </span>
-      <h2 id="areas-heading" class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
-        {title}
-      </h2>
-      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
-        {subtitle}
-      </p>
+    <!-- Section Header with Slider Navigation Controls -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
+          Operational Coverage
+        </span>
+        <h2 id="areas-heading" class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+          {title}
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] leading-relaxed">
+          {subtitle}
+        </p>
+      </div>
+
+      <!-- Arrow Controls -->
+      <div class="flex items-center gap-3 shrink-0">
+        <button
+          id="areas-prev-btn"
+          type="button"
+          aria-label="Previous Area"
+          class="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-border)] bg-white text-[var(--color-primary-navy)] shadow-xs transition-all hover:bg-[var(--color-primary-navy)] hover:text-white hover:shadow-md active:scale-95"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          id="areas-next-btn"
+          type="button"
+          aria-label="Next Area"
+          class="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-border)] bg-white text-[var(--color-primary-navy)] shadow-xs transition-all hover:bg-[var(--color-primary-navy)] hover:text-white hover:shadow-md active:scale-95"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Rapid Dispatch Indicators -->
@@ -58,7 +125,7 @@ const phoneUrl = getPhoneUrl();
           </svg>
         </span>
         <h3 class="mt-2 text-sm font-bold text-[var(--color-primary-navy)]">Same-Day / 24h Visits</h3>
-        <p class="text-xs text-[var(--color-muted-text)] mt-0.5">Prompt technician scheduling for all confirmed sectors.</p>
+        <p class="text-xs text-[var(--color-muted-text)] mt-0.5">Prompt technician scheduling for all sectors.</p>
       </div>
 
       <div class="rounded-2xl border border-[var(--color-border)] bg-white p-4 shadow-xs">
@@ -78,88 +145,115 @@ const phoneUrl = getPhoneUrl();
           </svg>
         </span>
         <h3 class="mt-2 text-sm font-bold text-[var(--color-primary-navy)]">Immediate Estimates</h3>
-        <p class="text-xs text-[var(--color-muted-text)] mt-0.5">Laser-measured dimensions with clear per-sqft pricing.</p>
+        <p class="text-xs text-[var(--color-muted-text)] mt-0.5">Laser-measured dimensions with clear pricing.</p>
       </div>
     </div>
 
-    <!-- 8 Areas Grid -->
-    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {serviceAreasData.map((area) => {
-        const areaWhatsappMsg = getAreaSiteVisitMessage(area.name);
-        const areaWhatsappUrl = getWhatsAppUrl(areaWhatsappMsg);
+    <!-- Horizontal Auto-Sliding Viewport -->
+    <div
+      class="relative mt-12 select-none overflow-hidden rounded-3xl"
+      id="areas-slider-viewport"
+      aria-roledescription="carousel"
+      aria-label="Bengaluru Operational Service Zones"
+    >
+      <div
+        id="areas-slider-track"
+        class="flex gap-6 will-change-transform"
+        style="transform: translateX(0px);"
+      >
+        {
+          extendedAreasData.map((area, index) => {
+            const areaNum = (index % serviceAreasData.length) + 1;
+            const visual = areaImageCards[area.id] || {
+              image: "/images/desktop/invisible-grills.webp",
+              whatWeProvide: "Balcony Invisible Grills & Safety Nets",
+            };
+            const areaWhatsappMsg = getAreaSiteVisitMessage(area.name);
+            const areaWhatsappUrl = getWhatsAppUrl(areaWhatsappMsg);
 
-        return (
-          <article class="group flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-sky-blue)] hover:shadow-lg">
-            
-            <div>
-              <!-- Zone Tag & Dispatch Status -->
-              <div class="flex items-center justify-between gap-2">
-                <span class="inline-flex items-center rounded-md bg-[var(--color-soft-bg)] border border-[var(--color-border-light)] px-2.5 py-0.5 text-[11px] font-bold text-[var(--color-sky-blue-dark)]">
-                  {area.zone}
-                </span>
-                <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  {area.responseTime}
-                </span>
-              </div>
-
-              <!-- Area Name -->
-              <h3 class="mt-3.5 text-base sm:text-lg font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
-                {area.name}
-              </h3>
-
-              <p class="mt-2 text-xs text-[var(--color-muted-text)] leading-relaxed">
-                {area.description}
-              </p>
-
-              <!-- Landmarks Covered -->
-              <div class="mt-4">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-[var(--color-primary-navy)]/80">
-                  Key Corridors:
-                </span>
-                <div class="mt-1.5 flex flex-wrap gap-1">
-                  {area.landmarks.map((landmark) => (
-                    <span class="inline-flex items-center rounded-sm bg-slate-50 border border-slate-200/60 px-1.5 py-0.5 text-[10px] text-[var(--color-muted-text)]">
-                      {landmark}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Popular Solutions In Area -->
-              <div class="mt-3.5">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-[var(--color-primary-navy)]/80">
-                  High Demand:
-                </span>
-                <p class="mt-0.5 text-xs font-semibold text-[var(--color-primary-navy)]">
-                  {area.popularServices.join(" • ")}
-                </p>
-              </div>
-            </div>
-
-            <!-- Area CTA -->
-            <div class="mt-6 pt-4 border-t border-[var(--color-border-light)]">
-              <a
-                href={areaWhatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3.5 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1EBE5D] hover:shadow-md active:scale-98"
-                aria-label={`Request Free Site Visit in ${area.name} on WhatsApp`}
+            return (
+              <article
+                class="area-card group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-xs transition-all duration-300 hover:border-[var(--color-sky-blue)] hover:shadow-lg shrink-0 w-[270px] sm:w-[310px] lg:w-[330px]"
               >
-                <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
-                </svg>
-                <span>Request Visit in This Area</span>
-              </a>
-            </div>
+                <div>
+                  <!-- Photographic Visual Showing Installed Solution in This Area -->
+                  <div class="relative aspect-4/3 w-full overflow-hidden bg-[var(--color-soft-bg)]">
+                    <img
+                      src={visual.image}
+                      alt={`${area.name} — ${visual.whatWeProvide} by MMR Safety`}
+                      width="600"
+                      height="450"
+                      class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
+                    
+                    <!-- Zone & Dispatch Badges -->
+                    <span class="absolute top-3 left-3 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white/95 border border-white/20 shadow-xs">
+                      {area.zone}
+                    </span>
 
-          </article>
-        );
-      })}
+                    <span class="absolute top-3 right-3 rounded-full bg-emerald-500/90 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold text-white shadow-xs flex items-center gap-1">
+                      <span class="h-1.5 w-1.5 rounded-full bg-white"></span>
+                      {area.responseTime}
+                    </span>
+
+                    <span class="absolute bottom-3 left-3 text-xs font-bold text-white drop-shadow-md flex items-center gap-1.5">
+                      <span class="flex h-2 w-2 rounded-full bg-[var(--color-sky-blue)]"></span>
+                      Zone 0{areaNum}
+                    </span>
+                  </div>
+
+                  <!-- Location & What We Provide (Image Representation, Less Text) -->
+                  <div class="p-4 sm:p-5">
+                    <h3 class="text-base sm:text-lg font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors line-clamp-1">
+                      {area.name}
+                    </h3>
+                    
+                    <p class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)] line-clamp-1">
+                      {visual.whatWeProvide}
+                    </p>
+                  </div>
+                </div>
+
+                <!-- 1-Click WhatsApp Site Visit CTA -->
+                <div class="p-4 sm:p-5 pt-0">
+                  <a
+                    href={areaWhatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3.5 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1EBE5D] hover:shadow-md active:scale-98"
+                    aria-label={`Request Free Site Visit in ${area.name} on WhatsApp`}
+                  >
+                    <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                    </svg>
+                    <span>Request Free Site Visit</span>
+                  </a>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Navigation Dots Indicator -->
+    <div class="mt-8 flex items-center justify-center gap-2" id="areas-slider-dots">
+      {
+        serviceAreasData.map((_, i) => (
+          <button
+            type="button"
+            class="area-dot h-2 rounded-full transition-all duration-300"
+            data-index={i}
+            aria-label={`Go to area slide ${i + 1}`}
+          />
+        ))
+      }
     </div>
 
     {showContactPrompt && (
-      
       <div class="mt-12 rounded-3xl border border-[var(--color-border)] bg-white p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xs">
         <div>
           <h3 class="text-base sm:text-lg font-bold text-[var(--color-primary-navy)]">
@@ -186,3 +280,175 @@ const phoneUrl = getPhoneUrl();
 
   </div>
 </section>
+
+<script>
+  function initAreasCarousel() {
+    const viewport = document.getElementById("areas-slider-viewport");
+    const track = document.getElementById("areas-slider-track");
+    const prevBtn = document.getElementById("areas-prev-btn");
+    const nextBtn = document.getElementById("areas-next-btn");
+    const dots = document.querySelectorAll(".area-dot");
+
+    if (!viewport || !track) return;
+
+    const cards = track.querySelectorAll(".area-card");
+    const totalOriginalCards = 8;
+    if (cards.length === 0) return;
+
+    let currentIndex = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+    let isPaused = false;
+    let isTransitioning = false;
+
+    function getCardStep(): number {
+      if (cards.length > 1) {
+        const first = cards[0] as HTMLElement;
+        const second = cards[1] as HTMLElement;
+        return second.offsetLeft - first.offsetLeft;
+      }
+      return (cards[0] as HTMLElement).offsetWidth + 24;
+    }
+
+    function updateDots() {
+      const activeIndex = currentIndex % totalOriginalCards;
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.className = "area-dot h-2 w-7 rounded-full bg-[var(--color-primary-navy)] transition-all duration-300";
+        } else {
+          dot.className = "area-dot h-2 w-2 rounded-full bg-[var(--color-border)] hover:bg-[var(--color-muted-text)] transition-all duration-300";
+        }
+      });
+    }
+
+    function goToIndex(index: number, animate = true) {
+      currentIndex = index;
+      const step = getCardStep();
+      if (animate) {
+        track!.style.transition = "transform 500ms cubic-bezier(0.25, 1, 0.5, 1)";
+      } else {
+        track!.style.transition = "none";
+      }
+      track!.style.transform = `translateX(-${currentIndex * step}px)`;
+      updateDots();
+    }
+
+    function nextSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex++;
+      goToIndex(currentIndex, true);
+
+      setTimeout(() => {
+        if (currentIndex >= totalOriginalCards) {
+          currentIndex = 0;
+          goToIndex(0, false);
+        }
+        isTransitioning = false;
+      }, 520);
+    }
+
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      if (currentIndex <= 0) {
+        currentIndex = totalOriginalCards;
+        goToIndex(totalOriginalCards, false);
+        void track!.offsetHeight;
+      }
+      currentIndex--;
+      goToIndex(currentIndex, true);
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 520);
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      // 1-second pause on each slide + 500ms transition = 1500ms cycle
+      timer = setInterval(() => {
+        if (!isPaused) {
+          nextSlide();
+        }
+      }, 1500);
+    }
+
+    function stopAutoplay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    viewport.addEventListener("mouseenter", () => {
+      isPaused = true;
+    });
+    viewport.addEventListener("mouseleave", () => {
+      isPaused = false;
+    });
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        nextSlide();
+        startAutoplay();
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        prevSlide();
+        startAutoplay();
+      });
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const idx = parseInt(dot.getAttribute("data-index") || "0", 10);
+        goToIndex(idx, true);
+        startAutoplay();
+      });
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    viewport.addEventListener(
+      "touchstart",
+      (e) => {
+        isPaused = true;
+        touchStartX = (e as TouchEvent).touches[0].clientX;
+      },
+      { passive: true }
+    );
+
+    viewport.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = (e as TouchEvent).changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        isPaused = false;
+        startAutoplay();
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", () => {
+      goToIndex(currentIndex, false);
+    });
+
+    goToIndex(0, false);
+    startAutoplay();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAreasCarousel);
+  } else {
+    initAreasCarousel();
+  }
+</script>

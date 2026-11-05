@@ -1,0 +1,419 @@
+---
+/**
+ * MobileHero3D.astro — Mobile-Only 3D Layered Coverflow Card Carousel
+ *
+ * Strictly matches the user's reference video (GutSlider Coverflow 3D):
+ * - Center active card: Prominent, larger, centered horizontally, elevated z-index, deep shadow
+ * - Left/Right background cards: Shifted horizontally, reduced scale (~0.86), partially overlapping behind
+ * - Pure 3D depth and perspective (perspective: 1000px, transform-style: preserve-3d)
+ * - Rounded 3xl squircle corners matching reference
+ * - Exactly 2.0s viewing interval per image
+ * - Smooth 800ms cubic-bezier transition easing
+ * - Circular left & right navigation arrow buttons
+ * - Centered pagination dots beneath the cards
+ * - Touch swipe left/right with autoplay pause and automatic resume
+ * - Seamless infinite circular looping without sudden jumps
+ */
+import { heroSlidesData } from "@data/homeData";
+
+// Deduplicate by mobile image to ensure 6 distinct flagship services
+const mobileSlides = heroSlidesData.filter(
+  (slide, idx, arr) => arr.findIndex((s) => s.imageMobile === slide.imageMobile) === idx
+);
+---
+
+<div
+  id="mobile-hero-3d"
+  class="relative w-full overflow-hidden py-5 select-none bg-[var(--color-primary-navy)]"
+  aria-roledescription="3D carousel"
+  aria-label="MMR Safety Featured Services 3D Mobile Showcase"
+>
+  <!-- 3D Perspective Stage -->
+  <div class="perspective-stage relative mx-auto h-[400px] w-full flex items-center justify-center overflow-hidden">
+    
+    <!-- 3D Card Stack Container -->
+    <div
+      id="mobile-card-stack"
+      class="relative h-[380px] w-full"
+      style="transform-style: preserve-3d;"
+    >
+      {
+        mobileSlides.map((slide, index) => {
+          // Compute server-side initial layout for zero layout shift (CLS = 0)
+          let initialTransform = "translateX(0%) scale(0.5) translateZ(-200px)";
+          let initialZIndex = 0;
+          let initialOpacity = "0";
+          let initialFilter = "brightness(0.4)";
+          let initialPointerEvents = "none";
+          let initialScrimOpacity = "0.6";
+
+          if (index === 0) {
+            initialTransform = "translateX(0%) scale(1) translateZ(0px)";
+            initialZIndex = 30;
+            initialOpacity = "1";
+            initialFilter = "brightness(1)";
+            initialPointerEvents = "auto";
+            initialScrimOpacity = "0";
+          } else if (index === 1) {
+            initialTransform = "translateX(50%) scale(0.86) translateZ(-80px)";
+            initialZIndex = 20;
+            initialOpacity = "0.72";
+            initialFilter = "brightness(0.72)";
+            initialPointerEvents = "auto";
+            initialScrimOpacity = "0.35";
+          } else if (index === mobileSlides.length - 1) {
+            initialTransform = "translateX(-50%) scale(0.86) translateZ(-80px)";
+            initialZIndex = 20;
+            initialOpacity = "0.72";
+            initialFilter = "brightness(0.72)";
+            initialPointerEvents = "auto";
+            initialScrimOpacity = "0.35";
+          }
+
+          return (
+            <div
+              class="mobile-3d-card absolute top-0 inset-x-0 mx-auto w-[70%] max-w-[280px] h-[375px] rounded-[26px] overflow-hidden cursor-pointer will-change-transform"
+              data-index={index}
+              data-link={slide.primaryCtaLink}
+              style={`transform: ${initialTransform}; z-index: ${initialZIndex}; opacity: ${initialOpacity}; filter: ${initialFilter}; pointer-events: ${initialPointerEvents};`}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Slide ${index + 1} of ${mobileSlides.length}: ${slide.title}`}
+              aria-hidden={index === 0 ? "false" : "true"}
+            >
+              <!-- Card Image (4:5 High-Res Optimized WebP) -->
+              <img
+                src={slide.imageMobile}
+                alt={slide.imageAlt || slide.title}
+                width="896"
+                height="1120"
+                class="h-full w-full object-cover select-none pointer-events-none"
+                loading="eager"
+                decoding="async"
+              />
+
+              <!-- Subtle Card Border & Highlight Glint -->
+              <div class="pointer-events-none absolute inset-0 rounded-[26px] ring-1 ring-inset ring-white/20"></div>
+
+              <!-- Gentle Depth Scrim on Non-Active Cards -->
+              <div
+                class="card-depth-scrim pointer-events-none absolute inset-0 bg-black/35 transition-opacity duration-700"
+                style={`opacity: ${initialScrimOpacity};`}
+              ></div>
+            </div>
+          );
+        })
+      }
+    </div>
+
+  </div>
+
+  <!-- Floating Navigation Arrows (Placed outside perspective stage to guarantee z-index layering) -->
+  <button
+    id="mobile-3d-prev-btn"
+    type="button"
+    class="absolute left-2 top-[205px] -translate-y-1/2 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-[#123B63] shadow-2xl backdrop-blur-md border border-white/60 transition-all duration-200 active:scale-90 hover:bg-white focus:outline-none"
+    aria-label="Previous slide"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <button
+    id="mobile-3d-next-btn"
+    type="button"
+    class="absolute right-2 top-[205px] -translate-y-1/2 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-[#123B63] shadow-2xl backdrop-blur-md border border-white/60 transition-all duration-200 active:scale-90 hover:bg-white focus:outline-none"
+    aria-label="Next slide"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <!-- Pagination Dots (Matching Reference Video) -->
+  <div class="mt-2 flex items-center justify-center gap-2 z-40" role="tablist" aria-label="3D mobile slider pagination">
+    {
+      mobileSlides.map((_, dotIdx) => (
+        <button
+          type="button"
+          class={`mobile-3d-dot h-2.5 rounded-full transition-all duration-500 ${
+            dotIdx === 0
+              ? "w-7 bg-[var(--color-sky-blue)]"
+              : "w-2.5 bg-white/35 hover:bg-white/60"
+          }`}
+          data-dot-index={dotIdx}
+          role="tab"
+          aria-selected={dotIdx === 0 ? "true" : "false"}
+          aria-label={`Go to slide ${dotIdx + 1}`}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .perspective-stage {
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+  }
+
+  .mobile-3d-card {
+    transition: transform 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                box-shadow 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                filter 800ms cubic-bezier(0.25, 1, 0.5, 1);
+    -webkit-transition: -webkit-transform 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                        opacity 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                        box-shadow 800ms cubic-bezier(0.25, 1, 0.5, 1),
+                        filter 800ms cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 25px 45px -10px rgba(0, 0, 0, 0.55), 0 10px 20px -5px rgba(0, 0, 0, 0.35);
+  }
+</style>
+
+<script>
+  function initMobileHero3D() {
+    const root = document.getElementById("mobile-hero-3d");
+    if (!root) return;
+
+    const cards = Array.from(root.querySelectorAll(".mobile-3d-card")) as HTMLElement[];
+    const dots = Array.from(root.querySelectorAll(".mobile-3d-dot")) as HTMLElement[];
+    const prevBtn = document.getElementById("mobile-3d-prev-btn");
+    const nextBtn = document.getElementById("mobile-3d-next-btn");
+
+    if (cards.length === 0) return;
+
+    const total = cards.length;
+    let currentIndex = 0;
+    let autoplayTimer: number | null = null;
+    let isTransitioning = false;
+    const viewIntervalMs = 2000; // Exact 2.0s visibility per user spec
+    const transitionMs = 800;    // Exact 800ms transition duration per user spec
+
+    function update3DPositions() {
+      cards.forEach((card, idx) => {
+        // Calculate signed circular offset from current index (-total/2 to +total/2)
+        let diff = (idx - currentIndex) % total;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        const scrim = card.querySelector(".card-depth-scrim") as HTMLElement | null;
+
+        if (diff === 0) {
+          // ACTIVE CENTER CARD: Prominent, larger, centered, full brightness & opacity
+          card.style.transform = "translateX(0%) scale(1) translateZ(0px)";
+          card.style.zIndex = "30";
+          card.style.opacity = "1";
+          card.style.filter = "brightness(1)";
+          card.style.pointerEvents = "auto";
+          card.setAttribute("aria-hidden", "false");
+          if (scrim) scrim.style.opacity = "0";
+        } else if (diff === 1) {
+          // RIGHT BACKGROUND CARD: Shifted right, scaled down, partially visible behind center
+          card.style.transform = "translateX(50%) scale(0.86) translateZ(-80px)";
+          card.style.zIndex = "20";
+          card.style.opacity = "0.72";
+          card.style.filter = "brightness(0.72)";
+          card.style.pointerEvents = "auto";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.35";
+        } else if (diff === -1) {
+          // LEFT BACKGROUND CARD: Shifted left, scaled down, partially visible behind center
+          card.style.transform = "translateX(-50%) scale(0.86) translateZ(-80px)";
+          card.style.zIndex = "20";
+          card.style.opacity = "0.72";
+          card.style.filter = "brightness(0.72)";
+          card.style.pointerEvents = "auto";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.35";
+        } else if (diff === 2) {
+          // FAR RIGHT: Pre-staged out of view for smooth incoming transitions
+          card.style.transform = "translateX(110%) scale(0.72) translateZ(-140px)";
+          card.style.zIndex = "10";
+          card.style.opacity = "0";
+          card.style.filter = "brightness(0.5)";
+          card.style.pointerEvents = "none";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.5";
+        } else if (diff === -2) {
+          // FAR LEFT: Pre-staged out of view for smooth incoming transitions
+          card.style.transform = "translateX(-110%) scale(0.72) translateZ(-140px)";
+          card.style.zIndex = "10";
+          card.style.opacity = "0";
+          card.style.filter = "brightness(0.5)";
+          card.style.pointerEvents = "none";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.5";
+        } else {
+          // ALL OTHER HIDDEN CARDS
+          card.style.transform = "translateX(0%) scale(0.5) translateZ(-200px)";
+          card.style.zIndex = "0";
+          card.style.opacity = "0";
+          card.style.filter = "brightness(0.4)";
+          card.style.pointerEvents = "none";
+          card.setAttribute("aria-hidden", "true");
+          if (scrim) scrim.style.opacity = "0.6";
+        }
+      });
+
+      // Update Dots
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.remove("w-2.5", "bg-white/35");
+          dot.classList.add("w-7", "bg-[var(--color-sky-blue)]");
+          dot.setAttribute("aria-selected", "true");
+        } else {
+          dot.classList.remove("w-7", "bg-[var(--color-sky-blue)]");
+          dot.classList.add("w-2.5", "bg-white/35");
+          dot.setAttribute("aria-selected", "false");
+        }
+      });
+    }
+
+    function goToSlide(newIndex: number) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex = (newIndex + total) % total;
+      update3DPositions();
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, transitionMs);
+    }
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentIndex - 1);
+    }
+
+    // Autoplay Timer Management
+    function startAutoplay() {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (window.innerWidth >= 768) return; // Only run on mobile viewport
+      stopAutoplay();
+      // Wait exact 2s view time + 800ms transition = 2800ms cycle
+      autoplayTimer = window.setInterval(nextSlide, viewIntervalMs + transitionMs);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer !== null) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function restartAutoplayAfterInteraction() {
+      stopAutoplay();
+      // Resume autoplay 2 seconds after user finishes interacting
+      setTimeout(startAutoplay, viewIntervalMs);
+    }
+
+    // Button Listeners
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        stopAutoplay();
+        nextSlide();
+        restartAutoplayAfterInteraction();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        stopAutoplay();
+        prevSlide();
+        restartAutoplayAfterInteraction();
+      });
+    }
+
+    // Dot Click Listeners
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        stopAutoplay();
+        goToSlide(idx);
+        restartAutoplayAfterInteraction();
+      });
+    });
+
+    // Card Click: Clicking left card goes prev, clicking right goes next, clicking center navigates
+    cards.forEach((card, idx) => {
+      card.addEventListener("click", () => {
+        let diff = (idx - currentIndex) % total;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        if (diff === 1) {
+          stopAutoplay();
+          nextSlide();
+          restartAutoplayAfterInteraction();
+        } else if (diff === -1) {
+          stopAutoplay();
+          prevSlide();
+          restartAutoplayAfterInteraction();
+        } else if (diff === 0) {
+          const link = card.getAttribute("data-link");
+          if (link) window.location.href = link;
+        }
+      });
+    });
+
+    // Touch Swipe Gestures
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 35;
+
+    root.addEventListener(
+      "touchstart",
+      (e: TouchEvent) => {
+        stopAutoplay();
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      },
+      { passive: true }
+    );
+
+    root.addEventListener(
+      "touchend",
+      (e: TouchEvent) => {
+        touchEndX = e.changedTouches[0].clientX;
+        touchEndY = e.changedTouches[0].clientY;
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+          if (diffX < 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        restartAutoplayAfterInteraction();
+      },
+      { passive: true }
+    );
+
+    // Responsive window listener
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 768) {
+        if (!autoplayTimer) startAutoplay();
+      } else {
+        stopAutoplay();
+      }
+    });
+
+    // Initial setup
+    update3DPositions();
+    startAutoplay();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMobileHero3D);
+  } else {
+    initMobileHero3D();
+  }
+</script>
+
