@@ -8,6 +8,7 @@
 import BaseLayout from "./BaseLayout.astro";
 import Header from "@components/layout/Header.astro";
 import Footer from "@components/layout/Footer.astro";
+import FloatingContactButtons from "@components/layout/FloatingContactButtons.astro";
 
 interface Props {
   title?: string;
@@ -31,4 +32,7 @@ const { ...seoProps } = Astro.props;
   </main>
 
   <Footer />
+
+  <!-- Permanent Floating Quick Action Buttons (Call on Bottom-Left, WhatsApp on Bottom-Right) -->
+  <FloatingContactButtons />
 </BaseLayout>
