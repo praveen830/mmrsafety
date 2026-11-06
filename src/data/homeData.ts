@@ -453,7 +453,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Full-Height Vertical Tensioned Cables",
     description: "Vertical marine-grade 316 stainless steel cable system anchored under calibrated tension along balcony balustrades, maintaining 98% open panoramic views.",
     type: "Invisible Grills",
-    image: "/images/desktop/invisible-grills.webp",
+    image: "/images/hero/hero-balcony.jpg",
     tag: "Showcase Configuration",
     specs: ["316 Stainless Steel Core", "2-Inch Safety Spacing", "Emergency Fire Egress"]
   },
@@ -465,7 +465,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Slim Aluminum Profile Window Guard",
     description: "Concealed-mount slimline aluminum track fitted into window reveals, preventing accidental falls while allowing natural daylight and cross-ventilation.",
     type: "Invisible Grills",
-    image: "/images/services/benefits/invisible-grills/ig-skyline-view.jpg",
+    image: "/images/services/benefits/invisible-grills/ig-window-system.jpg",
     tag: "Showcase Configuration",
     specs: ["Powder-Coated Track", "Tamper-Resistant Pins", "Sliding Window Friendly"]
   },
@@ -477,9 +477,9 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Reinforced Balustrade Protection",
     description: "Close-pitch vertical cable arrangement with horizontal cross-stiffeners to prevent flex, engineered specifically for high-rise family homes.",
     type: "Invisible Grills",
-    image: "/images/services/benefits/invisible-grills/ig-fall-protection.jpg",
+    image: "/images/services/benefits/invisible-grills/ig-child-protection.jpg",
     tag: "Showcase Configuration",
-    specs: ["Anti-Flex Cross Stiffeners", "UV Nylon Encasing", "Zero Burr Surface"]
+    specs: ["Anti-Flex Cross Stiffeners", "High Tensile Wire", "Child-Safe Calibrated Pitch"]
   },
 
   // 2. Safety Nets
@@ -491,33 +491,21 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Perimeter Balustrade Fall Barrier",
     description: "Tightly anchored UV-stabilized virgin polymer safety net mesh safeguarding infants, toddlers, and household pets along exterior balcony railings.",
     type: "Safety Nets",
-    image: "/images/desktop/safety-nets.webp",
+    image: "/images/projects/project-safety-nets.jpg",
     tag: "Showcase Configuration",
     specs: ["High-Tenacity HDPE Mesh", "Heat-Set Square Knots", "Stainless Anchor Hooks"]
   },
   {
     id: "proj-sn-2",
-    title: "Apartment Duct & Plumbing Shaft Fall Guard",
+    title: "Children & Pet Balcony Safety Netting",
     category: "Safety Nets",
     serviceSlug: "safety-nets",
-    configuration: "Multi-Storey Vertical Shaft Enclosure",
-    description: "Heavy-gauge containment netting installed across vertical open plumbing shafts and utility voids to prevent accidents and debris drops.",
+    configuration: "High-Tensile Child Safety Barrier",
+    description: "Calibrated micro-mesh fall protection barrier engineered to contain high impact loads while maintaining 100% natural balcony daylight and airflow.",
     type: "Safety Nets",
     image: "/images/services/benefits/safety-nets/sn-child-pet-security.jpg",
     tag: "Showcase Configuration",
-    specs: ["Heavy Load Dispersion", "Corrosion-Proof Rigging", "Full Shaft Coverage"]
-  },
-  {
-    id: "proj-sn-3",
-    title: "Open Stairwell & Atrium Void Netting",
-    category: "Safety Nets",
-    serviceSlug: "safety-nets",
-    configuration: "Horizontal Void Safety Catch Net",
-    description: "Engineered horizontal safety net barrier spanning large central stairwell voids and duplex openings in modern residential buildings.",
-    type: "Safety Nets",
-    image: "/images/services/benefits/safety-nets/sn-airflow-transmission.jpg",
-    tag: "Showcase Configuration",
-    specs: ["High Airflow Open Area", "Discreet Visual Profile", "Balanced Concrete Anchors"]
+    specs: ["Multi-Strand Polymer", "Weather-Resistant", "Non-Obstructive Mesh"]
   },
 
   // 3. Pigeon Safety Nets
@@ -529,33 +517,21 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Translucent Balcony Façade Enclosure",
     description: "Virtually invisible polymer netting preventing pigeons and birds from roosting in balconies, eliminating droppings and respiratory health hazards.",
     type: "Pigeon Safety Nets",
-    image: "/images/desktop/pigeon-safety-nets.webp",
+    image: "/images/projects/project-pigeon-nets.jpg",
     tag: "Showcase Configuration",
     specs: ["Translucent Blending Mesh", "100% Humane Deterrent", "Zero Airflow Hindrance"]
   },
   {
     id: "proj-pn-2",
-    title: "AC Ledge & Utility Area Bird Defense",
+    title: "Balcony & AC Ledge Anti-Bird Shield",
     category: "Pigeon Safety Nets",
     serviceSlug: "pigeon-safety-nets",
-    configuration: "Utility Balcony Cleanliness Guard",
-    description: "Discreet netting preventing birds from nesting behind air conditioner compressors, water pipes, and utility washing machine areas.",
+    configuration: "Full Perimeter Bird Exclusion",
+    description: "High-durability netting barrier preventing pigeons from nesting on outdoor ledges, keeping balcony furniture and tiles completely spotless.",
     type: "Pigeon Safety Nets",
     image: "/images/services/benefits/pigeon-safety-nets/pn-pigeon-block.jpg",
     tag: "Showcase Configuration",
-    specs: ["Protects AC Wiring", "Eliminates Nesting", "Weatherproof Fasteners"]
-  },
-  {
-    id: "proj-pn-3",
-    title: "Open Architectural Duct Bird Protection",
-    category: "Pigeon Safety Nets",
-    serviceSlug: "pigeon-safety-nets",
-    configuration: "Building Shaft Pigeon Mesh",
-    description: "Custom-fitted anti-pigeon netting stretched securely over building air shafts and ventilation cut-outs with durable perimeter tension wire.",
-    type: "Pigeon Safety Nets",
-    image: "/images/services/benefits/pigeon-safety-nets/pn-balcony-cleanliness.jpg",
-    tag: "Showcase Configuration",
-    specs: ["Perimeter Wire Tension", "Rustproof Turnbuckles", "Clean Architectural Look"]
+    specs: ["Clean Outdoor Living", "Zero Roosting Footing", "Weatherproof Poly Cords"]
   },
 
   // 4. Sports Nets
@@ -567,33 +543,21 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Full Box Practice Pitch Cage",
     description: "Heavy-duty impact-absorbing cricket practice netting installed on structural steel poles with overhead net ceiling for high-velocity ball containment.",
     type: "Sports Nets",
-    image: "/images/desktop/sports-nets.webp",
+    image: "/images/projects/project-sports-nets.jpg",
     tag: "Showcase Configuration",
     specs: ["High-Impact Ball Containment", "UV Outdoor Endurance", "Reinforced Border Cord"]
   },
   {
     id: "proj-sp-2",
-    title: "Terrace Multi-Sport Play Area Netting",
+    title: "Multi-Sport Ground & Turf Perimeter Netting",
     category: "Sports Nets",
     serviceSlug: "sports-nets",
     configuration: "Perimeter Boundary Ball Barrier",
-    description: "Tall perimeter safety netting surrounding apartment rooftop play courts to prevent footballs, basketballs, and tennis balls from flying over ledges.",
+    description: "High-tensile sports arena netting engineered for turf pitches, sports clubs, and school grounds, preventing sports balls from exiting play zones.",
     type: "Sports Nets",
-    image: "/images/services/benefits/sports-nets/sp-cricket-turf.jpg",
+    image: "/images/desktop/sports-nets.webp",
     tag: "Showcase Configuration",
-    specs: ["Custom Height Spans", "Property Safety Barrier", "Zero-Sag Rigging"]
-  },
-  {
-    id: "proj-sp-3",
-    title: "Badminton & Volleyball Court Enclosures",
-    category: "Sports Nets",
-    serviceSlug: "sports-nets",
-    configuration: "Clubhouse Court Boundary Nets",
-    description: "Tailored indoor and outdoor court boundary netting designed for clubhouse sports facilities and residential community recreation grounds.",
-    type: "Sports Nets",
-    image: "/images/services/benefits/sports-nets/sp-all-weather.jpg",
-    tag: "Showcase Configuration",
-    specs: ["Even Mesh Tension", "Heavy-Gauge Polyethylene", "Clean Boundary Lines"]
+    specs: ["All-Weather Outdoor Mesh", "Zero-Sag Tension Lines", "High-Impact Twine"]
   },
 
   // 5. Cloth Hangers
@@ -605,33 +569,21 @@ export const showcaseData: ProjectItem[] = [
     configuration: "6-Pipe Individual Lowering Pulley Rack",
     description: "High-grade stainless steel pipes individually lowered via smooth nylon dual-wheel ceiling pulleys, reclaiming 100% of valuable balcony floor space.",
     type: "Cloth Hangers",
-    image: "/images/desktop/cloth-hangers.webp",
+    image: "/images/projects/project-cloth-hangers.jpg",
     tag: "Showcase Configuration",
     specs: ["Grade 304/202 SS Pipes", "Dual-Wheel Nylon Pulleys", "High Load Capacity"]
   },
   {
     id: "proj-ch-2",
-    title: "Compact Utility Area Ceiling Hanger",
+    title: "Retractable Stainless Steel Wall Accordion Rack",
     category: "Cloth Hangers",
     serviceSlug: "cloth-hangers",
-    configuration: "Space-Saving Overhead Laundry Rack",
-    description: "Overhead laundry drying system utilizing warm ceiling air currents for faster drying without obstructing balcony passage or seating.",
+    configuration: "Compact Fold-Flat Drying System",
+    description: "Space-saving accordion wall rack crafted from rustproof stainless steel, folding completely flush when not in use for utility areas and balconies.",
     type: "Cloth Hangers",
-    image: "/images/services/benefits/cloth-hangers/ch-reclaim-floor.jpg",
+    image: "/images/details/detail-hanger-pulley.jpg",
     tag: "Showcase Configuration",
-    specs: ["Floor Space Reclaimed", "Faster Warm-Air Drying", "Easy Chest-Level Loading"]
-  },
-  {
-    id: "proj-ch-3",
-    title: "Rustproof Stainless Steel Drying Rods",
-    category: "Cloth Hangers",
-    serviceSlug: "cloth-hangers",
-    configuration: "Weatherproof Laundry Solution",
-    description: "Polished stainless steel laundry pipes that will never rust or stain damp white clothing, backed by heavy-duty wall locking cleats.",
-    type: "Cloth Hangers",
-    image: "/images/services/benefits/cloth-hangers/ch-ceiling-integration.jpg",
-    tag: "Showcase Configuration",
-    specs: ["Zero Rust on Garments", "Heavy Wall Locking Cleat", "Sleek Ceiling Integration"]
+    specs: ["Fold-Flat Accordion Frame", "Rustproof Stainless Steel", "Space-Saving Compact Fit"]
   },
 
   // 6. Bird Spikes
@@ -641,34 +593,22 @@ export const showcaseData: ProjectItem[] = [
     category: "Bird Spikes",
     serviceSlug: "bird-spikes",
     configuration: "High-Density Anti-Perch Ledge Strips",
-    description: "Blunted marine stainless steel wire prongs bonded to flexible polycarbonate bases, denying pigeons landing footing along building ledges.",
+    description: "Blunted marine stainless steel wire prongs embedded in flexible polycarbonate bases, permanently preventing pigeons from perching on narrow architectural ledges.",
     type: "Bird Spikes",
-    image: "/images/desktop/bird-spikes.webp",
+    image: "/images/projects/project-bird-spikes.jpg",
     tag: "Showcase Configuration",
     specs: ["100% Humane Deterrent", "Marine-Grade SS Pins", "UV-Stabilized Base"]
   },
   {
     id: "proj-bs-2",
-    title: "AC Outdoor Unit Top Bird Protection",
+    title: "AC Outdoor Unit & Window Ledge Bird Spikes",
     category: "Bird Spikes",
     serviceSlug: "bird-spikes",
-    configuration: "Compressor Ledge Protection Strips",
-    description: "Non-drill high-bond silicone adhesive mounting along external AC compressor tops and narrow window sills to prevent corrosive bird nesting.",
+    configuration: "Flexible Base Surface Protection",
+    description: "Dense blunted stainless steel prongs mounted with weather-resistant adhesive across AC compressor tops and curved window sills without drilling.",
     type: "Bird Spikes",
     image: "/images/services/benefits/bird-spikes/bs-polycarb-base.jpg",
     tag: "Showcase Configuration",
-    specs: ["No-Drill Silicone Bond", "Preserves AC Compressor", "Weatherproof Resilience"]
+    specs: ["Zero-Drill Adhesive Mount", "AC Unit Top Protection", "Long-Term Weather Durability"]
   },
-  {
-    id: "proj-bs-3",
-    title: "Curved Architectural Ledge Bird Spikes",
-    category: "Bird Spikes",
-    serviceSlug: "bird-spikes",
-    configuration: "Flexible Contour Ledge Strips",
-    description: "Segmented flexible base conforming to curved concrete parapets, window pediments, and signage borders for invisible aesthetic deterrence.",
-    type: "Bird Spikes",
-    image: "/images/services/benefits/bird-spikes/bs-curved-ledges.jpg",
-    tag: "Showcase Configuration",
-    specs: ["Flexible Base Snapping", "Zero Ledge Maintenance", "Discreet Visual Impact"]
-  }
 ];

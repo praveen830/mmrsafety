@@ -49,13 +49,24 @@ const phoneUrl = getPhoneUrl();
       >
         {serviceName} Variations &amp; Sub-Services
       </h2>
-      <p class="mt-4 text-base text-[var(--color-muted-text)] leading-relaxed">
-        Engineered for specific structural configurations across apartments, independent houses, gated communities, and commercial facilities in Bengaluru. Click any variation below to explore full hardware specifications.
+      <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] leading-relaxed">
+        Tailored configurations for apartments, independent houses, and sports grounds in Bengaluru.
       </p>
     </div>
 
     <!-- Sub-Services Cards Grid -->
-    <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div
+      class:list={[
+        "mt-10 sm:mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2",
+        subServices.length <= 2
+          ? "max-w-4xl mx-auto lg:grid-cols-2"
+          : subServices.length === 3
+            ? "max-w-5xl mx-auto lg:grid-cols-3"
+            : subServices.length === 6
+              ? "lg:grid-cols-3"
+              : "lg:grid-cols-4",
+      ]}
+    >
       {
         subServices.map((sub, index) => {
           const defaultMsg = `Hello MMR Safety, I want to enquire about ${sub.title} for my home in Bengaluru. Please provide details and pricing.`;

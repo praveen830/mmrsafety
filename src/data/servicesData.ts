@@ -127,7 +127,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         title: "Child & Pet Fall Protection",
         description:
-          "Precision-spaced tensioned cables create a protective barrier along balcony balustrades, preventing accidental falls while keeping windows accessible.",
+          "Engineered 2-inch or 3-inch gap calibrations prevent children and pets from slipping through, withstanding up to 400 kg tensile impact force.",
         icon: "shield",
         image: "/images/services/benefits/invisible-grills/ig-fall-protection.jpg",
       },
@@ -148,7 +148,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         title: "Gated Community Compliance",
         description:
-          "Approved across modern apartment complexes and high-rise developments where traditional exterior iron grills are strictly prohibited by society bylaws.",
+          "Approved by leading Bangalore gated communities and apartment associations because it preserves building elevation uniform design codes.",
         icon: "building",
         image: "/images/services/benefits/invisible-grills/ig-community-compliance.jpg",
       },
@@ -157,7 +157,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         description:
           "Requires no repetitive enamel painting or anti-rust coatings. Simply wipe with a soft cloth to maintain pristine clarity for years.",
         icon: "clean",
-        image: "/images/services/benefits/invisible-grills/ig-low-maintenance.jpg",
+        image: "/images/comparison/invisible-view.jpg",
       },
     ],
     anatomy: {
@@ -210,19 +210,19 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/desktop/invisible-grills.webp",
-        alt: "Original AI architectural high-rise balcony with stainless steel invisible safety grill cables catching sunlight",
-        caption: "Luxury High-Rise Balcony — High-Tensile Stainless Steel Cable Safety Installation",
-      },
-      {
-        image: "/images/mobile/invisible-grills.webp",
-        alt: "High-rise apartment balcony vertical invisible grill safety installation with panoramic city background",
-        caption: "High-Rise Balcony — Full-Height Vertical Marine SS Invisible Grill Installation",
-      },
-      {
         image: "/images/projects/project-invisible-grills.jpg",
-        alt: "Invisible grill installation on high-rise residential balcony",
+        alt: "High-Rise Balcony Invisible Grill Installation MMR Safety Bangalore",
         caption: "High-Rise Balcony Installation — Panoramic City Skyline",
+      },
+      {
+        image: "/images/services/gallery/ig-gallery-2.jpg",
+        alt: "Living Room Bay Window Invisible Grill System Bangalore",
+        caption: "Luxury Apartment Living Room — Unobstructed Glass Bay Window Grills",
+      },
+      {
+        image: "/images/services/gallery/ig-gallery-3.jpg",
+        alt: "Child Safe Open Balcony Invisible Grill Installation Bangalore",
+        caption: "High-Floor Terrace & Balcony — Slimline Architectural Cable Safety",
       },
     ],
     process: [
@@ -278,10 +278,10 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         id: "balcony-invisible-grills",
         title: "Balcony Invisible Grills",
-        tagline: "Panoramic Balcony Fall Protection",
+        tagline: "Unobstructed Panoramic Skyline Safety",
         description:
-          "Full-height or railing-to-ceiling high-tensile stainless steel vertical cables engineered for apartment balconies, ensuring 100% open views and fresh airflow.",
-        image: "/images/desktop/invisible-grills.webp",
+          "High-tensile vertical wire system custom-tensioned for residential high-rise balconies, delivering complete fall safety without compromising natural light or airflow.",
+        image: "/images/hero/hero-balcony.jpg",
         imageAlt: "Balcony invisible grill installation overlooking Bangalore city view",
         suitability: [
           "High-Rise Balconies",
@@ -300,10 +300,10 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         id: "window-invisible-grills",
         title: "Window Invisible Grills",
-        tagline: "Slim Window Fall & Tamper Security",
+        tagline: "Slimline Track Fitment for Sliding & Casement Windows",
         description:
-          "Precision-spaced slim cable tracks designed for modern sliding, French, and casement windows, maintaining easy window operation and emergency egress.",
-        image: "/images/services/benefits/invisible-grills/ig-skyline-view.jpg",
+          "Architectural grade vertical stainless steel cables anchored seamlessly into concrete window jambs, offering 100% safety with zero visual obstruction.",
+        image: "/images/services/benefits/invisible-grills/ig-window-system.jpg",
         imageAlt: "Apartment window invisible grills installation",
         suitability: [
           "French Sliding Windows",
@@ -324,7 +324,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         tagline: "Calibrated 2-Inch Toddler Safety Pitch",
         description:
           "Ultra-secure 2-inch pitch configuration with horizontal cross stiffeners designed specifically to protect curious toddlers, young kids, and household pets.",
-        image: "/images/services/benefits/invisible-grills/ig-fall-protection.jpg",
+        image: "/images/services/benefits/invisible-grills/ig-child-protection.jpg",
         imageAlt: "Child safety invisible grills on high-rise balcony balustrade",
         suitability: [
           "Toddler Play Balconies",
@@ -346,7 +346,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         tagline: "Gated Community Bylaw Compliant",
         description:
           "Uniform architectural aesthetic approved across Bangalore luxury apartment societies where bulky iron grilles are strictly prohibited by society bylaws.",
-        image: "/images/services/benefits/invisible-grills/ig-community-compliance.jpg",
+        image: "/images/services/benefits/invisible-grills/ig-apartment-facade.jpg",
         imageAlt: "Apartment society invisible grill architectural facade",
         suitability: [
           "Gated Apartment Societies",
@@ -500,19 +500,19 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/desktop/safety-nets.webp",
-        alt: "High-rise apartment balcony with transparent safety net enclosing the railing in crisp daylight",
-        caption: "Apartment Balcony Fall Safety Netting — Full Height Protection",
-      },
-      {
         image: "/images/mobile/safety-nets.webp",
         alt: "Tensioned safety net protecting luxury balcony perimeter with potted plants and city view",
         caption: "Tightly Anchored Mesh with Clear Outdoor Visibility & Natural Light",
       },
       {
-        image: "/images/projects/project-safety-nets.jpg",
-        alt: "Residential balcony safety netting installation on high-rise building",
-        caption: "Residential Balcony Safety Netting — High-Tenacity Enclosure",
+        image: "/images/services/gallery/sn-gallery-2.jpg",
+        alt: "Duplex Staircase Void Safety Net System MMR Safety",
+        caption: "Duplex Staircase Void & Open Atrium Child Safety Enclosure",
+      },
+      {
+        image: "/images/services/gallery/sn-gallery-3.jpg",
+        alt: "Apartment Duct Area Fall Barrier Netting Bangalore",
+        caption: "Apartment Duct Area & High-Rise Balcony Fall Arrest Barrier",
       },
     ],
     process: [
@@ -568,11 +568,11 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         id: "balcony-safety-nets",
         title: "Balcony Safety Nets",
-        tagline: "Comprehensive Balcony Fall Protection",
+        tagline: "High-Rise Balcony Perimeter Fall Defense",
         description:
-          "High-tenacity perimeter netting designed to enclose open apartment balconies, preventing children, toddlers, and pets from falling through balustrade gaps.",
-        image: "/images/mobile/safety-nets.webp",
-        imageAlt: "Balcony fall protection safety net installation in high-rise building",
+          "Custom-measured UV-treated knotted polymer netting secured from railing balustrades to ceiling slabs, protecting children and pets from catastrophic falls.",
+        image: "/images/services/subservices/safety-nets/sn-balcony-safety-nets.jpg",
+        imageAlt: "Balcony Safety Nets Installation Bengaluru",
         suitability: [
           "High-Rise Balconies",
           "Parapet Openings",
@@ -588,17 +588,17 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         badge: "Most Requested",
       },
       {
-        id: "window-safety-nets",
-        title: "Window Safety Nets",
-        tagline: "Unobtrusive Window Opening Security",
+        id: "children-safety-nets",
+        title: "Children Safety Nets",
+        tagline: "Child-Safe Residential Balcony Protection",
         description:
-          "Custom-fitted mesh enclosures for low-sill windows and casement frames that allow natural daylight while securing family members against accidental slips.",
-        image: "/images/services/benefits/safety-nets/sn-airflow-transmission.jpg",
-        imageAlt: "Apartment window safety net installation",
+          "Heavy-duty micro-aperture protective safety mesh specifically engineered to contain high impact loads while maintaining 100% natural balcony daylight and fresh airflow.",
+        image: "/images/services/subservices/safety-nets/sn-children-safety-nets.jpg",
+        imageAlt: "Children Safety Nets Installation Bengaluru",
         suitability: [
-          "High-Floor Windows",
-          "Open Sliding Windows",
-          "Utility Ventilation Louvers"
+          "Toddler Play Balconies",
+          "Pet Balconies",
+          "Open Railing Balustrades"
         ],
         hardwareSpecs: [
           { label: "Mesh Aperture", value: "25mm to 30mm Square Aperture" },
@@ -606,71 +606,118 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
           { label: "Sun Resistance", value: "UV Carbon-Black Stabilizer (No Sunlight Brittle Rot)" },
           { label: "Air Circulation", value: "Over 92% open free airflow area" }
         ],
-        installationHighlight: "Allows keeping windows open 24/7 for cool breeze without accidental fall risks.",
-      },
-      {
-        id: "duct-area-safety-nets",
-        title: "Duct Area Safety Nets",
-        tagline: "Building Plumbing & Shaft Enclosures",
-        description:
-          "Heavy-duty fall barrier netting installed across vertical plumbing shafts and duct openings in multi-story residential buildings.",
-        image: "/images/services/benefits/safety-nets/sn-child-pet-security.jpg",
-        imageAlt: "Duct area safety netting in high-rise residential complex",
-        suitability: [
-          "Internal Building Ducts",
-          "Plumbing Shafts",
-          "Air Shaft Voids"
-        ],
-        hardwareSpecs: [
-          { label: "Coverage Span", value: "Multi-floor vertical or horizontal duct spans" },
-          { label: "Twine Thickness", value: "Heavy-Duty 1.5mm–2.0mm Knotted Polyethylene" },
-          { label: "Anchor Hardware", value: "Masonry Concrete Sleeve Anchors" },
-          { label: "Drop Resistance", value: "Catches tumbling maintenance tools and debris" }
-        ],
-        installationHighlight: "Full-height vertical duct netting prevents accidental slip hazards in deep utility shafts.",
-      },
-      {
-        id: "open-area-safety-nets",
-        title: "Open Area Safety Nets",
-        tagline: "Atrium, Staircase & Void Fall Defense",
-        description:
-          "Engineered safety barriers spanning large central stairwell voids, apartment building atriums, and open recreational courtyards.",
-        image: "/images/services/benefits/safety-nets/sn-discreet-footprint.jpg",
-        imageAlt: "Open area central staircase void safety net",
-        suitability: [
-          "Terrace Parapets",
-          "Duplex Stair Voids",
-          "Courtyard Atriums"
-        ],
-        hardwareSpecs: [
-          { label: "Twine Tensile", value: "High-Tenacity Multi-Filament Polyethylene" },
-          { label: "Corner Bracing", value: "High-Tension Steel Turnbuckles & Guy Wires" },
-          { label: "Border Hemming", value: "Triple-Overlocked Braided Outer Border" },
-          { label: "Weatherproofing", value: "100% Water-repellent and rot-proof" }
-        ],
-        installationHighlight: "Custom-rigged to enclose large atrium voids and open stairwells safely.",
+        installationHighlight: "High-tenacity knotting provides peace of mind for families with curious toddlers and kids.",
+        badge: "Child Safe",
       },
       {
         id: "construction-safety-nets",
         title: "Construction Safety Nets",
-        tagline: "Heavy-Duty Personnel & Debris Barrier",
+        tagline: "Multi-Storey Scaffolding & Worker Fall Arrest",
         description:
-          "Industrial-strength containment netting for construction perimeters, building renovations, and elevated scaffolding platforms.",
-        image: "/images/services/benefits/safety-nets/sn-uv-endurance.jpg",
-        imageAlt: "Construction perimeter debris safety netting",
+          "Heavy-duty industrial green protective safety mesh installed around building scaffolding and multi-storey structures, containing falling debris and ensuring worker safety.",
+        image: "/images/services/subservices/safety-nets/sn-construction-safety-nets.jpg",
+        imageAlt: "Construction Safety Nets Scaffolding Bengaluru",
         suitability: [
-          "Building Renovation Sites",
-          "Exterior Scaffoldings",
-          "Under-Construction Balconies"
+          "Building Scaffolding",
+          "Multi-Storey Facades",
+          "Industrial Construction Sites"
         ],
         hardwareSpecs: [
-          { label: "Debris Containment", value: "Dual-layer fine debris & fall containment" },
-          { label: "Anchor System", value: "Industrial Scaffold Clamps & Steel Guide Cables" },
-          { label: "Material", value: "Virgin Polypropylene & High-Density Polymer" },
-          { label: "Reusability", value: "Durable and relocatable across project stages" }
+          { label: "Material", value: "High-Tenacity Virgin Polypropylene Mesh" },
+          { label: "Impact Absorption", value: "Drop-tested for tool & personnel fall arrest" },
+          { label: "Border Cord", value: "10mm Heavy-Duty Overlocked Border Rope" },
+          { label: "Fire Resistance", value: "Flame-Retardant Industrial Coating" }
         ],
-        installationHighlight: "Engineered for perimeter fall containment and falling tool/masonry protection.",
+        installationHighlight: "Full scaffolding perimeter coverage meets industrial site safety compliance standards.",
         badge: "Heavy Duty",
+      },
+      {
+        id: "window-safety-nets",
+        title: "Window Safety Nets",
+        tagline: "Discreet Mesh for Sliding & Casement Windows",
+        description:
+          "Fitted tightly along external window perimeters without interrupting ventilation or window shutter movement, providing essential fall protection for upper floors.",
+        image: "/images/services/subservices/safety-nets/sn-window-safety-nets.jpg",
+        imageAlt: "Window Safety Nets Installation Bengaluru",
+        suitability: [
+          "High-Floor Windows",
+          "Open Sliding Windows",
+          "Utility Ventilation Louvers"
+        ],
+        hardwareSpecs: [
+          { label: "Mesh Aperture", value: "25mm to 30mm Square Aperture" },
+          { label: "Frame Fixing", value: "Flush-Fit Concealed Stainless Eyelets" },
+          { label: "Sun Resistance", value: "UV Carbon-Black Stabilizer (No Sunlight Brittle Rot)" },
+          { label: "Air Circulation", value: "Over 92% open free airflow area" }
+        ],
+        installationHighlight: "Allows keeping windows open 24/7 for cool breeze without accidental fall risks.",
+        badge: "Precision Fit",
+      },
+      {
+        id: "staircase-safety-nets",
+        title: "Staircase Safety Nets",
+        tagline: "Open Railing & Duplex Spiral Void Protection",
+        description:
+          "Elegant protective safety net fitted along open railing spaces, central staircase voids, and spiral steps in duplex homes to eliminate accidental slip-and-fall hazards.",
+        image: "/images/services/subservices/safety-nets/sn-staircase-safety-nets.jpg",
+        imageAlt: "Staircase Safety Nets Installation Bengaluru",
+        suitability: [
+          "Duplex Stair Voids",
+          "Spiral Staircases",
+          "Open Mezzanine Railings"
+        ],
+        hardwareSpecs: [
+          { label: "Aesthetic Design", value: "Blends seamlessly into modern interior architecture" },
+          { label: "Tensioning", value: "Custom stainless steel wire rope support system" },
+          { label: "Child Protection", value: "Prevents toddlers from slipping between balusters" },
+          { label: "Finish", value: "Smooth splinter-free knotless or heat-set knotted weave" }
+        ],
+        installationHighlight: "Custom-rigged to protect large internal staircase voids without altering wooden or glass balustrades.",
+        badge: "Duplex Safe",
+      },
+      {
+        id: "terrace-safety-nets",
+        title: "Terrace Safety Nets",
+        tagline: "Spacious Rooftop Perimeter Enclosure",
+        description:
+          "Full perimeter boundary safety netting installed along rooftop parapet edges and terrace boundaries, keeping kids and family members completely safe against high-altitude drops.",
+        image: "/images/services/subservices/safety-nets/sn-terrace-safety-nets.jpg",
+        imageAlt: "Terrace Safety Nets Installation Bengaluru",
+        suitability: [
+          "Rooftop Terraces",
+          "Penthouse Sit-Outs",
+          "Community Terrace Gardens"
+        ],
+        hardwareSpecs: [
+          { label: "Height Span", value: "Custom 6ft to 12ft vertical parapet extension" },
+          { label: "Wind Resistance", value: "Permeable mesh engineered to withstand heavy monsoon gusts" },
+          { label: "Frame Rigging", value: "Rigid galvanized steel support poles & turnbuckles" },
+          { label: "Weather Endurance", value: "100% Water-repellent and rot-proof synthetic fibers" }
+        ],
+        installationHighlight: "Transforms open apartment terraces into safe family gathering and children play zones.",
+        badge: "Rooftop Safe",
+      },
+      {
+        id: "swimming-pool-safety-nets",
+        title: "Swimming Pool Safety Nets",
+        tagline: "Secure Pool Cover & Toddler Drowning Prevention",
+        description:
+          "High-tension water-safe pool net cover anchored securely along coping tiles, preventing accidental drownings while preserving pristine pool aesthetics and clear water views.",
+        image: "/images/services/subservices/safety-nets/sn-swimming-pool-safety-nets.jpg",
+        imageAlt: "Swimming Pool Safety Nets Bengaluru",
+        suitability: [
+          "Residential Swimming Pools",
+          "Villa Plunge Pools",
+          "Clubhouse Children Pools"
+        ],
+        hardwareSpecs: [
+          { label: "Load Capacity", value: "Engineered to support the weight of a child or adult" },
+          { label: "Anchor System", value: "Flush-mount brass anchors in pool coping stone" },
+          { label: "Central Tensioner", value: "Central pulley system for easy single-person removal" },
+          { label: "Water Resistance", value: "Chlorine and UV-resistant high-tenacity braided cord" }
+        ],
+        installationHighlight: "Simple one-person operation to install or remove in under 5 minutes while providing complete drowning defense.",
+        badge: "Water Safe",
       },
     ],
     materials: {
@@ -811,19 +858,19 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/desktop/pigeon-safety-nets.webp",
-        alt: "Apartment balcony protected by translucent pigeon safety net with birds deterred on exterior ledge",
-        caption: "Apartment Balcony Pigeon Protection — Full Daytime Airflow & Clarity",
-      },
-      {
         image: "/images/mobile/pigeon-safety-nets.webp",
         alt: "Balcony pigeon exclusion netting keeping outdoor furniture and tiles spotless",
         caption: "Clean, Bird-Free Living Space — Spotless Outdoor Balcony Area",
       },
       {
-        image: "/images/projects/project-pigeon-nets.jpg",
-        alt: "High-rise residential balcony pigeon deterrence mesh installation",
-        caption: "Humane Exclusion — Birds Safely Deterred Outside Mesh Boundary",
+        image: "/images/services/gallery/pn-gallery-2.jpg",
+        alt: "AC Ledge Pigeon Defense Installation MMR Safety",
+        caption: "AC Outdoor Unit & Ledge Pigeon Exclusion Mesh Protection",
+      },
+      {
+        image: "/images/services/gallery/pn-gallery-3.jpg",
+        alt: "Apartment Utility Area Pigeon Netting Bangalore",
+        caption: "High-Rise Apartment Facade & Utility Area Bird Defense",
       },
     ],
     process: [
@@ -877,89 +924,92 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     subServices: [
       {
-        id: "balcony-pigeon-nets",
-        title: "Balcony Pigeon Nets",
-        tagline: "Humane Balcony Bird Deterrence",
+        id: "balcony-pigeon-safety-nets",
+        title: "Balcony Pigeon Safety Nets",
+        tagline: "Full-Height Balcony Bird Exclusion",
         description:
-          "Discreet translucent netting enclosing open apartment balconies, permanently ending bird infestation while keeping your panoramic views and fresh air.",
-        image: "/images/desktop/pigeon-safety-nets.webp",
-        imageAlt: "Balcony pigeon safety net installation in high-rise building",
+          "Floor-to-ceiling translucent polymer netting anchored securely along balcony balustrades, keeping outdoor living spaces completely free of pigeons while preserving panoramic views.",
+        image: "/images/services/subservices/pigeon-safety-nets/pn-balcony-safety-nets.jpg",
+        imageAlt: "Balcony Pigeon Safety Nets Installation Bengaluru",
         suitability: [
-          "Apartment Balconies",
-          "Outdoor Sit-Outs",
-          "Terrace Garden Nooks"
+          "High-Rise Balconies",
+          "Terrace Openings",
+          "Outdoor Sitting Areas"
         ],
         hardwareSpecs: [
-          { label: "Net Filament", value: "Discreet Translucent Monofilament Mesh" },
-          { label: "Mesh Aperture", value: "25mm to 30mm (Too small for pigeons/sparrows)" },
-          { label: "Perimeter Sealing", value: "Zero-Gap Flush Perimeter Anchors" },
-          { label: "Air & Light", value: "Maintains 100% natural sunlight & outdoor view" }
+          { label: "Mesh Aperture", value: "25mm–30mm Precision Knotted Mesh" },
+          { label: "Polymer Quality", value: "UV-Stabilized Monofilament Nylon" },
+          { label: "Light Transmission", value: "98% Natural Daylight Penetration" },
+          { label: "Fasteners", value: "Marine-Grade Stainless Steel Eye Hooks" }
         ],
-        installationHighlight: "Permanently ends pigeon nesting and acidic droppings while keeping outdoor views clear.",
-        badge: "High Demand",
+        installationHighlight: "Completely seals the exterior balcony opening with zero visual obstruction and full cross-ventilation.",
+        badge: "Most Popular",
       },
       {
-        id: "window-pigeon-nets",
-        title: "Window Pigeon Nets",
-        tagline: "Clean Window Sills & AC Ledges",
+        id: "window-pigeon-safety-nets",
+        title: "Window Pigeon Safety Nets",
+        tagline: "Ledge & Sill Roosting Prevention",
         description:
-          "Custom-fit translucent nets protecting window frames and AC exterior units from roosting pigeons, eliminating feather and dropping cleanup.",
-        image: "/images/services/benefits/pigeon-safety-nets/pn-pigeon-block.jpg",
-        imageAlt: "Apartment window pigeon exclusion net",
+          "Custom-fitted perimeter mesh secured tightly across external window reveals, preventing pigeons from perching on window sills, AC ledges, and frames without obstructing fresh air.",
+        image: "/images/services/subservices/pigeon-safety-nets/pn-window-safety-nets.jpg",
+        imageAlt: "Window Pigeon Safety Nets Installation Bengaluru",
         suitability: [
-          "Bedroom Windows",
-          "Kitchen Ledges",
-          "French Balcony Windows"
+          "Sliding & Casement Windows",
+          "Bedroom Window Sills",
+          "Kitchen Utility Windows"
         ],
         hardwareSpecs: [
-          { label: "Translucency", value: "Ultra-Fine Monofilament (Virtually Invisible)" },
-          { label: "Mounting", value: "Parapet Ledge and Window Reveals Flush Hooking" },
-          { label: "Harm-Free", value: "Smooth physical barrier with zero harm to birds" },
-          { label: "Cleaning", value: "Water washable with hose pipe spray" }
+          { label: "Frame Mounting", value: "Flush-Fit Concealed Anchor Fasteners" },
+          { label: "Airflow Clearance", value: "100% Free Air Ventilation" },
+          { label: "UV Protection", value: "Carbon-Stabilized Tropical Sun Resistance" },
+          { label: "Maintenance", value: "Zero Maintenance, Easy Washable Mesh" }
         ],
-        installationHighlight: "Keeps window sills, curtains, and air-conditioner outdoor units completely dropping-free.",
+        installationHighlight: "Allows keeping windows open 24/7 without risk of pigeons entering or leaving droppings on sills.",
+        badge: "Precision Fit",
       },
       {
-        id: "utility-area-pigeon-nets",
-        title: "Utility Area Pigeon Nets",
-        tagline: "Hygienic Laundry & Washing Yards",
+        id: "duct-area-pigeon-nets",
+        title: "Duct Area Pigeon Nets",
+        tagline: "Building Shaft & Pipe Enclosures",
         description:
-          "Protective netting installed across utility service balconies to safeguard freshly washed clothes, washing machines, and water heaters from bird droppings.",
-        image: "/images/services/benefits/pigeon-safety-nets/pn-balcony-cleanliness.jpg",
-        imageAlt: "Utility balcony pigeon netting in apartment complex",
+          "Heavy-gauge industrial netting engineered to enclose multi-story plumbing shafts, vertical building ducts, and exhaust corridors where pigeons routinely roost and cause severe hygiene issues.",
+        image: "/images/services/subservices/pigeon-safety-nets/pn-duct-area-nets.jpg",
+        imageAlt: "Duct Area Pigeon Nets Installation Bengaluru",
         suitability: [
-          "Washing Machine Balconies",
-          "Drying Yards",
-          "Kitchen Utility Ducts"
+          "Internal Plumbing Shafts",
+          "Air Exhaust Corridors",
+          "Service Duct Openings"
         ],
         hardwareSpecs: [
-          { label: "Mesh Thickness", value: "Reinforced 0.8mm–1.0mm Translucent Twine" },
-          { label: "Hygiene Factor", value: "Eliminates pigeon mites, feather allergens, & odor" },
-          { label: "Corner Rigging", value: "Taut wire guide tensioning for high wind stability" },
-          { label: "Access Points", value: "Optional zippered access port for AC servicing" }
+          { label: "Twine Thickness", value: "Heavy-Duty 1.5mm–2.0mm Knotted Polyethylene" },
+          { label: "Coverage Span", value: "Multi-Floor Vertical & Horizontal Duct Spans" },
+          { label: "Anchorage", value: "Concrete Sleeve Anchors & Wire Rope Border" },
+          { label: "Hygiene Defense", value: "Blocks Colony Nesting & Odor Circulation" }
         ],
-        installationHighlight: "Protects clean laundry and washing appliances from stains, feathers, and nest debris.",
+        installationHighlight: "Stops pigeon colonies from nesting in deep building shafts, eliminating foul odors and allergen buildup.",
+        badge: "Heavy Duty",
       },
       {
-        id: "open-duct-pigeon-nets",
-        title: "Open Duct Pigeon Nets",
-        tagline: "Building Plumbing Shaft Bird Protection",
+        id: "apartment-pigeon-safety-nets",
+        title: "Apartment Pigeon Safety Nets",
+        tagline: "Uniform Residential Society Enclosures",
         description:
-          "Vertical multi-floor shaft netting sealing off building plumbing voids, preventing severe internal pigeon nesting and health hazards.",
-        image: "/images/services/benefits/pigeon-safety-nets/pn-daylight-airflow.jpg",
-        imageAlt: "Open duct pigeon netting for high-rise apartment shaft",
+          "Architecturally compliant society-wide pigeon netting installations approved across Bengaluru gated communities and apartment complexes, preserving uniform exterior elevation aesthetics.",
+        image: "/images/services/subservices/pigeon-safety-nets/pn-apartment-safety-nets.jpg",
+        imageAlt: "Apartment Pigeon Safety Nets Installation Bengaluru",
         suitability: [
-          "Apartment Plumbing Voids",
-          "Electrical Ducts",
-          "HVAC Shafts"
+          "Gated Community Societies",
+          "High-Rise Apartment Towers",
+          "Residential Complex Balconies"
         ],
         hardwareSpecs: [
-          { label: "Shaft Coverage", value: "Floor-to-roof continuous shaft enclosure" },
-          { label: "Anchor Hardware", value: "Heavy-Duty Stainless Anchor Pegs" },
-          { label: "Drain Protection", value: "Prevents twigs from blocking rooftop downspouts" },
-          { label: "UV Stabilization", value: "Extended sunlight endurance for open lightwells" }
+          { label: "Elevation Code", value: "Gated Community Bylaw Compliant Uniform Look" },
+          { label: "Tensile Strength", value: "High-Tensile Knotted Weatherproof Twine" },
+          { label: "Color Finish", value: "Translucent White / Neutral Sky Tone" },
+          { label: "Longevity", value: "5+ Years Reliable Outdoor Service Life" }
         ],
-        installationHighlight: "Prevents large pigeon colonies from establishing roosting nests inside building shafts.",
+        installationHighlight: "Preserves architectural uniformity across entire apartment elevations while keeping all balconies spotless.",
+        badge: "Society Approved",
       },
     ],
     materials: {
@@ -1100,19 +1150,19 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/desktop/sports-nets.webp",
-        alt: "Professional outdoor cricket practice turf enclosure with heavy-duty safety sports netting",
-        caption: "Cricket Practice Pitch — Heavy-Impact Ball Containment Enclosure",
-      },
-      {
         image: "/images/mobile/sports-nets.webp",
         alt: "Outdoor cricket pitch turf with green sports netting and guide cables",
         caption: "High-Tensile Ball Containment for Sports Enthusiasts & Academies",
       },
       {
-        image: "/images/projects/project-sports-nets.jpg",
-        alt: "Full height cricket practice turf enclosure with steel cage framework",
-        caption: "Cricket Practice Pitch — Full Height Rooftop Enclosure",
+        image: "/images/services/gallery/sp-gallery-2.jpg",
+        alt: "School Sports Ground Perimeter Netting MMR Safety",
+        caption: "Multi-Sport Ground & Terrace Ball Containment Boundary",
+      },
+      {
+        image: "/images/services/gallery/sp-gallery-3.jpg",
+        alt: "Commercial Futsal Turf Enclosure Bangalore",
+        caption: "Commercial Turf Arena & Rooftop Sports Box Cage Enclosure",
       },
     ],
     process: [
@@ -1163,109 +1213,134 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         id: "cricket-practice-nets",
         title: "Cricket Practice Nets",
-        tagline: "High-Impact Cricket Bowling Pitch Enclosures",
+        tagline: "High-Velocity Batting & Bowling Enclosures",
         description:
-          "Heavy-duty containment cages and batting pitch nets engineered to absorb high-velocity leather and tennis cricket ball impacts safely.",
-        image: "/images/mobile/sports-nets.webp",
-        imageAlt: "Professional cricket practice net pitch enclosure",
+          "Professional cricket practice net enclosures with dedicated batting pitches, heavy-duty green mesh, and reinforced steel framework for high-impact leather ball practice.",
+        image: "/images/services/subservices/sports-nets/sp-cricket-practice-nets.jpg",
+        imageAlt: "Cricket Practice Nets Installation Bengaluru",
         suitability: [
-          "Apartment Rooftop Turfs",
-          "School Sports Academies",
-          "Private Cricket Enclosures"
+          "Rooftop Practice Turfs",
+          "Cricket Academies",
+          "Apartment Sports Zones"
         ],
         hardwareSpecs: [
-          { label: "Cord Material", value: "Heavy-Gauge Multi-Strand Braided Synthetic Twine" },
-          { label: "Impact Rating", value: "Engineered for high-velocity leather and tennis balls" },
-          { label: "Overhead Rigging", value: "Galvanized Steel Wire Core Guide Cables & Turnbuckles" },
-          { label: "Bottom Border", value: "Weighted leaded rope to prevent ball roll-out" }
+          { label: "Twine Ply", value: "Heavy-Gauge UV-Treated High-Density Polyethylene" },
+          { label: "Mesh Size", value: "Calibrated Cricket Leather Ball Mesh" },
+          { label: "Impact Rating", value: "Withstands hard leather cricket ball strikes at 140+ km/h" },
+          { label: "Rigging", value: "Steel Suspension Cables & Turnbuckles" }
         ],
-        installationHighlight: "Heavy-duty ball containment allows intense bowling and batting practice without stray ball hazards.",
-        badge: "Most Popular",
+        installationHighlight: "Rigid overhead suspension lines eliminate net sagging during intense batting practice.",
+        badge: "High Impact",
       },
       {
         id: "football-nets",
         title: "Football Nets",
-        tagline: "Turf & Futsal Arena Boundary Containment",
+        tagline: "Regulation Goal Post & Perimeter Netting",
         description:
-          "Reinforced high-impact barrier netting for 5-a-side football arenas, residential sports turfs, and rooftop playing grounds.",
-        image: "/images/services/benefits/sports-nets/sp-cricket-turf.jpg",
-        imageAlt: "Football sports turf containment netting",
+          "High-quality football goal nets and perimeter containment netting for professional stadiums, turf grounds, and schools, featuring lush grass integration and heavy-duty mesh.",
+        image: "/images/services/subservices/sports-nets/sp-football-nets.jpg",
+        imageAlt: "Football Goal Nets Installation Bengaluru",
         suitability: [
-          "5-a-side Mini Turfs",
-          "Futsal Arenas",
-          "Community Play Grounds"
+          "Commercial Futsal Arenas",
+          "School Football Grounds",
+          "Sports Complexes"
         ],
         hardwareSpecs: [
-          { label: "Mesh Aperture", value: "100mm to 120mm Square Knotted Construction" },
-          { label: "Twine Diameter", value: "2.5mm to 3.5mm High-Tenacity Polypropylene" },
-          { label: "Height Spans", value: "Available in 15ft, 20ft, and 25ft boundary drops" },
-          { label: "Weather Treatment", value: "All-Weather UV Treatment for year-round sun" }
+          { label: "Material", value: "High-Tenacity Virgin Polypropylene Twine" },
+          { label: "Mesh Size", value: "100mm to 120mm Square Aperture" },
+          { label: "Weather Proofing", value: "100% Water-repellent and UV-stabilized coating" },
+          { label: "Anchors", value: "Heavy-duty perimeter tie cords & clip hooks" }
         ],
-        installationHighlight: "High-elasticity impact cords absorb powerful kicks without snapping or knot slippage.",
-      },
-      {
-        id: "volleyball-nets",
-        title: "Volleyball Nets",
-        tagline: "Court Boundary & Divider Enclosures",
-        description:
-          "Regulation-standard multi-court divider nets and boundary barriers for schools, community clubhouses, and corporate complexes.",
-        image: "/images/services/benefits/sports-nets/sp-all-weather.jpg",
-        imageAlt: "Outdoor volleyball court netting",
-        suitability: [
-          "Volleyball Courts",
-          "Beach & Sand Turfs",
-          "School Sports Complexes"
-        ],
-        hardwareSpecs: [
-          { label: "Mesh Quality", value: "Reinforced Knotted Cord with White Vinyl Headband" },
-          { label: "Side Anchoring", value: "Side Tension Straps & Steel Eyelet Anchors" },
-          { label: "Cord Twine", value: "Waterproof Polyethylene with Anti-Abrasion Finish" },
-          { label: "Regulation Specs", value: "Available in standard tournament dimensions" }
-        ],
-        installationHighlight: "Maintains taut center net elevation with zero mid-court sagging under outdoor exposure.",
+        installationHighlight: "Drop-tested mesh absorbs powerful ball strikes with minimal bounce-back.",
+        badge: "FIFA Spec",
       },
       {
         id: "badminton-nets",
         title: "Badminton Nets",
-        tagline: "Indoor & Outdoor Court Enclosures",
+        tagline: "Indoor Court Regulation Netting",
         description:
-          "Fine-gauge perimeter netting preventing shuttlecock loss across terrace courts, apartment clubhouses, and recreational areas.",
-        image: "/images/services/benefits/sports-nets/sp-property-safety.jpg",
-        imageAlt: "Terrace badminton court barrier netting",
+          "Regulation badminton court nets designed for professional indoor sports complexes with polished wooden flooring, overhead sports lighting, and zero-sag tension cables.",
+        image: "/images/services/subservices/sports-nets/sp-badminton-nets.jpg",
+        imageAlt: "Indoor Badminton Court Net Installation Bengaluru",
         suitability: [
-          "Indoor Badminton Halls",
+          "Indoor Badminton Courts",
           "Apartment Clubhouses",
-          "Outdoor Community Courts"
+          "School Sports Auditoriums"
         ],
         hardwareSpecs: [
-          { label: "Mesh Aperture", value: "18mm to 20mm Fine Braided Mesh" },
-          { label: "Top Band", value: "Heavy-Duty Dual-Fold White Canvas Band" },
-          { label: "Tension Cable", value: "Aircraft-grade steel wire cable through top hem" },
-          { label: "Durability", value: "Tested for continuous shuttlecock impact without tears" }
+          { label: "Headband", value: "Heavy-Duty Vinyl-Coated Double-Stitched Top Band" },
+          { label: "Top Cable", value: "PVC-Sheathed High-Tensile Steel Wire Rope" },
+          { label: "Mesh Weave", value: "Dark Brown/Black Braided Nylon 19mm Aperture" },
+          { label: "Tension Rig", value: "Precision ratchet turnbuckle locking mechanism" }
         ],
-        installationHighlight: "Precision top cable tensioning ensures official tournament regulation height.",
+        installationHighlight: "Maintains exact regulation height across the complete court width.",
+        badge: "Tournament Grade",
       },
       {
-        id: "sports-ground-netting",
-        title: "Sports Ground Netting",
-        tagline: "Full-Height Campus & Clubhouse Perimeter Protection",
+        id: "tennis-nets",
+        title: "Tennis Nets",
+        tagline: "Championship Court Netting Systems",
         description:
-          "Tall structural barrier netting erected on structural poles to prevent sports balls from damaging neighboring residences, windows, and parked cars.",
-        image: "/images/services/benefits/sports-nets/sp-custom-enclosures.jpg",
-        imageAlt: "Multi-sport ground tall perimeter barrier netting",
+          "Premium outdoor and indoor tennis nets engineered with quad-stitched headbands, heavy-gauge steel cables, and weather-resistant knotless mesh for tournament play.",
+        image: "/images/services/subservices/sports-nets/sp-tennis-nets.jpg",
+        imageAlt: "Tennis Court Net Installation Bengaluru",
         suitability: [
-          "Terrace Sports Arenas",
-          "Commercial Multisport Turfs",
-          "Golf Driving Ranges"
+          "Tennis Clubs & Academies",
+          "Residential Communities",
+          "School Tennis Courts"
         ],
         hardwareSpecs: [
-          { label: "Full Perimeter", value: "360-degree ceiling-to-floor cage enclosure" },
-          { label: "Steel Hardware", value: "Hot-Dipped Galvanized Pulleys & Tension Posts" },
-          { label: "Wind Stability", value: "Low aerodynamic drag prevents pole bending in storms" },
-          { label: "Custom Layout", value: "Laser-measured to exact property boundaries" }
+          { label: "Twine Diameter", value: "3.5mm Braided Polyethylene Cord" },
+          { label: "Top Band", value: "Quad-Stitched Heavy-Duty Heavy-Gauge Vinyl" },
+          { label: "Suspension Cable", value: "6mm Vinyl-Coated Aircraft-Grade Wire" },
+          { label: "Center Strap", value: "Heavy-duty polyester center strap with brass buckle" }
         ],
-        installationHighlight: "Protects surrounding apartment windows and car parking areas from high-speed stray balls.",
-        badge: "Full Campus",
+        installationHighlight: "Engineered to withstand direct high-velocity racket impacts and outdoor solar exposure.",
+        badge: "Pro Court",
+      },
+      {
+        id: "school-sports-nets",
+        title: "School Sports Nets",
+        tagline: "Protective Campus Playground Enclosures",
+        description:
+          "Protective sports perimeter netting tailored for modern school grounds and play areas, safeguarding students, classroom windows, and nearby infrastructure.",
+        image: "/images/services/subservices/sports-nets/sp-school-sports-nets.jpg",
+        imageAlt: "School Sports Ground Netting Bengaluru",
+        suitability: [
+          "School Playgrounds",
+          "College Athletic Grounds",
+          "Multi-Sport Courts"
+        ],
+        hardwareSpecs: [
+          { label: "Barrier Height", value: "Custom 15ft to 35ft vertical protective spans" },
+          { label: "Mesh Type", value: "Weather-resistant UV-inhibited synthetic weave" },
+          { label: "Support Posts", value: "Galvanized GI steel posts with concrete footing" },
+          { label: "Border Reinforce", value: "Double-stitched high-density boundary rope" }
+        ],
+        installationHighlight: "Contains multi-sport activities safely within playground boundaries.",
+        badge: "Campus Safe",
+      },
+      {
+        id: "sports-ground-enclosure-nets",
+        title: "Sports Ground Enclosure Nets",
+        tagline: "Full-Perimeter Turf & Rooftop Box Enclosures",
+        description:
+          "Large outdoor sports ground and rooftop arenas completely enclosed with high-strength sports netting, tall support structures, and complete 360-degree ball containment.",
+        image: "/images/services/subservices/sports-nets/sp-sports-ground-enclosure.jpg",
+        imageAlt: "Sports Ground Enclosure Netting Bengaluru",
+        suitability: [
+          "Commercial Box Cricket Turfs",
+          "Rooftop Sports Arenas",
+          "Multi-Sport Athletic Grounds"
+        ],
+        hardwareSpecs: [
+          { label: "Coverage Scope", value: "Complete 360-degree perimeter + top roof net" },
+          { label: "Wind Permeability", value: "Aerodynamic mesh allows high monsoon winds to pass" },
+          { label: "Framework", value: "Industrial GI tubular trusses and steel wire rigging" },
+          { label: "UV Warranty", value: "100% Rot-proof and UV-resistant synthetic filaments" }
+        ],
+        installationHighlight: "Maximizes playable hours with safe, complete ball containment.",
+        badge: "Full Enclosure",
       },
     ],
     materials: {
@@ -1401,19 +1476,19 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/desktop/cloth-hangers.webp",
-        alt: "Ceiling-mounted stainless steel pulley cloth drying hanger installed in a modern apartment balcony",
-        caption: "Ceiling Pulley Cloth Hanger — Effortless Independent Rod Lowering System",
-      },
-      {
         image: "/images/mobile/cloth-hangers.webp",
         alt: "Apartment balcony with stainless steel drying rods and clean floor space",
         caption: "Frees 100% Balcony Floor Space — Quick Warm-Air Ceiling Drying",
       },
       {
-        image: "/images/projects/project-cloth-hangers.jpg",
-        alt: "Ceiling cloth drying hanger with laundry hanging neatly",
-        caption: "Ceiling-Mounted Pulley System — Clean & Ergonomic Balcony",
+        image: "/images/services/gallery/ch-gallery-2.jpg",
+        alt: "Utility Room Retractable Wall Clothes Rack MMR Safety",
+        caption: "Utility Room Retractable Wall-Mount Stainless Drying Rack",
+      },
+      {
+        image: "/images/services/gallery/ch-gallery-3.jpg",
+        alt: "Heavy Duty 6 Pipe Stainless Ceiling Hanger Bangalore",
+        caption: "Sunlit Apartment Balcony Dual-Pulley Stainless Steel Drying Setup",
       },
     ],
     process: [
@@ -1464,66 +1539,45 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         id: "ceiling-cloth-drying-hangers",
         title: "Ceiling Cloth Drying Hangers",
-        tagline: "Individual Pulley Pull-and-Dry System",
+        tagline: "Dual-Pulley Overhead Space Saver",
         description:
-          "Independent 6-rod pulley system lowering each stainless steel pipe to chest height for effortless laundry hanging and raising to the ceiling for quick warm-air drying.",
-        image: "/images/mobile/cloth-hangers.webp",
-        imageAlt: "Ceiling cloth drying hanger pulley system in apartment balcony",
+          "Ceiling-mounted stainless steel drying system with individual pulley ropes, allowing each rod to be lowered independently for effortless hanging.",
+        image: "/images/projects/project-cloth-hangers.jpg",
+        imageAlt: "Ceiling-mounted stainless steel pulley cloth drying hanger",
         suitability: [
           "Apartment Balconies",
-          "Utility Rooms",
-          "Compact Indoor Drying Spaces"
+          "Utility Balconies",
+          "Corridors & Passages"
         ],
         hardwareSpecs: [
-          { label: "Pipe Material", value: "Rust-Resistant Stainless Steel Round Tubes" },
-          { label: "Pulley Mechanism", value: "Dual-Wheel Nylon Ceiling Pulleys (Smooth Pull)" },
-          { label: "Cords", value: "Multi-Strand High-Density Nylon Braided Ropes" },
-          { label: "Operating Cleat", value: "Heavy-Duty Wall Cleat with individual rod locking" }
+          { label: "Pipe Material", value: "Stainless Steel (Rustproof & High Load Capacity)" },
+          { label: "Pulley Wheels", value: "Smooth Dual-Wheel Frictionless Brass/Nylon" },
+          { label: "Rope Quality", value: "Heavy-Duty UV-Stabilized Nylon Pull Cords" },
+          { label: "Capacity", value: "Supports up to 5kg wet laundry per rod" }
         ],
-        installationHighlight: "Lowers each drying pipe to chest level for effortless hanging, then raises it to the ceiling.",
-        badge: "Bestseller",
+        installationHighlight: "Reclaims 100% of valuable balcony floor space by utilizing natural warm ceiling airflow.",
+        badge: "Best Seller",
       },
       {
         id: "retractable-cloth-hangers",
         title: "Retractable Cloth Hangers",
-        tagline: "Wall-Mounted Accordion Foldable Racks",
+        tagline: "Compact Accordion Wall-Mounted Racks",
         description:
-          "Space-saving wall-mounted accordion drying racks that extend out when hanging clothes and fold completely flat against the wall when not in use.",
-        image: "/images/services/benefits/cloth-hangers/ch-reclaim-floor.jpg",
-        imageAlt: "Wall-mounted retractable foldable cloth drying rack",
+          "Fold-flat wall-mounted stainless steel drying frames that extend outward when needed and fold completely flush against exterior or utility walls.",
+        image: "/images/details/detail-hanger-pulley.jpg",
+        imageAlt: "Wall-mounted retractable accordion clothes drying rack",
         suitability: [
-          "Wall-Mounted Balconies",
-          "Narrow Washing Niches",
-          "Bathroom Wet Areas"
+          "Utility Service Balconies",
+          "Bathroom Drying Areas",
+          "Narrow Exterior Walls"
         ],
         hardwareSpecs: [
-          { label: "Accordion Frame", value: "Foldable Stainless Steel Scissor Arms" },
-          { label: "Load Capacity", value: "Supports up to 25kg of wet laundry loads" },
-          { label: "Storage Depth", value: "Folds flush against the wall to less than 4 inches" },
-          { label: "Fastening", value: "Stainless Steel Expansion Wall Bolts" }
+          { label: "Frame Operation", value: "Smooth accordion scissor expansion & fold-flat design" },
+          { label: "Corrosion Proof", value: "Pure Stainless Steel (Zero rust transfer to clothes)" },
+          { label: "Wall Anchors", value: "Heavy-duty stainless wall bracket fasteners" },
+          { label: "Profile", value: "Projects just 2 inches from wall when fully collapsed" }
         ],
-        installationHighlight: "Folds completely flat against the wall when not in use, freeing 100% of floor and air space.",
-      },
-      {
-        id: "balcony-cloth-hangers",
-        title: "Balcony Cloth Hangers",
-        tagline: "High-Rise Balcony Space Maximizers",
-        description:
-          "Custom-length stainless steel overhead drying rods engineered specifically for narrow apartment balconies and utility wash areas in Bengaluru.",
-        image: "/images/services/benefits/cloth-hangers/ch-ceiling-integration.jpg",
-        imageAlt: "Overhead balcony cloth hanger installation in luxury apartment",
-        suitability: [
-          "Open Balconies",
-          "Semi-Covered Terraces",
-          "Luxury Apartment Balconies"
-        ],
-        hardwareSpecs: [
-          { label: "Rod Options", value: "4-Rod, 5-Rod, and 6-Rod Configurations" },
-          { label: "Length Options", value: "Custom 4ft, 5ft, 6ft, 7ft, and 8ft pipe lengths" },
-          { label: "Rust Resistance", value: "Zero rust transfer onto damp whites or delicates" },
-          { label: "Warm Air Drying", value: "Accelerates drying using natural warm ceiling airflow" }
-        ],
-        installationHighlight: "Custom cut to the exact length of your balcony for maximum hanging capacity.",
+        installationHighlight: "Collapses flush to the wall when not in use for a clean, uncluttered balcony appearance.",
       },
     ],
     materials: {
@@ -1664,19 +1718,19 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     ],
     gallery: [
       {
-        image: "/images/desktop/bird-spikes.webp",
-        alt: "Stainless steel anti-bird spikes installed on building parapet wall ledge",
-        caption: "Parapet Ledge Installation — Clean Architectural Appearance",
-      },
-      {
         image: "/images/mobile/bird-spikes.webp",
         alt: "Close-up of stainless steel bird spikes on building ledge with flexible base",
         caption: "Blunted Marine SS Prongs for 100% Humane Bird Deterrence",
       },
       {
-        image: "/images/projects/project-bird-spikes.jpg",
-        alt: "Parapet ledge bird spike installation with structural silicone bonding",
-        caption: "Zero-Drill Adhesive Mounting — Waterproof Membrane Protected",
+        image: "/images/services/gallery/bs-gallery-2.jpg",
+        alt: "Commercial Facade Architectural Bird Spikes MMR Safety",
+        caption: "Commercial & Residential Facade Ledge Bird Barrier Protection",
+      },
+      {
+        image: "/images/services/gallery/bs-gallery-3.jpg",
+        alt: "Air Conditioner Outdoor Unit Bird Defense Spikes Bangalore",
+        caption: "Air Conditioner Outdoor Unit & Parapet Wall Bird Deterrent Spikes",
       },
     ],
     process: [
@@ -1727,10 +1781,10 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         id: "ss-bird-spikes",
         title: "Stainless Steel Bird Spikes",
-        tagline: "Marine SS Wire Anti-Perch Strips",
+        tagline: "Heavy-Gauge Anti-Rust Marine Prongs",
         description:
-          "High-grade stainless steel spike pins set on clear polycarbonate bases, providing permanent humane bird deterrence for narrow parapets and ledges.",
-        image: "/images/mobile/bird-spikes.webp",
+          "Marine-grade 304 stainless steel spike wires bonded to UV-stabilized polymer bases, providing maximum durability against harsh sun and bird pressure.",
+        image: "/images/projects/project-bird-spikes.jpg",
         imageAlt: "Stainless steel bird spikes on building parapet",
         suitability: [
           "Building Parapet Walls",
@@ -1749,10 +1803,10 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
       {
         id: "polycarb-bird-spikes",
         title: "Polycarbonate Bird Spikes",
-        tagline: "Clear All-Polycarbonate Strips",
+        tagline: "Flexible Base for Curved Ledges & Parapets",
         description:
-          "Lightweight, 100% transparent polycarbonate spike strips designed for decorative architectural mouldings and heritage facades.",
-        image: "/images/services/benefits/bird-spikes/bs-polycarb-base.jpg",
+          "Segmented flexible polycarbonate bases that conform to curved parapets, architectural cornices, and narrow window sills with non-destructive adhesive mounting.",
+        image: "/images/details/detail-spikes-base.jpg",
         imageAlt: "Transparent polycarbonate bird spikes installation",
         suitability: [
           "Curved Ledges",
@@ -1766,48 +1820,6 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
           { label: "Pre-Punched Holes", value: "Easy screw installation for wooden or metal beams" }
         ],
         installationHighlight: "Flexible segmented base easily mounts over curved cornices and uneven ledge surfaces.",
-      },
-      {
-        id: "building-ledge-protection",
-        title: "Building Ledge Protection",
-        tagline: "Facade Sills & Architectural Projections",
-        description:
-          "Custom-measured strips protecting window sills, external beam projections, and signboards from pigeon nesting and dropping stains.",
-        image: "/images/services/benefits/bird-spikes/bs-curved-ledges.jpg",
-        imageAlt: "Building ledge bird spike protection",
-        suitability: [
-          "Commercial Signboards",
-          "Facade Beams",
-          "Balcony Top Parapets"
-        ],
-        hardwareSpecs: [
-          { label: "Coverage Width", value: "Up to 150mm wide multi-angled deterrent spread" },
-          { label: "Adhesive Type", value: "Heavy-duty all-weather structural silicone bonding" },
-          { label: "Waterproof Membrane", value: "Zero-Drill adhesive preserves roof waterproofing" },
-          { label: "Maintenance", value: "Passive physical deterrent requiring zero maintenance" }
-        ],
-        installationHighlight: "Zero-drill adhesive installation protects building waterproofing from moisture leaks.",
-      },
-      {
-        id: "rooftop-bird-protection",
-        title: "Rooftop Bird Protection",
-        tagline: "AC Compressors & Parapet Wall Defense",
-        description:
-          "Specialized non-drilling adhesive mounting for air conditioning outdoor compressor units, parapets, and solar panel perimeters.",
-        image: "/images/services/benefits/bird-spikes/bs-humane-perch.jpg",
-        imageAlt: "Rooftop AC compressor bird spike protection",
-        suitability: [
-          "Rooftop Water Tanks",
-          "Solar Panel Arrays",
-          "Elevator Machine Rooms"
-        ],
-        hardwareSpecs: [
-          { label: "Corrosion Resistance", value: "100% Rust-proof in outdoor rain and sun exposure" },
-          { label: "Pest Exclusion", value: "Stops pigeons, crows, and mynas from roosting" },
-          { label: "Clean Facade", value: "Prevents acidic droppings from staining walls" },
-          { label: "Longevity", value: "Engineered for 5+ years of continuous outdoor life" }
-        ],
-        installationHighlight: "Protects rooftop solar panels and equipment from corrosive bird droppings.",
       },
     ],
     materials: {
