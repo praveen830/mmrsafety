@@ -453,7 +453,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Full-Height Vertical Tensioned Cables",
     description: "Vertical marine-grade 316 stainless steel cable system anchored under calibrated tension along balcony balustrades, maintaining 98% open panoramic views.",
     type: "Invisible Grills",
-    image: "/images/hero/hero-balcony.jpg",
+    image: "/images/services/subservices/invisible-grills/ig-balcony-invisible-grills.jpg",
     tag: "Showcase Configuration",
     specs: ["316 Stainless Steel Core", "2-Inch Safety Spacing", "Emergency Fire Egress"]
   },
@@ -581,7 +581,7 @@ export const showcaseData: ProjectItem[] = [
     configuration: "Compact Fold-Flat Drying System",
     description: "Space-saving accordion wall rack crafted from rustproof stainless steel, folding completely flush when not in use for utility areas and balconies.",
     type: "Cloth Hangers",
-    image: "/images/details/detail-hanger-pulley.jpg",
+    image: "/images/services/subservices/cloth-hangers/ch-wall-mounted-cloth-hangers.jpg",
     tag: "Showcase Configuration",
     specs: ["Fold-Flat Accordion Frame", "Rustproof Stainless Steel", "Space-Saving Compact Fit"]
   },

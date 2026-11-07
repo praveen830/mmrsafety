@@ -18,7 +18,6 @@ import ServiceBreadcrumbs from "@components/services/ServiceBreadcrumbs.astro";
 import ServiceHero from "@components/services/ServiceHero.astro";
 import ServiceSubServices from "@components/services/ServiceSubServices.astro";
 import ServiceBenefits from "@components/services/ServiceBenefits.astro";
-import ServiceGallery from "@components/services/ServiceGallery.astro";
 import ServiceCta from "@components/services/ServiceCta.astro";
 import RelatedServices from "@components/services/RelatedServices.astro";
 import FreeSiteVisitModal from "@components/services/FreeSiteVisitModal.astro";
@@ -98,13 +97,7 @@ const canonicalUrl = `https://mmrsafety.in/services/${service.slug}/`;
     benefits={service.benefits}
   />
 
-  <!-- 5. Project Showcase Gallery with Interactive Lightbox Modal -->
-  <ServiceGallery
-    name={service.name}
-    gallery={service.gallery}
-  />
-
-  <!-- 6. Final Lead-Generation Enquiry CTA Banner -->
+  <!-- Final Lead-Generation Enquiry CTA Banner -->
   <ServiceCta name={service.name} slug={service.slug} />
 
   <!-- 7. Related Services Cross-Links -->

@@ -6,7 +6,7 @@
  * 0. CinematicIntro — 5-second 3-scene WebM cinematic video intro
  * 1. Hero — 3D perspective tilt with photorealistic luxury apartment balcony visual
  * 2. BrandIntro — Master MMR brand identity reveal and core commitments
- * 3. ComparisonSection — Interactive split before/after slider (Invisible vs Iron Grills)
+ * 3. ComparisonSection — Interactive split Before vs After installation slider
  * 4. ServicesSection — 6 core offerings with 3D interactive tilt cards & real photography
  * 5. EngineeringDetails — 4 close-up product detail photographs showcasing precision hardware
  * 6. WhyChooseUs — 6 engineering and aesthetic pillars
@@ -17,7 +17,6 @@
  * 11. QuoteCtaSection — High-conversion on-site inspection booking form
  */
 import PageLayout from "@layouts/PageLayout.astro";
-import CinematicIntro from "@components/home/CinematicIntro.astro";
 import Hero from "@components/home/Hero.astro";
 import ComparisonSection from "@components/home/ComparisonSection.astro";
 import ServicesSection from "@components/home/ServicesSection.astro";
@@ -77,8 +76,6 @@ const localBusinessSchema = {
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   </Fragment>
-  <!-- 0. 5-Second Multi-Scene Cinematic Video Intro -->
-  <CinematicIntro />
 
   <!-- 1. Hero Section with 3D Perspective Balcony Visual -->
   <Hero />
