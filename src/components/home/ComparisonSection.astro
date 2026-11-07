@@ -2,46 +2,42 @@
 /**
  * ComparisonSection.astro — Interactive Before vs After Installation Comparison
  *
- * Unique Tagline: "We Provide MMR Safety Nets & Invisible Grills"
- * 
- * Before: High-res authentic image of open balcony with multiple pigeons & droppings (No net)
- * After 1: MMR SS-316 Invisible Grills with couple on clean luxury balcony
- * After 2: MMR Heavy-Duty Safety Nets on clean balcony with furniture
- *
- * Fully responsive for mobile view and desktop view (16:9 widescreen)
+ * Image-centric minimalist design:
+ * - Clean small titles with zero heavy paragraph text
+ * - Highlighted, tall image slider on mobile (aspect 4:5 on mobile, 16:9 on desktop)
+ * - Before: High-res authentic image of open balcony with pigeons & droppings
+ * - After 1: MMR SS-316 Invisible Grills with clean luxury balcony
+ * - After 2: MMR Heavy-Duty Safety Nets on clean balcony
+ * - Touch-enabled interactive split comparison slider
  */
 ---
 
 <section
   id="comparison"
-  class="relative bg-white py-14 sm:py-20 lg:py-24 border-b border-[var(--color-border-light)] scroll-mt-16 overflow-hidden"
+  class="relative bg-white py-8 sm:py-14 lg:py-18 border-b border-[var(--color-border-light)] scroll-mt-16 overflow-hidden"
   aria-labelledby="comparison-heading"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     
-    <!-- Section Header with Unique Tagline -->
+    <!-- Section Header (Image Style with Small Titles — Zero Heavy Paragraphs) -->
     <div class="mx-auto max-w-3xl text-center">
-      <span class="inline-flex items-center gap-1.5 rounded-full border border-sky-300 bg-sky-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)] shadow-sm">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-sky-300 bg-sky-50 px-3 py-0.5 sm:px-3.5 sm:py-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)] shadow-2xs">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-[var(--color-sky-blue-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
-        We Provide MMR Safety Nets &amp; Invisible Grills
+        MMR Safety Nets &amp; Invisible Grills
       </span>
 
-      <h2 id="comparison-heading" class="heading-section mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
+      <h2 id="comparison-heading" class="heading-section mt-2 text-xl sm:text-2xl lg:text-3xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
         Before vs After <span class="text-[var(--color-sky-blue-dark)]">Installation</span>
       </h2>
 
-      <p class="mt-2 text-xs sm:text-sm md:text-base text-[var(--color-muted-text)] leading-relaxed max-w-2xl mx-auto">
-        Solving multiple pigeon infestation, dirty droppings, and open high-rise balcony hazards — delivering 100% bird-free protection with certified SS-316 invisible grills and durable safety nets.
-      </p>
-
       <!-- Solution Selector Tabs -->
-      <div class="mt-5 flex flex-wrap items-center justify-center gap-2">
+      <div class="mt-3 sm:mt-4 flex flex-wrap items-center justify-center gap-2">
         <button
           type="button"
           id="tab-btn-grills"
-          class="solution-tab-btn active inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm font-bold border transition-all cursor-pointer bg-[var(--color-primary-navy)] text-white border-[var(--color-primary-navy)] shadow-md"
+          class="solution-tab-btn active inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-bold border transition-all cursor-pointer bg-[var(--color-primary-navy)] text-white border-[var(--color-primary-navy)] shadow-xs"
           data-solution="grills"
           aria-pressed="true"
         >
@@ -52,7 +48,7 @@
         <button
           type="button"
           id="tab-btn-nets"
-          class="solution-tab-btn inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm font-bold border transition-all cursor-pointer bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+          class="solution-tab-btn inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-bold border transition-all cursor-pointer bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
           data-solution="nets"
           aria-pressed="false"
         >
@@ -62,15 +58,15 @@
       </div>
 
       <p class="mt-2 text-[11px] sm:text-xs font-semibold text-emerald-700">
-        Drag the slider handle ⇄ left or right to see the transformation
+        Drag the slider handle ⇄ left or right to see transformation
       </p>
     </div>
 
-    <!-- Interactive Comparison Slider Container (16:9 widescreen ratio for mobile & desktop) -->
-    <div class="relative mx-auto mt-6 max-w-4xl select-none">
+    <!-- Interactive Comparison Slider Container (Taller on Mobile for Maximum Visual Highlight) -->
+    <div class="relative mx-auto mt-4 sm:mt-6 max-w-4xl select-none">
       <div
         id="comparison-container"
-        class="relative aspect-[16/9] w-full overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl border border-slate-200 shadow-2xl bg-neutral-900 cursor-ew-resize touch-pan-y ring-1 ring-slate-100"
+        class="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[16/9] w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-2xl bg-neutral-900 cursor-ew-resize touch-pan-y ring-1 ring-slate-100"
         style="--slider-pos: 50%;"
       >
         <!-- Base: After Installation Solution (Underneath) -->
@@ -89,7 +85,7 @@
         <!-- Badge for After (Right side) -->
         <span
           id="comparison-after-badge"
-          class="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 flex items-center gap-1.5 bg-white/95 backdrop-blur-md border border-emerald-300 text-emerald-800 text-[10px] sm:text-xs md:text-sm px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full font-bold shadow-md pointer-events-none select-none"
+          class="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-10 flex items-center gap-1.5 bg-white/95 backdrop-blur-md border border-emerald-300 text-emerald-800 text-[10px] sm:text-xs md:text-sm px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full font-bold shadow-md pointer-events-none select-none"
         >
           <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500"></span>
           <span id="badge-after-text">AFTER: MMR Invisible Grills</span>
@@ -116,7 +112,7 @@
           <!-- Badge for Before (Left side) -->
           <span
             id="comparison-before-badge"
-            class="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 flex items-center gap-1.5 bg-white/95 backdrop-blur-md border border-rose-300 text-rose-800 text-[10px] sm:text-xs md:text-sm px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full font-bold shadow-md pointer-events-none select-none whitespace-nowrap"
+            class="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 z-10 flex items-center gap-1.5 bg-white/95 backdrop-blur-md border border-rose-300 text-rose-800 text-[10px] sm:text-xs md:text-sm px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full font-bold shadow-md pointer-events-none select-none whitespace-nowrap"
           >
             <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
             <span id="badge-before-text">BEFORE: Multiple Pigeons Menace</span>
@@ -154,32 +150,16 @@
         />
       </div>
 
-      <!-- Feature Breakdown Cards (Before Case vs After MMR Solution) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 mt-4">
-        <!-- Before Card -->
-        <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-rose-50/90 border border-rose-200 text-left transition-all">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-rose-500 shrink-0"></span>
-            <p id="card-before-title" class="text-xs font-bold text-rose-600 uppercase tracking-wide">
-              Before Installation: Multiple Pigeons Menace
-            </p>
-          </div>
-          <p id="card-before-desc" class="text-xs sm:text-sm font-semibold text-rose-950 mt-1 sm:mt-1.5 leading-snug">
-            Multiple pigeons invading the balcony, perching on railings, dirty droppings covering the floor, foul smell, and unprotected fall risk.
-          </p>
+      <!-- Sleek Compact Status Pills with Small Titles (Zero Heavy Paragraphs) -->
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-3.5 px-0.5">
+        <div class="inline-flex items-center gap-2 rounded-full bg-rose-50/95 border border-rose-200/90 px-3.5 py-1 text-xs font-bold text-rose-700 shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-rose-500 shrink-0 animate-pulse"></span>
+          <span id="card-before-title">Before: Multiple Pigeons Menace</span>
         </div>
 
-        <!-- After Card -->
-        <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-emerald-50/90 border border-emerald-200 text-left transition-all">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
-            <p id="card-after-title" class="text-xs font-bold text-emerald-700 uppercase tracking-wide">
-              After Installation: MMR Invisible Grills
-            </p>
-          </div>
-          <p id="card-after-desc" class="text-xs sm:text-sm font-semibold text-emerald-950 mt-1 sm:mt-1.5 leading-snug">
-            High-tensile SS-316 stainless steel invisible grills — 100% pigeon exclusion, sparkling clean balcony, certified child safety, and 99% clear skyline view.
-          </p>
+        <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50/95 border border-emerald-200/90 px-3.5 py-1 text-xs font-bold text-emerald-800 shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+          <span id="card-after-title">After: MMR Invisible Grills</span>
         </div>
       </div>
     </div>
@@ -192,21 +172,18 @@
     afterImg: string;
     afterBadge: string;
     afterCardTitle: string;
-    afterCardDesc: string;
   }
 
   const solutions: Record<string, SolutionData> = {
     grills: {
       afterImg: "/images/comparison/after-invisible-grills.jpg",
       afterBadge: "AFTER: MMR Invisible Grills",
-      afterCardTitle: "After Installation: MMR Invisible Grills",
-      afterCardDesc: "High-tensile SS-316 stainless steel invisible grills — 100% pigeon exclusion, sparkling clean balcony, certified child safety, and 99% clear skyline view."
+      afterCardTitle: "After: MMR Invisible Grills",
     },
     nets: {
       afterImg: "/images/comparison/after-safety-nets.jpg",
       afterBadge: "AFTER: MMR Pigeon Safety Nets",
-      afterCardTitle: "After Installation: MMR Safety Nets",
-      afterCardDesc: "Heavy-duty UV-resistant anti-bird nylon netting — 100% pigeon exclusion, pristine clean furniture and floor, while allowing 100% breeze and daylight."
+      afterCardTitle: "After: MMR Safety Nets",
     }
   };
 
@@ -219,7 +196,6 @@
     const afterImg = document.getElementById("comparison-after-img") as HTMLImageElement | null;
     const badgeAfter = document.getElementById("badge-after-text");
     const cardAfterTitle = document.getElementById("card-after-title");
-    const cardAfterDesc = document.getElementById("card-after-desc");
 
     const tabBtns = document.querySelectorAll(".solution-tab-btn");
 
@@ -325,7 +301,6 @@
         if (afterImg) afterImg.src = data.afterImg;
         if (badgeAfter) badgeAfter.textContent = data.afterBadge;
         if (cardAfterTitle) cardAfterTitle.textContent = data.afterCardTitle;
-        if (cardAfterDesc) cardAfterDesc.textContent = data.afterCardDesc;
       });
     });
   }

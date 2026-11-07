@@ -63,14 +63,17 @@ const whatsappUrl = getWhatsAppUrl();
                   <a
                     href={link.href}
                     class:list={[
-                      "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                      "rounded-md px-2.5 lg:px-3 py-2 text-sm font-medium transition-colors inline-flex items-center gap-1",
                       isActive
                         ? "bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)]"
                         : "text-[var(--color-muted-text)] hover:bg-[var(--color-soft-bg)] hover:text-[var(--color-primary-navy)]",
                     ]}
                     aria-current={isActive ? "page" : undefined}
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    {link.label === "Ratings" && (
+                      <span class="text-amber-500 font-bold text-xs" title="Google Verified 4.9 Rating">★</span>
+                    )}
                   </a>
                 </li>
               );
@@ -144,14 +147,17 @@ const whatsappUrl = getWhatsAppUrl();
               <a
                 href={link.href}
                 class:list={[
-                  "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  "block rounded-md px-3 py-2 text-sm font-medium transition-colors flex items-center justify-between",
                   isActive
                     ? "bg-[var(--color-soft-bg)] text-[var(--color-primary-navy)]"
                     : "text-[var(--color-muted-text)] hover:bg-[var(--color-soft-bg)] hover:text-[var(--color-primary-navy)]",
                 ]}
                 aria-current={isActive ? "page" : undefined}
               >
-                {link.label}
+                <span>{link.label}</span>
+                {link.label === "Ratings" && (
+                  <span class="rounded-full bg-amber-50 border border-amber-300 px-2 py-0.5 text-[10px] font-bold text-amber-700">★ 4.9</span>
+                )}
               </a>
             </li>
           );
@@ -194,3 +200,25 @@ const whatsappUrl = getWhatsAppUrl();
     </div>
   </nav>
 </header>
+
+<script>
+  function initMobileMenuAutoClose() {
+    const toggle = document.getElementById("mobile-menu-toggle") as HTMLInputElement | null;
+    if (!toggle) return;
+    const mobileLinks = document.querySelectorAll('nav[aria-label="Mobile navigation"] a');
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (toggle.checked) {
+          toggle.checked = false;
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMobileMenuAutoClose);
+  } else {
+    initMobileMenuAutoClose();
+  }
+  document.addEventListener("astro:page-load", initMobileMenuAutoClose);
+</script>

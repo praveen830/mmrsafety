@@ -6,6 +6,7 @@
  */
 import PageLayout from "@layouts/PageLayout.astro";
 import { servicesDetailData } from "@data/servicesData";
+import { getWhatsAppUrl } from "@data/siteConfig";
 import SafetyRequirementsSection from "@components/home/SafetyRequirementsSection.astro";
 import WarrantySection from "@components/home/WarrantySection.astro";
 
@@ -77,87 +78,95 @@ const servicesItemListSchema = {
   </nav>
 
   <!-- Hero Banner -->
-  <section class="bg-gradient-to-b from-[var(--color-soft-bg)] to-white py-14 lg:py-20 border-b border-[var(--color-border-light)] text-center">
+  <section class="bg-gradient-to-b from-[var(--color-soft-bg)] to-white py-12 lg:py-16 border-b border-[var(--color-border-light)] text-center">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
       <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
-        Architectural Safety Solutions
+        MMR Safety &bull; Bengaluru
       </span>
-      <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
-        Engineered Protection for Modern Living
+      <h1 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
+        Our Services
       </h1>
-      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
-        From transparent invisible grills to heavy-duty netting, explore our tailored residential, commercial, and sports installation solutions across Bengaluru.
+      <p class="mt-3 text-sm sm:text-base text-[var(--color-muted-text)] max-w-xl mx-auto">
+        Certified Safety Nets &amp; Invisible Grills Installation Across Bengaluru
       </p>
     </div>
   </section>
 
-  <!-- 6 Services Catalog Grid -->
-  <section class="bg-white py-16 lg:py-24 border-b border-[var(--color-border-light)]">
+  <!-- 6 Services Catalog Grid (Image-First, Sleek Full-Bleed Design) -->
+  <section class="bg-[var(--color-soft-bg)] py-12 sm:py-16 lg:py-20 border-b border-[var(--color-border-light)]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-6 sm:gap-7 md:grid-cols-2 lg:grid-cols-3">
         {servicesList.map((service) => (
-          <article class="group flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-soft-bg)]/50 p-6 shadow-xs transition-all duration-300 hover:border-[var(--color-sky-blue)] hover:bg-white hover:shadow-2xl">
+          <article class="group relative flex flex-col justify-between overflow-hidden rounded-2xl sm:rounded-3xl border border-[var(--color-border)] bg-white shadow-xs transition-all duration-300 hover:border-[var(--color-sky-blue)] hover:shadow-xl focus-within:ring-2 focus-within:ring-[var(--color-sky-blue)]">
             
-            <div>
-              <a
-                href={`/services/${service.slug}/`}
-                class="block relative aspect-4/5 sm:aspect-16/10 w-full overflow-hidden rounded-2xl bg-[var(--color-soft-bg)] cursor-pointer"
-                aria-label={`View ${service.name} Page`}
-              >
-                <picture class="h-full w-full">
-                  <source media="(min-width: 768px)" srcset={service.imageDesktop} type="image/webp" />
-                  <img
-                    src={service.imageMobile}
-                    alt={service.imageAlt || service.altText}
-                    width="896"
-                    height="1120"
-                    class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </picture>
-              </a>
+            <!-- Full-Bleed Image (No nested card padding) -->
+            <a
+              href={`/services/${service.slug}/`}
+              class="block relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-slate-100 cursor-pointer"
+              aria-label={`View ${service.name} Details`}
+            >
+              <picture class="h-full w-full">
+                <source media="(min-width: 768px)" srcset={service.imageDesktop} type="image/webp" />
+                <img
+                  src={service.imageMobile}
+                  alt={service.imageAlt || service.altText || `${service.name} professional installation by MMR Safety`}
+                  width="896"
+                  height="672"
+                  class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
 
-              <div class="mt-6">
-                <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
-                  {service.category}
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" aria-hidden="true"></div>
+
+              {service.badge && (
+                <span class="absolute top-3 right-3 rounded-full bg-[var(--color-primary-navy)]/90 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+                  {service.badge}
                 </span>
-                
-                <h2 class="mt-1 text-2xl font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
-                  {service.name}
+              )}
+            </a>
+
+            <!-- Reduced Text Area: Title + 1-Line Tagline Only -->
+            <div class="p-4 sm:p-5 flex flex-col justify-between flex-1">
+              <div>
+                <h2 class="text-lg sm:text-xl font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
+                  <a href={`/services/${service.slug}/`} class="hover:underline">
+                    {service.name}
+                  </a>
                 </h2>
                 
-                <p class="mt-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+                <p class="mt-1 text-xs sm:text-sm text-[var(--color-muted-text)] font-medium">
                   {service.tagline}
                 </p>
-                
-                <p class="mt-3 text-sm text-[var(--color-muted-text)] leading-relaxed line-clamp-3">
-                  {service.subtitle}
-                </p>
-
-                <!-- Spec Badges -->
-                <div class="mt-5 flex flex-wrap gap-2">
-                  {service.specBadges.slice(0, 2).map((badge) => (
-                    <span class="inline-flex items-center gap-1 rounded-md bg-white border border-[var(--color-border-light)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-primary-navy)]">
-                      &bull; {badge}
-                    </span>
-                  ))}
-                </div>
               </div>
-            </div>
 
-            <!-- Action Button -->
-            <div class="mt-8 pt-4 border-t border-[var(--color-border-light)]">
-              <a
-                href={`/services/${service.slug}/`}
-                class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-navy)] py-3 px-5 text-xs font-bold text-white shadow-sm transition-all hover:bg-[var(--color-primary-navy-dark)] hover:shadow-md"
-              >
-                <span>Explore {service.name} Page</span>
-                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
+              <!-- Sleek Dual Actions: View Details + Direct WhatsApp -->
+              <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border-light)] pt-3.5">
+                <a
+                  href={`/services/${service.slug}/`}
+                  class="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-[var(--color-soft-bg)] border border-[var(--color-border)] px-3.5 py-2.5 text-xs font-bold text-[var(--color-primary-navy)] transition-all duration-200 hover:border-[var(--color-primary-navy)] hover:bg-[var(--color-primary-navy)] hover:text-white hover:shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--color-sky-blue)]"
+                >
+                  <span>View Details</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+
+                <a
+                  href={getWhatsAppUrl(service.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-xs transition-all duration-200 hover:bg-[#1ebe5d] hover:shadow-md hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-[#25D366]"
+                  aria-label={`Enquire about ${service.name} on WhatsApp`}
+                  title={`Quick WhatsApp Enquiry for ${service.name}`}
+                >
+                  <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.68 4.25 3.76.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29" />
+                  </svg>
+                </a>
+              </div>
             </div>
 
           </article>

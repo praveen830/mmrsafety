@@ -2,11 +2,11 @@
 /**
  * ServicesSection.astro — Six Distinct Architectural Service Cards
  *
- * Features:
- * - Large photorealistic architectural photographs for all six services
- * - Interactive 3D perspective card tilt with specular highlight on hover
- * - Crisp typography, key engineering tags, and direct enquiry links
- * - Clean light architectural aesthetics
+ * Streamlined, image-first modern design:
+ * - Direct, clean section heading: "Our Services"
+ * - Full-bleed top photograph per card with zero nested double-card padding
+ * - Crisp, reduced typography (Title + short 1-line benefit)
+ * - Optimized for mobile: large, immersive images and lightweight card height
  */
 import { servicesData } from "@data/homeData";
 import { getWhatsAppUrl } from "@data/siteConfig";
@@ -14,115 +14,107 @@ import { getWhatsAppUrl } from "@data/siteConfig";
 
 <section
   id="services"
-  class="relative bg-[var(--color-soft-bg)] py-20 lg:py-28 border-b border-[var(--color-border-light)] scroll-mt-16"
+  class="relative bg-[var(--color-soft-bg)] py-12 sm:py-16 lg:py-24 border-b border-[var(--color-border-light)] scroll-mt-16"
   aria-labelledby="services-heading"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     
-    <!-- Section Header -->
+    <!-- Section Header (Clean "Our Services" with Zero Heavy Paragraphs) -->
     <div class="mx-auto max-w-3xl text-center">
-      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-xs">
-        Core Offerings &bull; Certified Safety
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white px-3 py-0.5 sm:px-3.5 sm:py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)] shadow-2xs">
+        MMR Safety &bull; Bengaluru
       </span>
-      <h2 id="services-heading" class="heading-section mt-3 text-3xl sm:text-4xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)]">
-        Engineered Safety &amp; Protection Solutions
+      <h2 id="services-heading" class="heading-section mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
+        Our Services
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-[var(--color-muted-text)] leading-relaxed">
-        From transparent invisible grills to heavy-duty netting, explore our tailored residential, commercial, and sports installation solutions.
-      </p>
     </div>
 
-    <!-- 6 Services Grid -->
-    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <!-- 6 Services Grid (Full-Bleed Modern Visual Cards) -->
+    <div class="mt-8 sm:mt-12 lg:mt-16 grid grid-cols-1 gap-6 sm:gap-7 md:grid-cols-2 lg:grid-cols-3">
       {
         servicesData.map((service) => (
           <article
-            class="service-3d-card group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:border-[var(--color-sky-blue)] hover:shadow-2xl focus-within:ring-2 focus-within:ring-[var(--color-sky-blue)] will-change-transform"
+            class="service-3d-card group relative flex flex-col justify-between overflow-hidden rounded-2xl sm:rounded-3xl border border-[var(--color-border)] bg-white shadow-xs transition-all duration-300 hover:border-[var(--color-sky-blue)] hover:shadow-xl focus-within:ring-2 focus-within:ring-[var(--color-sky-blue)] will-change-transform"
             aria-labelledby={`service-${service.id}`}
           >
-            <!-- Top Visual Container with Photorealistic Image -->
-            <div>
-              <a
-                href={service.href}
-                class="group/img block relative aspect-4/5 sm:aspect-16/10 w-full overflow-hidden rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-soft-bg)] cursor-pointer"
-                aria-label={`View ${service.name} details`}
-              >
-                <picture class="h-full w-full">
-                  <source media="(min-width: 768px)" srcset={service.imageDesktop} type="image/webp" />
-                  <img
-                    src={service.imageMobile}
-                    alt={service.imageAlt || service.altText || `${service.name} professional installation by MMR Safety`}
-                    width="896"
-                    height="1120"
-                    class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </picture>
+            <!-- Full-Bleed Architectural Photograph (Edge-to-Edge across top, zero nested padding) -->
+            <a
+              href={service.href}
+              class="group/img block relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-slate-100 cursor-pointer"
+              aria-label={`View ${service.name} details`}
+            >
+              <picture class="h-full w-full">
+                <source media="(min-width: 768px)" srcset={service.imageDesktop} type="image/webp" />
+                <img
+                  src={service.imageMobile}
+                  alt={service.imageAlt || service.altText || `${service.name} professional installation by MMR Safety`}
+                  width="896"
+                  height="672"
+                  class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
 
-                <!-- Ambient Vignette -->
-                <div
-                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
-                  aria-hidden="true"
-                ></div>
+              <!-- Subtle Ambient Vignette -->
+              <div
+                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"
+                aria-hidden="true"
+              ></div>
 
-                <!-- Dynamic Specular Glare Layer -->
-                <div
-                  class="service-card-glare pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style="background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);"
-                  aria-hidden="true"
-                ></div>
+              <!-- Dynamic Specular Glare Layer -->
+              <div
+                class="service-card-glare pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style="background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 70%);"
+                aria-hidden="true"
+              ></div>
 
-                {service.badge && (
-                  <span class="absolute top-3 right-3 rounded-full bg-white/95 backdrop-blur-md px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--color-primary-navy)] border border-[var(--color-border)] shadow-xs">
-                    {service.badge}
-                  </span>
-                )}
-              </a>
+              {service.badge && (
+                <span class="absolute top-3 right-3 rounded-full bg-[var(--color-primary-navy)]/90 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+                  {service.badge}
+                </span>
+              )}
+            </a>
 
-              <!-- Content Area -->
-              <div class="mt-6">
-                <div class="flex items-center justify-between">
-                  <h3 id={`service-${service.id}`} class="text-xl sm:text-2xl font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
-                    <a href={service.href} class="hover:underline">
-                      {service.name}
-                    </a>
-                  </h3>
-                </div>
+            <!-- Content Area (Reduced Text — Title and 1-Line Tagline Only) -->
+            <div class="p-4 sm:p-5 flex flex-col justify-between flex-1">
+              <div>
+                <h3 id={`service-${service.id}`} class="text-lg sm:text-xl font-bold text-[var(--color-primary-navy)] group-hover:text-[var(--color-sky-blue-dark)] transition-colors">
+                  <a href={service.href} class="hover:underline">
+                    {service.name}
+                  </a>
+                </h3>
                 
-                <p class="mt-1 text-xs font-semibold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+                <p class="mt-1 text-xs sm:text-sm text-[var(--color-muted-text)] font-medium">
                   {service.tagline}
                 </p>
-                <p class="mt-2.5 text-sm text-[var(--color-muted-text)] leading-relaxed">
-                  {service.description}
-                </p>
               </div>
-            </div>
 
-            <!-- Bottom Action Row: View Details + Quick WhatsApp Button -->
-            <div class="mt-6 flex items-center gap-2.5 border-t border-[var(--color-border-light)] pt-4">
-              <a
-                href={service.href}
-                class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-[var(--color-soft-bg)] border border-[var(--color-border)] px-4 py-3 text-xs font-bold text-[var(--color-primary-navy)] transition-all duration-200 hover:border-[var(--color-primary-navy)] hover:bg-[var(--color-primary-navy)] hover:text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-[var(--color-sky-blue)]"
-              >
-                <span>View Details</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
+              <!-- Bottom Action Row: View Details + Quick WhatsApp Button -->
+              <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border-light)] pt-3.5">
+                <a
+                  href={service.href}
+                  class="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-[var(--color-soft-bg)] border border-[var(--color-border)] px-3.5 py-2.5 text-xs font-bold text-[var(--color-primary-navy)] transition-all duration-200 hover:border-[var(--color-primary-navy)] hover:bg-[var(--color-primary-navy)] hover:text-white hover:shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--color-sky-blue)]"
+                >
+                  <span>View Details</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
 
-              <a
-                href={getWhatsAppUrl(service.name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-xs transition-all duration-200 hover:bg-[#1ebe5d] hover:shadow-md hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-[#25D366]"
-                aria-label={`Enquire about ${service.name} on WhatsApp`}
-                title={`Quick WhatsApp Enquiry for ${service.name}`}
-              >
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.68 4.25 3.76.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29" />
-                </svg>
-              </a>
+                <a
+                  href={getWhatsAppUrl(service.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-xs transition-all duration-200 hover:bg-[#1ebe5d] hover:shadow-md hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-[#25D366]"
+                  aria-label={`Enquire about ${service.name} on WhatsApp`}
+                  title={`Quick WhatsApp Enquiry for ${service.name}`}
+                >
+                  <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.68 4.25 3.76.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29" />
+                  </svg>
+                </a>
+              </div>
             </div>
 
           </article>

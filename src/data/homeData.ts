@@ -52,7 +52,7 @@ export const heroSlidesData: HeroSlideItem[] = [
     primaryCtaText: "Explore Invisible Grills",
     primaryCtaLink: "/services/invisible-grills/",
     secondaryCtaText: "Get a Free Quote",
-    secondaryCtaLink: "#quote",
+    secondaryCtaLink: "/contact",
     imageDesktop: "/images/desktop/invisible-grills.webp",
     imageMobile: "/images/mobile/invisible-grills.webp",
     imageAlt:

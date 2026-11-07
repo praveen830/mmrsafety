@@ -2,62 +2,63 @@
 /**
  * FloatingContactButtons.astro
  *
- * Permanent, fixed floating contact action buttons anchored at the bottom of the viewport:
- * - Bottom Left: Direct Phone Call button (clean white circle with green phone logo, subtle shadow, and status dot)
- * - Bottom Right: Direct WhatsApp Chat button (vibrant green circle with white WhatsApp logo and ambient pulse glow)
- *
- * Perfectly responsive across mobile and desktop views, permanently accessible during scrolling.
+ * Permanent, vertical floating quick contact action buttons matching reference image:
+ * - Positioned at the bottom-right of the viewport
+ * - Vertically stacked trio:
+ *     1. Top: RED circular Call Now button with white outline and white phone handset icon
+ *     2. Middle: GREEN circular WhatsApp button with white outline and white WhatsApp icon
+ *     3. Bottom: BLUE circular Email button with white outline and white envelope icon
+ * - Includes smooth scroll-to-top button on bottom-left matching reference layout
+ * - Mobile & desktop optimized with responsive sizing, touch friendliness, and desktop tooltips
  */
-import { siteConfig, getPhoneUrl, getWhatsAppUrl } from "@data/siteConfig";
+import { siteConfig, getPhoneUrl, getWhatsAppUrl, getEmailUrl } from "@data/siteConfig";
 
 const phoneUrl = getPhoneUrl();
-const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I would like to get a quote and enquiry for safety nets / invisible grills.");
+const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I would like to get a quote and enquiry for safety nets / invisible grills in Bengaluru.");
+const emailUrl = getEmailUrl(undefined, "MMR Safety Inquiry - Bengaluru");
 ---
 
-<aside aria-label="Quick Contact Actions" class="pointer-events-none fixed inset-0 z-40 overflow-hidden">
+<!-- 1. Right-Side Bottom: Vertical Trio of Action Buttons (Red Call, Green WhatsApp, Blue Email) -->
+<aside
+  aria-label="Quick Contact Actions"
+  class="pointer-events-none fixed right-3.5 sm:right-5 bottom-5 sm:bottom-6 z-40 flex flex-col items-center gap-2.5 sm:gap-3 select-none"
+>
   
-  <!-- 1. Permanent Phone Call Button (Bottom-Left) -->
-  <div class="pointer-events-auto absolute bottom-4 left-4 sm:bottom-6 sm:left-6 flex items-center group">
+  <!-- 1. Red Phone Call Button -->
+  <div class="pointer-events-auto relative group flex items-center justify-end">
+    <!-- Desktop Tooltip -->
+    <div
+      role="tooltip"
+      class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-[var(--color-primary-navy)] px-3.5 py-1 text-xs font-bold text-white shadow-lg transition-all duration-200 lg:group-hover:inline-block border border-white/20"
+    >
+      <span>Call: {siteConfig.contact.phone}</span>
+    </div>
+
     <a
       href={phoneUrl}
-      class="relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-white text-emerald-600 shadow-[0_4px_20px_rgba(0,0,0,0.18)] border border-slate-200/90 transition-all duration-300 hover:scale-110 hover:shadow-[0_6px_25px_rgba(0,0,0,0.22)] hover:border-emerald-500 hover:bg-emerald-50/50 active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+      class="relative flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center rounded-full bg-[#e53935] text-white border-2 border-white shadow-[0_4px_16px_rgba(229,57,53,0.5)] transition-all duration-300 hover:scale-110 hover:bg-[#d32f2f] hover:shadow-[0_6px_22px_rgba(229,57,53,0.7)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-red-400"
       aria-label={`Call MMR Safety directly at ${siteConfig.contact.phone}`}
       title={`Call Now: ${siteConfig.contact.phone}`}
     >
-      <!-- Subtle Pulse Status Ring -->
-      <span class="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white"></span>
-      </span>
-
-      <!-- Phone Receiver SVG Icon -->
+      <!-- Phone Handset SVG Icon -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6 sm:h-7 sm:w-7 text-emerald-600 transition-transform duration-300 group-hover:rotate-12"
-        fill="none"
+        class="h-5 w-5 sm:h-6 sm:w-6 text-white transition-transform duration-300 group-hover:rotate-12"
+        fill="currentColor"
         viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2.2"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-        />
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
       </svg>
     </a>
-
-    <!-- Desktop Hover Tooltip -->
-    <div class="pointer-events-none absolute left-full ml-3 hidden whitespace-nowrap rounded-full bg-[var(--color-primary-navy)] px-3.5 py-1.5 text-xs font-bold text-white shadow-lg transition-all duration-200 lg:group-hover:inline-block">
-      <span>Call: {siteConfig.contact.phone}</span>
-    </div>
   </div>
 
-  <!-- 2. Permanent WhatsApp Chat Button (Bottom-Right) -->
-  <div class="pointer-events-auto absolute bottom-4 right-4 sm:bottom-6 sm:right-6 flex items-center justify-end group">
-    
-    <!-- Desktop Hover Tooltip -->
-    <div class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-[var(--color-primary-navy)] px-3.5 py-1.5 text-xs font-bold text-white shadow-lg transition-all duration-200 lg:group-hover:inline-block">
+  <!-- 2. Green WhatsApp Button -->
+  <div class="pointer-events-auto relative group flex items-center justify-end">
+    <!-- Desktop Tooltip -->
+    <div
+      role="tooltip"
+      class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-[var(--color-primary-navy)] px-3.5 py-1 text-xs font-bold text-white shadow-lg transition-all duration-200 lg:group-hover:inline-block border border-white/20"
+    >
       <span>Chat on WhatsApp</span>
     </div>
 
@@ -65,16 +66,16 @@ const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I would like to get a quot
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_20px_rgba(37,211,102,0.45)] transition-all duration-300 hover:bg-[#1ebe5d] hover:scale-110 hover:shadow-[0_6px_25px_rgba(37,211,102,0.65)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#25D366]"
+      class="relative flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center rounded-full bg-[#25D366] text-white border-2 border-white shadow-[0_4px_16px_rgba(37,211,102,0.5)] transition-all duration-300 hover:scale-110 hover:bg-[#1ebe5d] hover:shadow-[0_6px_22px_rgba(37,211,102,0.7)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#25D366]"
       aria-label="Chat with MMR Safety on WhatsApp"
       title="Chat with MMR Safety on WhatsApp"
     >
-      <!-- Ambient Breathing Glow -->
+      <!-- Ambient Breathing Pulse Glow -->
       <span class="pointer-events-none absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25"></span>
 
-      <!-- Official WhatsApp SVG Icon with Phone Handset -->
+      <!-- Official WhatsApp SVG Icon -->
       <svg
-        class="h-6 w-6 sm:h-7 sm:w-7 text-white relative z-10 transition-transform duration-300 group-hover:scale-110"
+        class="h-5 w-5 sm:h-6 sm:w-6 text-white relative z-10 transition-transform duration-300 group-hover:scale-110"
         fill="currentColor"
         viewBox="0 0 24 24"
       >
@@ -83,5 +84,75 @@ const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I would like to get a quot
     </a>
   </div>
 
+  <!-- 3. Blue Email Button -->
+  <div class="pointer-events-auto relative group flex items-center justify-end">
+    <!-- Desktop Tooltip -->
+    <div
+      role="tooltip"
+      class="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-full bg-[var(--color-primary-navy)] px-3.5 py-1 text-xs font-bold text-white shadow-lg transition-all duration-200 lg:group-hover:inline-block border border-white/20"
+    >
+      <span>Email: {siteConfig.contact.email}</span>
+    </div>
+
+    <a
+      href={emailUrl}
+      class="relative flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center rounded-full bg-[#0088cc] text-white border-2 border-white shadow-[0_4px_16px_rgba(0,136,204,0.5)] transition-all duration-300 hover:scale-110 hover:bg-[#0077b5] hover:shadow-[0_6px_22px_rgba(0,136,204,0.7)] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0088cc]"
+      aria-label={`Send email to MMR Safety at ${siteConfig.contact.email}`}
+      title={`Email Us: ${siteConfig.contact.email}`}
+    >
+      <!-- Mail Envelope SVG Icon -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5 sm:h-6 sm:w-6 text-white transition-transform duration-300 group-hover:scale-110"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+      </svg>
+    </a>
+  </div>
+
 </aside>
 
+<!-- 2. Bottom-Left: Subtle Scroll-to-Top Button Matching Reference Screen -->
+<div class="pointer-events-none fixed left-4 bottom-5 sm:bottom-6 z-40">
+  <button
+    id="global-scroll-to-top-btn"
+    type="button"
+    class="pointer-events-auto flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-[var(--color-primary-navy)]/80 backdrop-blur-md text-white border border-white/20 shadow-md transition-all duration-300 hover:bg-[var(--color-primary-navy)] hover:scale-105 active:scale-95 opacity-0 pointer-events-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+    aria-label="Scroll back to top of page"
+    title="Back to Top"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+</div>
+
+<script>
+  function initScrollToTop() {
+    const btn = document.getElementById("global-scroll-to-top-btn");
+    if (!btn) return;
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        btn.classList.remove("opacity-0", "pointer-events-none");
+        btn.classList.add("opacity-100", "pointer-events-auto");
+      } else {
+        btn.classList.remove("opacity-100", "pointer-events-auto");
+        btn.classList.add("opacity-0", "pointer-events-none");
+      }
+    }, { passive: true });
+
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initScrollToTop);
+  } else {
+    initScrollToTop();
+  }
+  document.addEventListener("astro:page-load", initScrollToTop);
+</script>

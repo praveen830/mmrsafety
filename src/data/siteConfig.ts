@@ -54,6 +54,7 @@ export const siteConfig = {
     { label: "Services", href: "/services" },
     { label: "Projects", href: "/projects" },
     { label: "Warranty", href: "/#warranty" },
+    { label: "Ratings", href: "/#ratings" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],

@@ -44,6 +44,7 @@ export interface ServiceDetail {
   imageMobile: string;
   imageAlt: string;
   altText: string;
+  badge?: string;
   metaTitle: string;
   metaDescription: string;
   specBadges: string[];
