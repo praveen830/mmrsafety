@@ -18,6 +18,26 @@ const canonicalUrl = "https://mmrsafety.in/contact/";
 const phoneUrl = getPhoneUrl();
 const generalWhatsAppUrl = getWhatsAppUrl("Hello MMR Safety, I would like to enquire about your safety nets and invisible grill services.");
 
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://mmrsafety.in/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Contact Us",
+      item: canonicalUrl,
+    },
+  ],
+};
+
 // Structured ContactPage Schema
 const contactSchema = {
   "@context": "https://schema.org",
@@ -54,6 +74,7 @@ const contactSchema = {
   canonicalUrl={canonicalUrl}
 >
   <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
   </Fragment>
 
@@ -365,68 +386,119 @@ const contactSchema = {
     showContactPrompt={false}
   />
 
-  <!-- 4. Client-side Form WhatsApp / Email Formatter -->
+  <!-- 4. Client-side Form WhatsApp / Email Formatter with URL Query Pre-filling -->
   <script>
-        const whatsappBtn = document.getElementById("submit-whatsapp-btn");
-    const emailBtn = document.getElementById("submit-email-btn");
+    function initContactForm() {
+      const whatsappBtn = document.getElementById("submit-whatsapp-btn");
+      const emailBtn = document.getElementById("submit-email-btn");
+      const nameEl = document.getElementById("form-name") as HTMLInputElement | null;
+      const phoneEl = document.getElementById("form-phone") as HTMLInputElement | null;
+      const serviceEl = document.getElementById("form-service") as HTMLSelectElement | null;
+      const areaEl = document.getElementById("form-area") as HTMLInputElement | null;
+      const timingEl = document.getElementById("form-timing") as HTMLSelectElement | null;
+      const notesEl = document.getElementById("form-notes") as HTMLInputElement | null;
 
-    function getFormData() {
-      const name = (document.getElementById("form-name") as HTMLInputElement)?.value.trim();
-      const phone = (document.getElementById("form-phone") as HTMLInputElement)?.value.trim();
-      const service = (document.getElementById("form-service") as HTMLSelectElement)?.value;
-      const area = (document.getElementById("form-area") as HTMLInputElement)?.value.trim();
-      const timing = (document.getElementById("form-timing") as HTMLSelectElement)?.value;
-      const notes = (document.getElementById("form-notes") as HTMLInputElement)?.value.trim();
-
-      if (!name || !phone || !area) {
-        alert("Please enter your Name, Phone Number, and Locality before submitting.");
-        return null;
+      // Pre-populate fields from URL search parameters if available
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (nameEl && params.get("name")) nameEl.value = params.get("name") || "";
+        if (phoneEl && params.get("phone")) phoneEl.value = params.get("phone") || "";
+        if (areaEl && (params.get("area") || params.get("locality"))) {
+          areaEl.value = params.get("area") || params.get("locality") || "";
+        }
+        if (notesEl && (params.get("notes") || params.get("message"))) {
+          notesEl.value = params.get("notes") || params.get("message") || "";
+        }
+        if (serviceEl && params.get("service")) {
+          const reqService = (params.get("service") || "").toLowerCase();
+          const matchOpt = Array.from(serviceEl.options).find(opt => 
+            opt.value.toLowerCase().includes(reqService) || 
+            opt.text.toLowerCase().includes(reqService)
+          );
+          if (matchOpt) serviceEl.value = matchOpt.value;
+        }
+      } catch (e) {
+        // Safe URL param parsing
       }
 
-      return { name, phone, service, area, timing, notes };
+      function getFormData() {
+        const name = nameEl?.value.trim() || "";
+        const phone = phoneEl?.value.trim() || "";
+        const service = serviceEl?.value || "Invisible Grills";
+        const area = areaEl?.value.trim() || "";
+        const timing = timingEl?.value || "Today / Earliest Available";
+        const notes = notesEl?.value.trim() || "";
+
+        if (!name) {
+          alert("Please enter your Name before submitting.");
+          nameEl?.focus();
+          return null;
+        }
+
+        const cleanPhone = phone.replace(/[^0-9]/g, "");
+        if (cleanPhone.length < 10) {
+          alert("Please enter a valid 10-digit mobile number.");
+          phoneEl?.focus();
+          return null;
+        }
+
+        if (!area) {
+          alert("Please enter your Locality or Apartment society in Bengaluru.");
+          areaEl?.focus();
+          return null;
+        }
+
+        return { name, phone: cleanPhone, service, area, timing, notes };
+      }
+
+      if (whatsappBtn) {
+        whatsappBtn.addEventListener("click", () => {
+          const data = getFormData();
+          if (!data) return;
+
+          let msg = `Hello MMR Safety, I would like to request a Free Site Visit & Measurement.\n\n`;
+          msg += `• Name: ${data.name}\n`;
+          msg += `• Phone: +91 ${data.phone}\n`;
+          msg += `• Service: ${data.service}\n`;
+          msg += `• Locality: ${data.area}, Bengaluru\n`;
+          msg += `• Preferred Timing: ${data.timing}\n`;
+          if (data.notes) {
+            msg += `• Notes: ${data.notes}\n`;
+          }
+          msg += `\nPlease let me know your available schedule. Thank you!`;
+
+          const waUrl = `https://wa.me/916304433505?text=${encodeURIComponent(msg)}`;
+          window.open(waUrl, "_blank");
+        });
+      }
+
+      if (emailBtn) {
+        emailBtn.addEventListener("click", () => {
+          const data = getFormData();
+          if (!data) return;
+
+          const subject = `Free Site Visit Request: ${data.service} - ${data.area} (${data.name})`;
+          let body = `Hello MMR Safety Team,\n\nI would like to request a free site visit and measurement for my property.\n\n`;
+          body += `Name: ${data.name}\n`;
+          body += `Phone: +91 ${data.phone}\n`;
+          body += `Service: ${data.service}\n`;
+          body += `Locality: ${data.area}, Bengaluru\n`;
+          body += `Preferred Timing: ${data.timing}\n`;
+          if (data.notes) {
+            body += `Notes: ${data.notes}\n`;
+          }
+          body += `\nPlease confirm an available schedule slot.\n\nBest regards,\n${data.name}`;
+
+          const mailtoUrl = `mailto:mmrsafetyntes@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoUrl;
+        });
+      }
     }
 
-    if (whatsappBtn) {
-      whatsappBtn.addEventListener("click", () => {
-        const data = getFormData();
-        if (!data) return;
-
-        let msg = `Hello MMR Safety, I would like to request a Free Site Visit & Measurement.\n\n`;
-        msg += `• Name: ${data.name}\n`;
-        msg += `• Phone: ${data.phone}\n`;
-        msg += `• Service: ${data.service}\n`;
-        msg += `• Locality: ${data.area}, Bengaluru\n`;
-        msg += `• Preferred Timing: ${data.timing}\n`;
-        if (data.notes) {
-          msg += `• Notes: ${data.notes}\n`;
-        }
-        msg += `\nPlease let me know your available schedule. Thank you!`;
-
-        const waUrl = `https://wa.me/916304433505?text=${encodeURIComponent(msg)}`;
-        window.open(waUrl, "_blank");
-      });
-    }
-
-    if (emailBtn) {
-      emailBtn.addEventListener("click", () => {
-        const data = getFormData();
-        if (!data) return;
-
-        const subject = `Free Site Visit Request: ${data.service} - ${data.area} (${data.name})`;
-        let body = `Hello MMR Safety Team,\n\nI would like to request a free site visit and measurement for my property.\n\n`;
-        body += `Name: ${data.name}\n`;
-        body += `Phone: ${data.phone}\n`;
-        body += `Service: ${data.service}\n`;
-        body += `Locality: ${data.area}, Bengaluru\n`;
-        body += `Preferred Timing: ${data.timing}\n`;
-        if (data.notes) {
-          body += `Notes: ${data.notes}\n`;
-        }
-        body += `\nPlease confirm an available schedule slot.\n\nBest regards,\n${data.name}`;
-
-        const mailtoUrl = `mailto:mmrsafetyntes@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailtoUrl;
-      });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initContactForm);
+    } else {
+      initContactForm();
     }
   </script>
 

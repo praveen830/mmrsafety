@@ -241,4 +241,5 @@ const { defaultService = "Invisible Grills" } = Astro.props;
   } else {
     initSiteVisitModal();
   }
+  document.addEventListener("astro:page-load", initSiteVisitModal);
 </script>

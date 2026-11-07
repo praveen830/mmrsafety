@@ -20,6 +20,12 @@ export function getPageTitle(title?: string): string {
   if (!title || title === siteConfig.seo.defaultTitle) {
     return siteConfig.seo.defaultTitle;
   }
+  if (
+    title.includes(siteConfig.name) ||
+    title.includes(siteConfig.shortName)
+  ) {
+    return title;
+  }
   return siteConfig.seo.titleTemplate.replace("%s", title);
 }
 

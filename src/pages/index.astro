@@ -28,9 +28,17 @@ import FaqSection from "@components/home/FaqSection.astro";
 import QuoteCtaSection from "@components/home/QuoteCtaSection.astro";
 import { siteConfig } from "@data/siteConfig";
 
-const seoTitle = `${siteConfig.name} | ${siteConfig.tagline}`;
+const seoTitle = `${siteConfig.name} in Bangalore`;
 const seoDescription =
-  "High-tensile invisible grills, residential balcony safety nets, pigeon exclusion nets, and ceiling cloth hangers engineered for high-rise living with unobstructed views.";
+  "Bangalore's specialist for 316 marine stainless steel invisible grills, balcony safety nets, pigeon nets & cloth hangers. Free on-site inspection across Bengaluru.";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.name,
+  alternateName: "MMR Safety",
+  url: siteConfig.url,
+};
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -54,16 +62,28 @@ const localBusinessSchema = {
     latitude: 12.9716,
     longitude: 77.5946,
   },
-  areaServed: {
-    "@type": "City",
-    name: "Bengaluru",
-  },
+  areaServed: [
+    { "@type": "City", name: "Bengaluru" },
+    { "@type": "AdministrativeArea", name: "Karnataka" },
+  ],
   priceRange: "₹₹",
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     opens: "08:00",
     closes: "20:00",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Safety Installation Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Invisible Grills Installation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Balcony Safety Nets Installation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pigeon Safety Nets Installation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Sports Nets Installation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ceiling Cloth Drying Hangers" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Stainless Steel Bird Spikes" } },
+    ],
   },
 };
 ---
@@ -74,6 +94,7 @@ const localBusinessSchema = {
   canonicalUrl="https://mmrsafety.in/"
 >
   <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   </Fragment>
 

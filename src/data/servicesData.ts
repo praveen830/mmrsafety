@@ -103,7 +103,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     altText:
       "Modern luxury high-rise apartment balcony fitted with vertical stainless steel invisible grill safety cables overlooking city skyline",
     metaTitle:
-      "Invisible Grills Installation in Bangalore | Modern Balcony Safety",
+      "Invisible Grills Installation in Bangalore | MMR Safety",
     metaDescription:
       "High-tensile stainless steel invisible grills for high-rise balconies and windows. Enjoy 99% open skyline views with robust accidental fall protection.",
     specBadges: [
@@ -417,7 +417,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     altText:
       "Residential balcony fall protection safety net installation overlooking green city view",
     metaTitle:
-      "Balcony Safety Nets Installation in Bangalore | Fall Protection",
+      "Balcony Safety Nets Installation Bangalore | MMR Safety",
     metaDescription:
       "Durable UV-stabilized balcony safety netting tailored for apartments and residential buildings. Protect children and pets with secure perimeter anchoring.",
     specBadges: [
@@ -775,7 +775,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     altText:
       "Apartment balcony protected by translucent pigeon safety net with birds deterred on exterior ledge",
     metaTitle:
-      "Pigeon Safety Nets for Balconies & Windows | Bird Netting",
+      "Pigeon Safety Nets Installation Bangalore | MMR Safety",
     metaDescription:
       "Humane, discreet pigeon safety nets for apartments and utility areas. Keep balconies clean, hygienic, and bird-free without harming birds or blocking airflow.",
     specBadges: [
@@ -1067,7 +1067,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     altText:
       "Professional outdoor cricket practice turf enclosure with heavy-duty safety sports netting",
     metaTitle:
-      "Sports Nets Installation | Cricket, Badminton & Turf Enclosures",
+      "Sports Nets & Cricket Turf Nets in Bangalore | MMR Safety",
     metaDescription:
       "High-durability sports netting for cricket practice pitches, terrace play areas, and sports complexes. Engineered for high ball impact resistance.",
     specBadges: [
@@ -1354,7 +1354,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     altText:
       "Ceiling-mounted stainless steel pulley cloth drying hanger installed in a modern apartment balcony",
     metaTitle:
-      "Ceiling Cloth Drying Hangers in Bangalore | Balcony Hangers",
+      "Ceiling Cloth Drying Hangers in Bangalore | MMR Safety",
     metaDescription:
       "Space-saving ceiling-mounted stainless steel cloth drying hangers for balconies. Smooth individual pulley mechanisms for effortless laundry drying.",
     specBadges: [
@@ -1636,7 +1636,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
     altText:
       "Close-up of stainless steel anti-perch bird spikes installed on building parapet wall ledge",
     metaTitle:
-      "Stainless Steel Bird Spikes Installation in Bangalore | Anti-Perch Strips",
+      "Stainless Steel Bird Spikes in Bangalore | MMR Safety",
     metaDescription:
       "Durable stainless steel bird spikes on UV-stabilized polycarbonate bases. Humane anti-perch deterrence for parapet ledges, window sills, and AC outdoor units.",
     specBadges: [

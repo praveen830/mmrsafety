@@ -36,8 +36,27 @@ const canonicalURL = new URL(
     <!-- SEO -->
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
-    <link rel="canonical" href={canonicalURL.href} />
-    {seo.noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!seo.noindex && <link rel="canonical" href={canonicalURL.href} />}
+    <meta
+      name="robots"
+      content={seo.noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
+    <meta
+      name="googlebot"
+      content={seo.noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
+    <meta name="author" content={siteConfig.name} />
+    <meta name="publisher" content={siteConfig.name} />
+
+    <!-- Local SEO Geo Meta Tags (Bengaluru, Karnataka) -->
+    <meta name="geo.region" content="IN-KA" />
+    <meta name="geo.placename" content="Bengaluru" />
+    <meta name="geo.position" content="12.9716;77.5946" />
+    <meta name="ICBM" content="12.9716, 77.5946" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={seo.title} />
@@ -45,6 +64,9 @@ const canonicalURL = new URL(
     <meta property="og:type" content={seo.ogType} />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:image" content={new URL(seo.ogImage, siteConfig.url).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={seo.title} />
     <meta property="og:locale" content={siteConfig.seo.locale} />
     <meta property="og:site_name" content={siteConfig.shortName} />
 
@@ -53,6 +75,7 @@ const canonicalURL = new URL(
     <meta name="twitter:title" content={seo.title} />
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={new URL(seo.ogImage, siteConfig.url).href} />
+    <meta name="twitter:image:alt" content={seo.title} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -7,7 +7,7 @@
  * and a full-featured Image Lightbox Modal with Next/Prev navigation.
  */
 import { showcaseData } from "@data/homeData";
-import { siteConfig, getPhoneUrl } from "@data/siteConfig";
+import { siteConfig, getPhoneUrl, getWhatsAppUrl } from "@data/siteConfig";
 
 interface Props {
   initialFilter?: string;
@@ -27,6 +27,7 @@ const categories = [
 ];
 
 const phoneUrl = getPhoneUrl();
+const defaultWhatsAppUrl = getWhatsAppUrl("Hello MMR Safety, I would like to enquire about your installation showcase configurations.");
 ---
 
 <section
@@ -217,7 +218,7 @@ const phoneUrl = getPhoneUrl();
         <img
           id="lightbox-img"
           src=""
-          alt=""
+          alt="MMR Safety Project Installation Showcase Preview"
           class="max-h-[70vh] lg:max-h-[85vh] w-full object-contain"
         />
 
@@ -297,7 +298,7 @@ const phoneUrl = getPhoneUrl();
         <div class="mt-8 pt-5 border-t border-[var(--color-border-light)] space-y-2.5">
           <a
             id="lightbox-whatsapp-btn"
-            href=""
+            href={defaultWhatsAppUrl}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1EBE5D] hover:shadow-md"

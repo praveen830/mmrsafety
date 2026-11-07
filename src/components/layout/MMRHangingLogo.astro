@@ -1,0 +1,312 @@
+---
+/**
+ * MMRHangingLogo.astro — 3D Hanging Metallic MMR Signboard (Desktop & Mobile Optimized)
+ *
+ * Requirements:
+ * - Permanent hanging position on the left side of the viewport
+ * - Suspended from the top using two realistic stainless-steel braided suspension cables
+ * - Authentic 3D metallic signboard with extruded navy lettering, chrome bevels, and teal accents
+ * - Slow subtle Y-axis 3D perspective rotation and gentle natural pendulum swinging motion
+ * - Realistic chrome reflections, sweeping glint beam, and soft elevation drop-shadow
+ * - Fully responsive:
+ *     - Mobile (< 640px): Compact jewel-like signboard (96px wide) suspended with refined slim cables
+ *       anchored cleanly at the top-left, perfectly proportioned for mobile viewports without covering navigation
+ *     - Tablet (640px - 1023px): Mid-scale architectural signboard (145px wide)
+ *     - Desktop (>= 1024px): Full luxury architectural signboard (220px - 245px wide) vertically centered
+ * - Strictly respects prefers-reduced-motion
+ */
+---
+
+<aside
+  id="mmr-hanging-logo-assembly"
+  class="pointer-events-none fixed top-0 left-2 sm:left-3 md:left-4 xl:left-7 2xl:left-10 z-35 flex flex-col items-center select-none"
+  aria-label="MMR Safety 3D Hanging Signboard"
+>
+  <!-- 3D Perspective Swing Stage anchored to the top of viewport -->
+  <div class="hanging-stage relative flex flex-col items-center">
+    
+    <!-- Top Ceiling Mounting Bracket (Ceiling Anchor at top: 0) -->
+    <div class="ceiling-anchor-bar flex items-center justify-between w-[84px] sm:w-[125px] lg:w-[170px] xl:w-[195px] 2xl:w-[215px]">
+      <div class="ceiling-bracket" title="Stainless Steel Suspension Anchor"></div>
+      <div class="ceiling-bracket" title="Stainless Steel Suspension Anchor"></div>
+    </div>
+
+    <!-- Suspension Cables Region (Extends from top down to the signboard) -->
+    <div class="cables-container relative w-[84px] sm:w-[125px] lg:w-[170px] xl:w-[195px] 2xl:w-[215px] h-[118px] sm:h-[calc(26vh-40px)] lg:h-[calc(50vh-130px)] min-h-[110px] lg:min-h-[90px] max-h-[135px] sm:max-h-[190px] lg:max-h-[380px]">
+      <!-- Left Stainless Steel Braided Cable (Aligned at 20.4%) -->
+      <div class="suspension-cable left-cable"></div>
+      <!-- Right Stainless Steel Braided Cable (Aligned at 85.3%) -->
+      <div class="suspension-cable right-cable"></div>
+    </div>
+
+    <!-- Physical 3D Signboard Assembly (Attached to bottom of cables) -->
+    <div class="signboard-wrapper relative">
+      
+      <!-- Mechanical Cable Terminal Fittings & Eyelet Shackles -->
+      <div class="shackles-row absolute -top-2.5 sm:-top-3.5 lg:-top-4 inset-x-0 w-full flex justify-between pointer-events-none z-20">
+        <!-- Left Swaged Terminal & Eyelet Ring (Aligned with left cable at 20.4%) -->
+        <div class="shackle-assembly left-shackle">
+          <div class="swaged-ferrule"></div>
+          <div class="eyelet-ring"></div>
+        </div>
+
+        <!-- Right Swaged Terminal & Eyelet Ring (Aligned with right cable at 85.3%) -->
+        <div class="shackle-assembly right-shackle">
+          <div class="swaged-ferrule"></div>
+          <div class="eyelet-ring"></div>
+        </div>
+      </div>
+
+      <!-- Interactive 3D Metallic Signboard Plaque -->
+      <a
+        href="/"
+        class="signboard-card group pointer-events-auto block relative w-[94px] sm:w-[140px] lg:w-[190px] xl:w-[220px] 2xl:w-[245px] aspect-[812/435] transition-all duration-300 hover:scale-103 active:scale-97 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-sky-blue)]"
+        aria-label="MMR Safety Nets and Invisible Grills — Home"
+        title="MMR Safety Nets &amp; Invisible Grills"
+      >
+        <!-- Transparent 3D Extruded Metallic MMR Signboard -->
+        <img
+          src="/images/mmr-hanging-signboard.webp"
+          alt="MMR Safety Nets and Invisible Grills 3D Metallic Signboard"
+          width="812"
+          height="435"
+          class="h-full w-full object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.32)] lg:drop-shadow-[0_18px_24px_rgba(0,0,0,0.38)] transition-all duration-500 group-hover:brightness-105"
+          loading="eager"
+          decoding="async"
+        />
+
+        <!-- Sweeping Specular Chrome Glint Reflection Across Signboard -->
+        <div class="chrome-glint-sweep pointer-events-none absolute inset-0 overflow-hidden rounded-xl sm:rounded-2xl" aria-hidden="true">
+          <div class="glint-beam"></div>
+        </div>
+
+        <!-- Subtle Hover Tooltip Pill (Desktop only) -->
+        <div class="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[var(--color-primary-navy)]/95 border border-[var(--color-sky-blue)]/40 px-3 py-0.5 text-[10px] font-bold tracking-wider text-white shadow-lg opacity-0 transition-opacity duration-200 group-hover:opacity-100 backdrop-blur-xs hidden lg:block">
+          <span>MMR Safety • Certified Protection</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</aside>
+
+<style>
+  /* 3D Perspective Stage & Continuous Natural Pendulum Swing */
+  .hanging-stage {
+    perspective: 1200px;
+    -webkit-perspective: 1200px;
+    transform-origin: 50% 0;
+    will-change: transform;
+    animation: mmr-pendulum-swing 6.5s cubic-bezier(0.42, 0.0, 0.58, 1.0) infinite alternate;
+  }
+
+  /* Natural Pendulum Swing Keyframes (Gentle rotation & subtle 3D Y-axis perspective) */
+  @keyframes mmr-pendulum-swing {
+    0% {
+      transform: rotateZ(-1.8deg) rotateY(-3.5deg) translateX(-2px);
+    }
+    50% {
+      transform: rotateZ(0deg) rotateY(0deg) translateX(0px);
+    }
+    100% {
+      transform: rotateZ(1.8deg) rotateY(3.5deg) translateX(2px);
+    }
+  }
+
+  /* Ceiling Anchors at Top of Viewport */
+  .ceiling-bracket {
+    width: 9px;
+    height: 4px;
+    background: linear-gradient(180deg, #475569 0%, #94a3b8 40%, #cbd5e1 70%, #334155 100%);
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  }
+
+  @media (min-width: 640px) {
+    .ceiling-bracket {
+      width: 12px;
+      height: 5px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .ceiling-bracket {
+      width: 14px;
+      height: 6px;
+      border-radius: 0 0 3px 3px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  /* Realistic Stainless Steel Braided Suspension Cables */
+  .suspension-cable {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1.6px;
+    background: linear-gradient(
+      90deg,
+      #475569 0%,
+      #94a3b8 25%,
+      #ffffff 50%,
+      #cbd5e1 75%,
+      #334155 100%
+    );
+    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.35);
+  }
+
+  @media (min-width: 1024px) {
+    .suspension-cable {
+      width: 2.2px;
+      box-shadow: 1px 0 3px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  /* Micro braided steel texture pattern overlay on cables */
+  .suspension-cable::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(15, 23, 42, 0.45) 2px,
+      rgba(15, 23, 42, 0.45) 4px
+    );
+    opacity: 0.6;
+  }
+
+  /* Exact physical cable alignment (20.4% and 85.3% matching mounting eyelets) */
+  .left-cable {
+    left: 20.4%;
+    transform: translateX(-50%);
+  }
+
+  .right-cable {
+    left: 85.3%;
+    transform: translateX(-50%);
+  }
+
+  /* Mechanical Shackle & Eyelet Assembly */
+  .shackle-assembly {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-shackle {
+    left: 20.4%;
+    transform: translateX(-50%);
+  }
+
+  .right-shackle {
+    left: 85.3%;
+    transform: translateX(-50%);
+  }
+
+  .swaged-ferrule {
+    width: 3.5px;
+    height: 6px;
+    background: linear-gradient(90deg, #64748b 0%, #f1f5f9 45%, #94a3b8 100%);
+    border-radius: 1px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .eyelet-ring {
+    width: 7px;
+    height: 7px;
+    border: 1.5px solid #cbd5e1;
+    background: transparent;
+    border-radius: 50%;
+    margin-top: -1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (min-width: 640px) {
+    .swaged-ferrule {
+      width: 4.2px;
+      height: 7.5px;
+    }
+    .eyelet-ring {
+      width: 8.5px;
+      height: 8.5px;
+      border-width: 1.8px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .swaged-ferrule {
+      width: 5px;
+      height: 9px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    .eyelet-ring {
+      width: 10px;
+      height: 10px;
+      border-width: 2px;
+      margin-top: -2px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  /* Sweeping Chrome Specular Glint */
+  .chrome-glint-sweep {
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 90%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 90%);
+  }
+
+  .glint-beam {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 20%,
+      rgba(255, 255, 255, 0.55) 50%,
+      rgba(56, 189, 248, 0.35) 75%,
+      transparent 100%
+    );
+    transform: translateX(-180%) rotate(25deg);
+    animation: mmr-chrome-glint 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes mmr-chrome-glint {
+    0%, 30% {
+      transform: translateX(-180%) rotate(25deg);
+      opacity: 0;
+    }
+    38% {
+      opacity: 0.9;
+    }
+    50% {
+      transform: translateX(280%) rotate(25deg);
+      opacity: 0.9;
+    }
+    55%, 100% {
+      transform: translateX(280%) rotate(25deg);
+      opacity: 0;
+    }
+  }
+
+  /* Accessibility: Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hanging-stage {
+      animation: none !important;
+      transform: none !important;
+    }
+    .glint-beam {
+      animation: none !important;
+      display: none !important;
+    }
+    .signboard-card {
+      transition: none !important;
+    }
+  }
+</style>

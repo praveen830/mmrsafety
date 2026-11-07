@@ -17,6 +17,26 @@ const canonicalUrl = "https://mmrsafety.in/about/";
 const phoneUrl = getPhoneUrl();
 const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I read your About page and would like to learn more about your safety solutions.");
 
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://mmrsafety.in/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About Us",
+      item: canonicalUrl,
+    },
+  ],
+};
+
 // Structured schema
 const aboutSchema = {
   "@context": "https://schema.org",
@@ -48,6 +68,7 @@ const aboutSchema = {
   canonicalUrl={canonicalUrl}
 >
   <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
   </Fragment>
 

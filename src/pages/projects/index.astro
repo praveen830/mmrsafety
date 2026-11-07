@@ -16,6 +16,39 @@ const canonicalUrl = "https://mmrsafety.in/projects/";
 
 const phoneUrl = getPhoneUrl();
 const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I am browsing your Projects Showcase and would like to enquire about an on-site inspection for my home.");
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://mmrsafety.in/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Projects",
+      item: canonicalUrl,
+    },
+  ],
+};
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonicalUrl,
+  provider: {
+    "@type": "HomeAndConstructionBusiness",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+};
 ---
 
 <PageLayout
@@ -23,6 +56,10 @@ const whatsappUrl = getWhatsAppUrl("Hello MMR Safety, I am browsing your Project
   description={pageDescription}
   canonicalUrl={canonicalUrl}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+  </Fragment>
   <!-- Hero Banner -->
   <section class="relative bg-gradient-to-b from-[var(--color-soft-bg)] to-white py-14 lg:py-20 border-b border-[var(--color-border-light)]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
