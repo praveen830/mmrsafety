@@ -436,7 +436,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         description:
           "Provides a continuous safety barrier that prevents curious children from climbing railings or pets from slipping through balustrade gaps.",
         icon: "shield",
-        image: "/images/services/subservices/safety-nets/sn-children-safety-nets.jpg",
+        image: "/images/comparison/after-safety-nets.jpg",
       },
       {
         title: "High Airflow & Light Transmission",
@@ -450,7 +450,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         description:
           "Stabilized against solar ultraviolet degradation, ensuring the polymer fibers retain strength across wet monsoons and harsh summers.",
         icon: "sun",
-        image: "/images/services/subservices/safety-nets/sn-terrace-safety-nets.jpg",
+        image: "/images/comparison/tab2-nets-after.jpg",
       },
       {
         title: "Discreet Visual Footprint",
@@ -471,7 +471,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         description:
           "Prevents toys, plant pots, and laundry items from accidentally tumbling off balconies onto lower floors or common walkways.",
         icon: "fall-prevent",
-        image: "/images/services/subservices/safety-nets/sn-window-safety-nets.jpg",
+        image: "/images/projects/project-safety-nets.jpg",
       },
     ],
     anatomy: {
@@ -815,7 +815,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         description:
           "Maintains open cross-ventilation in balconies, utility wash areas, and air-conditioning outdoor condenser zones.",
         icon: "breeze",
-        image: "/images/services/subservices/pigeon-safety-nets/pn-balcony-safety-nets.jpg",
+        image: "/images/comparison/pigeon-after-final.jpg",
       },
       {
         title: "Protects Laundry & Balcony Furniture",
@@ -1401,7 +1401,7 @@ export const servicesDetailData: Record<string, ServiceDetail> = {
         description:
           "Rigid tubular construction comfortably supports heavy wet items such as bedsheets, blankets, and denim jeans without bending.",
         icon: "heavy-load",
-        image: "/images/services/subservices/cloth-hangers/ch-automatic-cloth-hangers.jpg",
+        image: "/images/projects/project-cloth-hangers.jpg",
       },
       {
         title: "Neat Interior & Exterior Aesthetics",
