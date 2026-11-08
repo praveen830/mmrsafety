@@ -183,10 +183,10 @@ const defaultWhatsAppUrl = getWhatsAppUrl("Hello MMR Safety, I would like to enq
 
   </div>
 
-  <!-- Interactive Image Lightbox Modal with Next / Prev Controls -->
+  <!-- Interactive Image Lightbox Modal with Next / Prev Controls (5:2 High Resolution Inspection View) -->
   <div
     id="gallery-lightbox-modal"
-    class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 lg:p-10"
+    class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/75 backdrop-blur-sm p-3.5 sm:p-6 lg:p-8 flex items-center justify-center transition-opacity duration-300"
     role="dialog"
     aria-modal="true"
     aria-labelledby="lightbox-title"
@@ -194,114 +194,122 @@ const defaultWhatsAppUrl = getWhatsAppUrl("Hello MMR Safety, I would like to enq
     <!-- Dark Backdrop -->
     <div
       id="lightbox-backdrop"
-      class="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity duration-300"
+      class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300"
     ></div>
 
     <!-- Modal Content Box -->
     <div
-      class="relative z-10 flex flex-col lg:flex-row max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl transition-all duration-300"
+      class="relative z-10 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl border border-[var(--color-border)] my-auto transition-transform duration-300"
     >
-      <!-- Close Button -->
-      <button
-        type="button"
-        id="lightbox-close-btn"
-        class="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all hover:bg-black hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
-        aria-label="Close Lightbox Modal"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
-      <!-- Left / Top: Photographic Visual Display -->
-      <div class="relative lg:w-3/5 bg-slate-950 flex items-center justify-center overflow-hidden min-h-[280px] sm:min-h-[380px] lg:min-h-[500px]">
-        <img
-          id="lightbox-img"
-          src=""
-          alt="MMR Safety Project Installation Showcase Preview"
-          class="max-h-[70vh] lg:max-h-[85vh] w-full object-contain"
-        />
-
-        <!-- Next / Prev Controls -->
+      <!-- Modal Header Bar (Matches Sub-Service Modal Standard) -->
+      <div class="flex items-center justify-between border-b border-[var(--color-border-light)] bg-[var(--color-soft-bg)] px-5 py-3.5 sm:px-6 sm:py-4">
+        <div class="flex items-center gap-2.5">
+          <span
+            id="lightbox-badge"
+            class="rounded-full bg-[var(--color-sky-blue)]/20 text-[var(--color-primary-navy)] border border-[var(--color-sky-blue)]/40 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider"
+          >
+            Showcase Project
+          </span>
+          <span class="text-xs text-[var(--color-muted-text)] hidden sm:inline">&bull; MMR Engineered Installation</span>
+        </div>
         <button
           type="button"
-          id="lightbox-prev-btn"
-          class="absolute left-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all hover:bg-black hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
-          aria-label="Previous showcase item"
+          id="lightbox-close-btn"
+          class="rounded-full p-1.5 text-gray-500 hover:bg-white hover:text-[var(--color-primary-navy)] transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-sky-blue)]"
+          aria-label="Close Lightbox Modal"
         >
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-
-        <button
-          type="button"
-          id="lightbox-next-btn"
-          class="absolute right-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all hover:bg-black hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
-          aria-label="Next showcase item"
-        >
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        <!-- Position Counter Indicator -->
-        <span
-          id="lightbox-counter"
-          class="absolute bottom-3 left-4 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white/90 backdrop-blur-sm"
-        >
-          1 / 18
-        </span>
       </div>
 
-      <!-- Right / Bottom: Technical Details & Actions -->
-      <div class="lg:w-2/5 flex flex-col justify-between p-6 sm:p-8 bg-white overflow-y-auto">
-        <div>
-          <!-- Category & Tag -->
-          <div class="flex items-center gap-2">
-            <span
-              id="lightbox-badge"
-              class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-soft-bg)] border border-[var(--color-border-light)] px-3 py-1 text-xs font-bold text-[var(--color-primary-navy)]"
-            >
-              Invisible Grills
+      <!-- Modal Content Body -->
+      <div class="max-h-[78vh] overflow-y-auto p-5 sm:p-7 space-y-5">
+
+        <!-- STRICT 4:9 ASPECT RATIO IMAGE DISPLAY (Mobile & Desktop - Improved High Resolution View) -->
+        <div class="relative w-full aspect-[4/9] max-h-[50vh] sm:max-h-[460px] overflow-hidden rounded-2xl bg-slate-950 border border-[var(--color-border)] shadow-md">
+          <img
+            id="lightbox-img"
+            src=""
+            alt="MMR Safety Project Installation Showcase Preview"
+            width="1200"
+            height="800"
+            class="h-full w-full object-cover transition-transform duration-500 hover:scale-103"
+          />
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+
+          <!-- Next / Prev Controls overlaid on 4:9 Image -->
+          <button
+            type="button"
+            id="lightbox-prev-btn"
+            class="absolute left-2.5 top-1/2 -translate-y-1/2 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-md transition-all hover:bg-black hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white shadow-md"
+            aria-label="Previous showcase item"
+          >
+            <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            id="lightbox-next-btn"
+            class="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur-md transition-all hover:bg-black hover:scale-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white shadow-md"
+            aria-label="Next showcase item"
+          >
+            <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- 4:9 Inspection Badge (Bottom Left) & Counter (Bottom Right) -->
+          <div class="absolute bottom-2.5 left-3 right-3 sm:bottom-3 sm:left-4 sm:right-4 flex items-center justify-between text-white pointer-events-none">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-black/65 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-bold border border-white/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+              <span>4:9 HD Inspection View</span>
             </span>
-            <span class="text-xs text-[var(--color-muted-text)] font-medium">Showcase Configuration</span>
+            <span
+              id="lightbox-counter"
+              class="rounded-full bg-black/65 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-bold border border-white/20 text-white/90"
+            >
+              1 / 18
+            </span>
           </div>
+        </div>
 
-          <!-- Title -->
-          <h3 id="lightbox-title" class="mt-3 text-xl sm:text-2xl font-extrabold text-[var(--color-primary-navy)]">
-            Title Placeholder
+        <!-- Technical Details -->
+        <div>
+          <h3 id="lightbox-title" class="text-xl sm:text-2xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
+            <!-- Populated via JS -->
           </h3>
-
-          <!-- Configuration Tag -->
-          <p id="lightbox-config" class="mt-1 text-xs font-semibold text-[var(--color-sky-blue-dark)]">
-            Configuration Details
+          <p id="lightbox-config" class="mt-1 text-xs sm:text-sm font-semibold text-[var(--color-sky-blue-dark)]">
+            <!-- Populated via JS -->
           </p>
-
-          <!-- Description -->
-          <p id="lightbox-desc" class="mt-3 text-sm text-[var(--color-muted-text)] leading-relaxed">
-            Description goes here.
+          <p id="lightbox-desc" class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <!-- Populated via JS -->
           </p>
+        </div>
 
-          <!-- Specs List -->
-          <div class="mt-5">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--color-primary-navy)]">
-              Hardware &amp; Execution Standards
-            </h4>
-            <div id="lightbox-specs" class="mt-2.5 flex flex-wrap gap-1.5">
-              <!-- Dynamically populated -->
-            </div>
+        <!-- Hardware & Execution Standards -->
+        <div class="border-t border-[var(--color-border-light)] pt-5">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--color-sky-blue-dark)]">
+            Hardware &amp; Execution Standards
+          </h4>
+          <div id="lightbox-specs" class="mt-2.5 flex flex-wrap gap-1.5 sm:gap-2">
+            <!-- Dynamically populated -->
           </div>
         </div>
 
         <!-- Action Buttons -->
-        <div class="mt-8 pt-5 border-t border-[var(--color-border-light)] space-y-2.5">
+        <div class="border-t border-[var(--color-border-light)] pt-5 flex flex-col sm:flex-row gap-2.5">
           <a
             id="lightbox-whatsapp-btn"
             href={defaultWhatsAppUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1EBE5D] hover:shadow-md"
+            class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-xs font-bold text-white shadow-xs transition-all hover:bg-[#1EBE5D] hover:shadow-md active:scale-98"
           >
             <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.68 4.25 3.76.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29"/>
@@ -311,12 +319,12 @@ const defaultWhatsAppUrl = getWhatsAppUrl("Hello MMR Safety, I would like to enq
 
           <a
             href={phoneUrl}
-            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-[var(--color-primary-navy-dark)]"
+            class="inline-flex sm:w-auto items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-navy)] px-4 py-3 text-xs font-bold text-white shadow-xs transition-all hover:bg-[var(--color-primary-navy-dark)] active:scale-98"
           >
             <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
             </svg>
-            <span>Speak to Engineer ({siteConfig.contact.phone})</span>
+            <span>Speak to Engineer</span>
           </a>
         </div>
       </div>

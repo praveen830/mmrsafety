@@ -214,35 +214,42 @@ const phoneUrl = getPhoneUrl();
       <!-- Modal Content Body -->
       <div class="max-h-[75vh] overflow-y-auto p-6 sm:p-8 space-y-6">
         
-        <!-- Top Visual & Title Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <!-- Full-Width 4:9 Aspect Ratio Visual Inspection Display (Mobile & Desktop - Improved High Resolution View) -->
+        <div class="relative w-full aspect-[4/9] max-h-[50vh] sm:max-h-[460px] overflow-hidden rounded-2xl bg-slate-950 border border-[var(--color-border)] shadow-md">
+          <img
+            id="subservice-modal-image"
+            src=""
+            alt="MMR Safety Sub-service Variation Specification Preview"
+            width="1200"
+            height="800"
+            class="h-full w-full object-cover transition-transform duration-500 hover:scale-103"
+          />
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"></div>
           
-          <!-- Image -->
-          <div class="md:col-span-5 relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-[var(--color-soft-bg)] border border-[var(--color-border)]">
-            <img
-              id="subservice-modal-image"
-              src=""
-              alt="MMR Safety Sub-service Variation Specification Preview"
-              width="600"
-              height="450"
-              class="h-full w-full object-cover"
-            />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+          <div class="absolute bottom-2.5 left-3 right-3 sm:bottom-3 sm:left-4 sm:right-4 flex items-center justify-between text-white pointer-events-none">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-bold border border-white/20">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+              <span>4:9 HD Inspection View</span>
+            </span>
+            <span class="text-[10px] sm:text-xs font-medium text-white/90 drop-shadow-sm hidden sm:inline">
+              MMR Certified Installation Standard
+            </span>
           </div>
+        </div>
 
-          <!-- Title & Overview -->
-          <div class="md:col-span-7">
-            <h2 id="subservice-modal-title" class="text-2xl sm:text-3xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
-              <!-- Populated via JS -->
-            </h2>
-            <p id="subservice-modal-tagline" class="mt-1 text-sm font-semibold text-[var(--color-sky-blue-dark)]">
-              <!-- Populated via JS -->
-            </p>
-            <p id="subservice-modal-description" class="mt-3 text-sm text-[var(--color-muted-text)] leading-relaxed">
-              <!-- Populated via JS -->
-            </p>
-          </div>
-
+        <!-- Title & Overview Section -->
+        <div>
+          <h2 id="subservice-modal-title" class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[var(--color-primary-navy)] tracking-tight">
+            <!-- Populated via JS -->
+          </h2>
+          <p id="subservice-modal-tagline" class="mt-1 text-xs sm:text-sm font-semibold text-[var(--color-sky-blue-dark)]">
+            <!-- Populated via JS -->
+          </p>
+          <p id="subservice-modal-description" class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <!-- Populated via JS -->
+          </p>
         </div>
 
         <!-- Application Suitability Pills -->
