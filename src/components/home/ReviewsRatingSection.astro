@@ -9,7 +9,7 @@
  * - Interactive "Leave a Rating" feedback modal with interactive star selection
  * - SEO-friendly Schema.org AggregateRating & Review structured data for Google Search snippet stars
  */
-import { getWhatsAppUrl, siteConfig } from "@data/siteConfig";
+import { getWhatsAppUrl } from "@data/siteConfig";
 
 const whatsappReviewUrl = getWhatsAppUrl("Hello MMR Safety, I would like to share my customer review and rating for your installation in Bengaluru.");
 
@@ -68,39 +68,6 @@ export const reviewsData = [
     text: "Fitted a 6-pipe stainless steel ceiling cloth hanger and anti-perch bird spikes along our window parapets. The individual pulley mechanism lowers smoothly to chest height and hoists heavy wet laundry to the ceiling where warm air dries them quickly. Freed up our entire balcony walking area. Superb quality.",
   },
 ];
-
-// Schema.org Review & AggregateRating Structured Data
-const reviewSchema = {
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  telephone: siteConfig.contact.phoneRaw,
-  image: "https://mmrsafety.in/logos/mmr-full.png",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "1280",
-    reviewCount: "890",
-  },
-  review: reviewsData.map((rev) => ({
-    "@type": "Review",
-    author: {
-      "@type": "Person",
-      name: rev.author,
-    },
-    datePublished: rev.date,
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: rev.rating,
-      bestRating: "5",
-      worstRating: "1",
-    },
-    reviewBody: rev.text,
-  })),
-};
 ---
 
 <section

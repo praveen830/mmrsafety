@@ -214,7 +214,7 @@ export const servicesData: ServiceItem[] = [
     id: "invisible-grills",
     name: "Invisible Grills",
     tagline: "Clear Views & Fall Protection",
-    description: "High-tensile stainless steel cables for safe, unobstructed views.",
+    description: "High-tensile 316 marine-grade stainless steel cables providing certified accidental fall protection for apartment balconies and windows across Bangalore, maintaining 99% open skyline views.",
     features: [
       "High-tensile stainless steel vertical cables",
       "Maintains natural daylight and open ventilation",
@@ -233,7 +233,7 @@ export const servicesData: ServiceItem[] = [
     id: "safety-nets",
     name: "Safety Nets",
     tagline: "Child & Pet Fall Safety",
-    description: "Durable UV-stabilized mesh for balconies, windows, and stairwells.",
+    description: "UV-stabilized heavy-duty polymer safety netting engineered for apartment balconies, stairwells, and shafts. Prevents accidental child and pet falls with solid concrete perimeter anchoring.",
     features: [
       "Weather-resistant UV-stabilized polymer mesh",
       "Custom-fitted to unique architectural openings",
@@ -251,7 +251,7 @@ export const servicesData: ServiceItem[] = [
     id: "pigeon-safety-nets",
     name: "Pigeon Safety Nets",
     tagline: "Bird-Free Clean Balconies",
-    description: "Translucent netting keeping balconies bird-free with full airflow.",
+    description: "Discreet translucent monofilament netting that keeps balconies bird-free and hygienic without harming pigeons or blocking breeze. 100% weather-resistant across Bengaluru high-rises.",
     features: [
       "Translucent finish that blends into the background",
       "Humane bird deterrence without injury",
@@ -270,7 +270,7 @@ export const servicesData: ServiceItem[] = [
     id: "sports-nets",
     name: "Sports Nets",
     tagline: "Ball Containment Enclosures",
-    description: "High-impact netting for cricket pitches, courts, and play areas.",
+    description: "High-impact braided sports netting for cricket practice pitches, terrace play arenas, and sports clubhouses. Heavy-duty shock absorption built for high-velocity ball impacts.",
     features: [
       "High-impact cord strength for high-velocity balls",
       "Custom height, width, and cage enclosures",
@@ -288,7 +288,7 @@ export const servicesData: ServiceItem[] = [
     id: "cloth-hangers",
     name: "Cloth Hangers",
     tagline: "Ceiling Space Savers",
-    description: "Rust-free ceiling pulley racks for effortless laundry drying.",
+    description: "Ceiling-mounted stainless steel drying pipes with smooth dual-pulley mechanics. Effortlessly lowers to chest height and hoists laundry overhead, freeing up 100% of your balcony floor.",
     features: [
       "Individual pipe pulley lowering mechanism",
       "Rust-resistant stainless steel construction",
@@ -306,7 +306,7 @@ export const servicesData: ServiceItem[] = [
     id: "bird-spikes",
     name: "Bird Spikes",
     tagline: "Anti-Perch Ledge Protection",
-    description: "Stainless steel spikes for window sills, ledges, and AC units.",
+    description: "High-durability stainless steel anti-perch spike strips on flexible polycarbonate bases. Humane, zero-maintenance deterrence for window sills, parapet ledges, and AC outdoor compressors.",
     features: [
       "Humane, non-harmful bird perching deterrent",
       "Weatherproof polycarbonate base with flexible curvature",
